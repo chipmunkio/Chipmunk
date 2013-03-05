@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic, strong) NSArray* dataSource;
 @property (nonatomic) unsigned int minutes;
+- (IBAction)loadWebView:(id)sender;
 
 @end

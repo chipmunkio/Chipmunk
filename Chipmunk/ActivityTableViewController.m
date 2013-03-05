@@ -10,6 +10,7 @@
 #import "ChipmunkUtils.h"
 #import "ActivityCell.h"
 #import "DatabaseManager.h"
+#import "WebViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ActivityTableViewController () <DatabaseManagerDelegate>
@@ -181,4 +182,11 @@
 }
 
 
+- (IBAction)loadWebView:(id)sender {
+    
+    WebViewController* wvc = [self.storyboard instantiateViewControllerWithIdentifier:@"webController"];
+    wvc.urlStr = @"http://www.google.com";
+    [self.navigationController pushViewController:wvc animated:YES];
+    
+}
 @end
