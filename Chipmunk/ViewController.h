@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *hourSymbol;
 @property (weak, nonatomic) IBOutlet UILabel *minuteSymbol;
 @property (nonatomic) int hourIsShowing;
+@property (weak, nonatomic) IBOutlet UISlider *slider;
 
 // for ticking sound
 @property (nonatomic) CFURLRef tickURLRef;

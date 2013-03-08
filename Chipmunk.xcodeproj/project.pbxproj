@@ -29,6 +29,9 @@
 		2345964A16DA2A550088312D /* venue.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345964916DA2A550088312D /* venue.png */; };
 		235E41D716DDC59F0051B3BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E41D616DDC59F0051B3BB /* AudioToolbox.framework */; };
 		235E41DB16DDC7CE0051B3BB /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 235E41DA16DDC7CE0051B3BB /* tick.wav */; };
+		23A12EA616EA467A00D5CA5B /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A12EA516EA467A00D5CA5B /* home.png */; };
+		23A12EA816EA47CB00D5CA5B /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A12EA716EA47CB00D5CA5B /* tree.png */; };
+		23A12EAA16EA498A00D5CA5B /* sliderbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A12EA916EA498A00D5CA5B /* sliderbackground.png */; };
 		23BAE0EB16DA013B00385268 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BAE0EA16DA013B00385268 /* ActivityCell.m */; };
 		23BF0D8C16E57205007526F1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF0D8B16E57205007526F1 /* WebViewController.m */; };
 		23FF257516D72AB200900166 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257416D72AB200900166 /* UIKit.framework */; };
@@ -90,6 +93,9 @@
 		2345964916DA2A550088312D /* venue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue.png; sourceTree = "<group>"; };
 		235E41D616DDC59F0051B3BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		235E41DA16DDC7CE0051B3BB /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
+		23A12EA516EA467A00D5CA5B /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		23A12EA716EA47CB00D5CA5B /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
+		23A12EA916EA498A00D5CA5B /* sliderbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderbackground.png; sourceTree = "<group>"; };
 		23BAE0E916DA013B00385268 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		23BAE0EA16DA013B00385268 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		23BF0D8A16E57205007526F1 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -225,6 +231,9 @@
 		23FF257B16D72AB200900166 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				23A12EA716EA47CB00D5CA5B /* tree.png */,
+				23A12EA516EA467A00D5CA5B /* home.png */,
+				23A12EA916EA498A00D5CA5B /* sliderbackground.png */,
 				235E41DA16DDC7CE0051B3BB /* tick.wav */,
 				2345963B16DA1FB00088312D /* whitelogo.png */,
 				8E571C0216D9CBA300F946A3 /* sliderbarswag.png */,
@@ -386,6 +395,9 @@
 				2345964816DA2A4C0088312D /* book.png in Resources */,
 				2345964A16DA2A550088312D /* venue.png in Resources */,
 				235E41DB16DDC7CE0051B3BB /* tick.wav in Resources */,
+				23A12EA616EA467A00D5CA5B /* home.png in Resources */,
+				23A12EA816EA47CB00D5CA5B /* tree.png in Resources */,
+				23A12EAA16EA498A00D5CA5B /* sliderbackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

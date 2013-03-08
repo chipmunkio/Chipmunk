@@ -33,6 +33,17 @@
     self.hourIsShowing = 0;
     
     
+    //set up slider!
+    self.slider.maximumValue = 3.0;
+    self.slider.minimumValue = 1.0;
+    UIImage *stetchLeftTrack = [[UIImage imageNamed:@"sliderbackground.png"]
+                                stretchableImageWithLeftCapWidth:15.0 topCapHeight:0.0];
+    [self.slider setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];
+    [self.slider setMaximumTrackImage:stetchLeftTrack forState:UIControlStateNormal];
+    [self.slider setValue:floorf(2) animated:NO];
+
+
+    
     // for setting up ticking sound
 	CFBundleRef mainBundle = CFBundleGetMainBundle ();
     tickURLRef  =	CFBundleCopyResourceURL (
@@ -248,8 +259,26 @@
   //  _tickURLRef = tickURLRef;
 //}
 
+- (IBAction)sliderTouch:(id)sender {
+    
+    
+    if(self.slider.value > 2.4)
+    {
+        [sender setValue:floorf(self.slider.maximumValue) animated:YES];
 
-
+    }
+    else if(self.slider.value < 1.6)
+    {
+        [sender setValue:floorf(self.slider.minimumValue) animated:YES];
+        
+    }
+    else
+    {
+        [sender setValue:floorf(2) animated:YES];
+        
+    }
+    
+}
 
 
 

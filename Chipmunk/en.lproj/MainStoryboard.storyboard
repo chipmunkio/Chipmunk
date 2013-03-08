@@ -31,10 +31,6 @@
                                 <rect key="frame" x="37" y="1" width="246" height="89"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="twv-vx-OEf" customClass="TimeScrollView">
-                                <rect key="frame" x="0.0" y="440" width="320" height="74"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                            </scrollView>
                             <imageView contentMode="scaleAspectFit" image="ringcitybitch.png" id="Z7Z-FE-uyz" customClass="RotatingImageView">
                                 <rect key="frame" x="20" y="157" width="278" height="286"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -79,6 +75,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="gLs-1I-pCa">
+                                <rect key="frame" x="26" y="472" width="274" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="thumbTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="sliderTouch:" destination="2" eventType="touchUpInside" id="EIS-85-Aw3"/>
+                                </connections>
+                            </slider>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="home.png" id="4S9-jk-ycj">
+                                <rect key="frame" x="6" y="488" width="52" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="tree.png" id="A7p-Kk-oEj">
+                                <rect key="frame" x="268" y="490" width="52" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -90,7 +104,7 @@
                         <outlet property="minLabel" destination="lxi-lZ-wnP" id="4tX-iu-Nvo"/>
                         <outlet property="minuteSymbol" destination="4UG-hz-L2q" id="1J3-5q-aqa"/>
                         <outlet property="rotatingTimeSelect" destination="Z7Z-FE-uyz" id="RXY-Um-ogl"/>
-                        <outlet property="timeScrollView" destination="twv-vx-OEf" id="RZF-1x-RRU"/>
+                        <outlet property="slider" destination="gLs-1I-pCa" id="naW-iX-pLx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -209,7 +223,6 @@
         <!--Web View Controller-->
         <scene sceneID="lEu-az-udZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jMB-rP-4sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="webController" id="DnH-XT-FmW" customClass="WebViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PRx-yU-77B">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
@@ -243,6 +256,7 @@
                         <outlet property="webView" destination="fZ1-tt-GDC" id="5Yh-EA-AQl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jMB-rP-4sP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="755" y="151"/>
         </scene>
@@ -250,9 +264,11 @@
     <resources>
         <image name="arrow.png" width="800" height="668"/>
         <image name="bottombarwhite.png" width="290" height="38"/>
+        <image name="home.png" width="70" height="70"/>
         <image name="leopard.jpeg" width="290" height="148"/>
         <image name="ringcitybitch.png" width="2119" height="2119"/>
         <image name="toporangebar.png" width="290" height="38"/>
+        <image name="tree.png" width="70" height="70"/>
         <image name="whitelogo.png" width="300" height="91"/>
     </resources>
     <classes>
@@ -285,12 +301,14 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="getActivitiesTable:"/>
+                <relationship kind="action" name="sliderTouch:"/>
                 <relationship kind="outlet" name="circleImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hourLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="hourSymbol" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="minLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="minuteSymbol" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="rotatingTimeSelect" candidateClass="RotatingImageView"/>
+                <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="timeScrollView" candidateClass="TimeScrollView"/>
             </relationships>
         </class>
