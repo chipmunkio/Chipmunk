@@ -27,6 +27,18 @@
 
 - (void)viewDidLoad
 {
+    //SET UP LABELS
+    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
+    NSString *proxReg = [fontArr objectAtIndex:0];
+    NSString *proxBold = [fontArr objectAtIndex:1];
+    [self.hourLabel setFont:[UIFont fontWithName:proxReg size:self.hourLabel.font.pointSize]];
+    [self.minLabel setFont:[UIFont fontWithName:proxReg size:self.minLabel.font.pointSize]];
+    [self.minuteSymbol setFont:[UIFont fontWithName:proxReg size:self.minuteSymbol.font.pointSize]];
+    [self.hourSymbol setFont:[UIFont fontWithName:proxReg size:self.hourSymbol.font.pointSize]];
+    [self.insideLabel setFont:[UIFont fontWithName:proxReg size:self.insideLabel.   font.pointSize]];
+    [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:self.outsideLabel.font.pointSize]];
+     [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
+    
     [super viewDidLoad];
     self.hourLabel.hidden = true;
     self.hourSymbol.hidden = true;
@@ -36,11 +48,17 @@
     //set up slider!
     self.slider.maximumValue = 3.0;
     self.slider.minimumValue = 1.0;
-    UIImage *stetchLeftTrack = [[UIImage imageNamed:@"sliderbackground.png"]
-                                stretchableImageWithLeftCapWidth:15.0 topCapHeight:0.0];
-    [self.slider setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];
-    [self.slider setMaximumTrackImage:stetchLeftTrack forState:UIControlStateNormal];
     [self.slider setValue:floorf(2) animated:NO];
+    
+   
+    UIImage *sliderLeftTrackImage = [[UIImage imageNamed: @"sliderbackground.png"] stretchableImageWithLeftCapWidth: 9 topCapHeight: 0];
+    UIImage *sliderRightTrackImage = [[UIImage imageNamed: @"sliderbackground.png"] stretchableImageWithLeftCapWidth: 9 topCapHeight: 0];
+    [self.slider setMinimumTrackImage: sliderLeftTrackImage forState: UIControlStateNormal];
+    [self.slider setMaximumTrackImage: sliderRightTrackImage forState: UIControlStateNormal];
+    [self.slider setThumbImage:[UIImage imageNamed:@"sliderIcon.png"] forState:UIControlStateNormal];
+    [self.slider setThumbImage:[UIImage imageNamed:@"sliderIcon.png"] forState:UIControlStateHighlighted];
+
+    
 
 
     
@@ -261,20 +279,33 @@
 
 - (IBAction)sliderTouch:(id)sender {
     
+    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
+    NSString *proxReg = [fontArr objectAtIndex:0];
+    NSString *proxBold = [fontArr objectAtIndex:1];
     
     if(self.slider.value > 2.4)
     {
         [sender setValue:floorf(self.slider.maximumValue) animated:YES];
+        [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.outsideLabel setFont:[UIFont fontWithName:proxBold size:23]];
+        [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
+
 
     }
     else if(self.slider.value < 1.6)
     {
         [sender setValue:floorf(self.slider.minimumValue) animated:YES];
         
+        [self.insideLabel setFont:[UIFont fontWithName:proxBold size:23]];
+        [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
     }
     else
     {
         [sender setValue:floorf(2) animated:YES];
+        [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
         
     }
     
