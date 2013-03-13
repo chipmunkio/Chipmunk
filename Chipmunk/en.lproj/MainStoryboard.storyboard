@@ -40,6 +40,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="howmuchfreetime?v1.png" id="ipQ-t4-cD7">
+                                <rect key="frame" x="39" y="221" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GUX-mz-FPn">
                                 <rect key="frame" x="78" y="238" width="157" height="134"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -56,33 +60,48 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X34-36-hWF">
-                                <rect key="frame" x="97" y="246" width="69" height="49"/>
+                                <rect key="frame" x="87" y="246" width="69" height="49"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="59"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H8b-ot-zTB">
-                                <rect key="frame" x="161" y="290" width="20" height="33"/>
+                                <rect key="frame" x="151" y="290" width="20" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lxi-lZ-wnP">
-                                <rect key="frame" x="110" y="246" width="73" height="49"/>
+                                <rect key="frame" x="106" y="246" width="73" height="49"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="59"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4UG-hz-L2q">
-                                <rect key="frame" x="167" y="288" width="27" height="38"/>
+                                <rect key="frame" x="162" y="288" width="27" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="BottomBar.png" id="GIH-Jy-E11">
                                 <rect key="frame" x="27" y="437" width="290" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qjl-gA-96H">
+                                <rect key="frame" x="150" y="456" width="35" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBoth:" destination="2" eventType="touchUpInside" id="2Db-VQ-G8Z"/>
+                                </connections>
+                            </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="gLs-1I-pCa">
                                 <rect key="frame" x="25" y="489" width="283" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -93,6 +112,36 @@
                                     <action selector="sliderTouch:" destination="2" eventType="touchUpInside" id="EIS-85-Aw3"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LJX-RV-3uQ">
+                                <rect key="frame" x="260" y="458" width="51" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goOutside:" destination="2" eventType="touchUpInside" id="cYc-E4-xn5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="z8V-GV-6z8">
+                                <rect key="frame" x="20" y="457" width="37" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goOnline:" destination="2" eventType="touchUpInside" id="68l-Eg-2TG"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="outside" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hag-98-f1P">
                                 <rect key="frame" x="237" y="451" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -119,13 +168,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="652-Ir-8EI"/>
                     <connections>
+                        <outlet property="bothButton" destination="Qjl-gA-96H" id="kYd-jF-JFB"/>
                         <outlet property="bothLabel" destination="Nb7-wN-frC" id="Ibf-D4-evu"/>
                         <outlet property="circleImage" destination="Z7Z-FE-uyz" id="TwY-po-B8j"/>
+                        <outlet property="freeTime" destination="ipQ-t4-cD7" id="M7C-Pb-pZq"/>
                         <outlet property="hourLabel" destination="X34-36-hWF" id="o5g-gI-pof"/>
                         <outlet property="hourSymbol" destination="H8b-ot-zTB" id="NY2-Hv-C1d"/>
                         <outlet property="insideLabel" destination="XLG-uw-WUV" id="tWa-87-u2j"/>
                         <outlet property="minLabel" destination="lxi-lZ-wnP" id="4tX-iu-Nvo"/>
                         <outlet property="minuteSymbol" destination="4UG-hz-L2q" id="1J3-5q-aqa"/>
+                        <outlet property="onlineButton" destination="z8V-GV-6z8" id="zNn-xC-2jQ"/>
+                        <outlet property="outsideButton" destination="LJX-RV-3uQ" id="0mt-02-zjt"/>
                         <outlet property="outsideLabel" destination="hag-98-f1P" id="7d5-kf-o4E"/>
                         <outlet property="rotatingTimeSelect" destination="Z7Z-FE-uyz" id="RXY-Um-ogl"/>
                         <outlet property="slider" destination="gLs-1I-pCa" id="naW-iX-pLx"/>
@@ -290,6 +343,7 @@
         <image name="Circle.png" width="250" height="250"/>
         <image name="arrow.png" width="800" height="668"/>
         <image name="bottombarwhite.png" width="290" height="38"/>
+        <image name="howmuchfreetime?v1.png" width="225" height="70"/>
         <image name="leopard.jpeg" width="290" height="148"/>
         <image name="sparebackgroundv1.png" width="640" height="1136"/>
         <image name="sparelogov1.png" width="125" height="125"/>
@@ -325,14 +379,21 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
                 <relationship kind="action" name="getActivitiesTable:"/>
+                <relationship kind="action" name="goBoth:"/>
+                <relationship kind="action" name="goOnline:"/>
+                <relationship kind="action" name="goOutside:"/>
                 <relationship kind="action" name="sliderTouch:"/>
+                <relationship kind="outlet" name="bothButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="bothLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="circleImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="freeTime" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="hourLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="hourSymbol" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="insideLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="minLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="minuteSymbol" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="onlineButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="outsideButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="outsideLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="rotatingTimeSelect" candidateClass="RotatingImageView"/>
                 <relationship kind="outlet" name="slider" candidateClass="UISlider"/>

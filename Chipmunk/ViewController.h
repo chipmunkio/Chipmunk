@@ -25,10 +25,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *outsideLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bothLabel;
 @property (weak, nonatomic) IBOutlet UILabel *insideLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *freeTime;
+- (IBAction)goOnline:(id)sender;
+- (IBAction)goOutside:(id)sender;
+- (IBAction)goBoth:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *onlineButton;
+@property (weak, nonatomic) IBOutlet UIButton *bothButton;
+@property (weak, nonatomic) IBOutlet UIButton *outsideButton;
 
 // for ticking sound
 @property (nonatomic) CFURLRef tickURLRef;
 @property (nonatomic) SystemSoundID	tickObject;
+@property (nonatomic) int	glowing;
 
 //- (IBAction)launchActiviesView:(id)sender;
 

@@ -31,6 +31,7 @@
 		23558B9C16EBD05300EC41FC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23FF258A16D72AB200900166 /* Default-568h@2x.png */; };
 		235E41D716DDC59F0051B3BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E41D616DDC59F0051B3BB /* AudioToolbox.framework */; };
 		235E41DB16DDC7CE0051B3BB /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 235E41DA16DDC7CE0051B3BB /* tick.wav */; };
+		23906CC116F03B2C00668F4B /* howmuchfreetime?v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */; };
 		23A12EAA16EA498A00D5CA5B /* sliderbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A12EA916EA498A00D5CA5B /* sliderbackground.png */; };
 		23BAE0EB16DA013B00385268 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BAE0EA16DA013B00385268 /* ActivityCell.m */; };
 		23BF0D8C16E57205007526F1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF0D8B16E57205007526F1 /* WebViewController.m */; };
@@ -96,6 +97,7 @@
 		23541C9A16EBD267006FB980 /* sliderbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderbar.png; sourceTree = "<group>"; };
 		235E41D616DDC59F0051B3BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		235E41DA16DDC7CE0051B3BB /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
+		23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "howmuchfreetime?v1.png"; sourceTree = "<group>"; };
 		23A12EA916EA498A00D5CA5B /* sliderbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderbackground.png; sourceTree = "<group>"; };
 		23BAE0E916DA013B00385268 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		23BAE0EA16DA013B00385268 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				235E41DA16DDC7CE0051B3BB /* tick.wav */,
 				2345963B16DA1FB00088312D /* whitelogo.png */,
 				2345964916DA2A550088312D /* venue.png */,
+				23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */,
 				8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */,
 				23541C9A16EBD267006FB980 /* sliderbar.png */,
 				23FF257C16D72AB200900166 /* Chipmunk-Info.plist */,
@@ -401,6 +404,7 @@
 				2318A77016EEA5DE00EEBCBB /* sliderIcon.png in Resources */,
 				23DBDDC316EFD80800708AA3 /* proximanovaregular.ttf in Resources */,
 				23DBDDC616EFDBF100708AA3 /* proximanovasemibold.ttf in Resources */,
+				23906CC116F03B2C00668F4B /* howmuchfreetime?v1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

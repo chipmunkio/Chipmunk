@@ -72,10 +72,10 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     
     CALayer *currentLayer = [self.layer presentationLayer];
     float currentAngle = [[currentLayer valueForKeyPath:@"transform.rotation"] floatValue];
-    NSLog(@"Current angle: %f", currentAngle);
+    //NSLog(@"Current angle: %f", currentAngle);
     
     if([self calculateDistanceFromCenter:pt] < 50) {
-        NSLog(@"TOO CLOSE HOMIE. GET OUTA DERRRR");
+      //  NSLog(@"TOO CLOSE HOMIE. GET OUTA DERRRR");
         return;
     }
  

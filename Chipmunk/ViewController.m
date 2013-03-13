@@ -27,6 +27,8 @@
 
 - (void)viewDidLoad
 {
+    
+
     //SET UP LABELS
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
     NSString *proxReg = [fontArr objectAtIndex:0];
@@ -42,6 +44,9 @@
     [super viewDidLoad];
     self.hourLabel.hidden = true;
     self.hourSymbol.hidden = true;
+    self.minuteSymbol.hidden = true;
+    self.minLabel.hidden = true;
+
     self.hourIsShowing = 0;
     
     
@@ -76,19 +81,7 @@
 									  &tickObject
 									  );
 
-    
-    /*
-    NSLog(@"tt0001m_: %@",
-          [UIFont fontNamesForFamilyName:@"Proxima Nova"]
-          );
-    UIFont *proximaReg = [UIFont
-            fontWithName:@"Proxima Nova"
-                          size:20];
-    [self.hourLabel setFont:proximaReg];
-    [self.minLabel setFont:[UIFont fontWithName:@"Proxima Nova Regular" size:20.0]];
-    [self.mLabel setFont:[UIFont fontWithName:@"Proxima Nova Regular" size:20.0]];
-    [self.hLabel setFont:[UIFont fontWithName:@"Proxima Nova Regular" size:20.0]];
-    */
+
     self.view.backgroundColor = [ChipmunkUtils chipmunkColor];
     [self scrolledToHour:0 Minute:0];
     [self.timeScrollView setupTimeScroll];
@@ -156,7 +149,21 @@
 
 - (void)rotatedToHour:(int)hour Minute:(int)minute
 {
-    
+    if(self.glowing == 0)
+    {
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.duration = .5;
+    pulseAnimation.toValue = [NSNumber numberWithFloat:1.1];
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.repeatCount = FLT_MAX;
+    [self.minLabel.layer addAnimation:pulseAnimation forKey:nil];
+    [self.hourLabel.layer addAnimation:pulseAnimation forKey:nil];
+        self.glowing = 1;
+    }
+    [self.freeTime setHidden:YES];
+    self.minuteSymbol.hidden = false;
+    self.minLabel.hidden = false;
     if(![self.minLabel.text isEqualToString:[NSString stringWithFormat:@"%d",minute]])
     {
            
@@ -177,6 +184,9 @@
 
 - (void)moveHourLabel:(int)hour Minute:(int)minute;
 {
+    //NSLog(@"here");
+    
+
     if(hour == 0 && self.hourIsShowing == 1)
     {
       
@@ -269,6 +279,8 @@
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+    self.glowing = 0;
+
 }
 
 
@@ -279,41 +291,97 @@
 
 - (IBAction)sliderTouch:(id)sender {
     
-    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
-    NSString *proxReg = [fontArr objectAtIndex:0];
-    NSString *proxBold = [fontArr objectAtIndex:1];
-    
     if(self.slider.value > 2.4)
     {
-        [sender setValue:floorf(self.slider.maximumValue) animated:YES];
-        [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-        [self.outsideLabel setFont:[UIFont fontWithName:proxBold size:23]];
-        [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
-
-
+        [self slideToOutside];
     }
     else if(self.slider.value < 1.6)
     {
-        [sender setValue:floorf(self.slider.minimumValue) animated:YES];
-        
-        [self.insideLabel setFont:[UIFont fontWithName:proxBold size:23]];
-        [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-        [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self slideToOnline];
     }
     else
     {
-        [sender setValue:floorf(2) animated:YES];
-        [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-        [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-        [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
-        
+        [self slideToBoth];
     }
     
 }
 
 
+- (IBAction)goOnline:(id)sender {
+    [self slideToOnline];
+}
+
+- (IBAction)goBoth:(id)sender {
+    [self slideToBoth];
+}
+
+- (IBAction)goOutside:(id)sender {
+    [self slideToOutside];
+
+}
 
 
+-(void)slideToOnline{
+    
+    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
+    NSString *proxReg = [fontArr objectAtIndex:0];
+    NSString *proxBold = [fontArr objectAtIndex:1];
 
+    [self.slider setValue:floorf(self.slider.minimumValue) animated:YES];
+    
+    [self.insideLabel setFont:[UIFont fontWithName:proxBold size:23]];
+    [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    
+    [self.view sendSubviewToBack:self.onlineButton];
+    [self.view bringSubviewToFront:self.bothButton];
+    [self.view bringSubviewToFront:self.outsideButton];
+
+}
+-(void)slideToBoth{
+    
+    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
+    NSString *proxReg = [fontArr objectAtIndex:0];
+    NSString *proxBold = [fontArr objectAtIndex:1];
+    
+    [self.slider setValue:floorf(2) animated:YES];
+    [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
+    
+    [self.view bringSubviewToFront:self.onlineButton];
+    [self.view sendSubviewToBack:self.bothButton];
+    [self.view bringSubviewToFront:self.outsideButton];
+}
+-(void)slideToOutside{
+    
+    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
+    NSString *proxReg = [fontArr objectAtIndex:0];
+    NSString *proxBold = [fontArr objectAtIndex:1];
+    
+    [self.slider setValue:floorf(self.slider.maximumValue) animated:YES];
+    [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    [self.outsideLabel setFont:[UIFont fontWithName:proxBold size:23]];
+    [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    
+    [self.view bringSubviewToFront:self.onlineButton];
+    [self.view bringSubviewToFront:self.bothButton];
+    [self.view sendSubviewToBack:self.outsideButton];
+}
+
+-(void) glowTime{
+    
+    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulseAnimation.duration = .5;
+    pulseAnimation.toValue = [NSNumber numberWithFloat:1.1];
+    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pulseAnimation.autoreverses = YES;
+    pulseAnimation.repeatCount = FLT_MAX;
+    [self.minLabel.layer addAnimation:pulseAnimation forKey:nil];
+    [self.minuteSymbol.layer addAnimation:pulseAnimation forKey:nil];
+    [self.hourSymbol.layer addAnimation:pulseAnimation forKey:nil];
+    [self.hourLabel.layer addAnimation:pulseAnimation forKey:nil];
+
+}
 @end
 
