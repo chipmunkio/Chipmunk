@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" image="sparelogov1.png" id="HTA-Jl-hrG">
-                                <rect key="frame" x="93" y="8" width="126" height="117"/>
+                                <rect key="frame" x="93" y="19" width="126" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView contentMode="center" image="Circle.png" id="Z7Z-FE-uyz" customClass="RotatingImageView">
