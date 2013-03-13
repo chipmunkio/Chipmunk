@@ -136,7 +136,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"a cell was selected, DO SOMETHING YOU PIECE OF SHIT!!!!!!!");
+    NSDictionary* item = self.dataSource[indexPath.row];
+    if ([item[@"item_type"] isEqualToString:@"Link"]) {
+        WebViewController* wvc = [self.storyboard instantiateViewControllerWithIdentifier:@"webController"];
+        wvc.urlStr = item[@"url"];
+        wvc.title = item[@"mame"];
+        [self.navigationController pushViewController:wvc animated:YES];
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Venues coming soon" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 
@@ -182,11 +191,8 @@
 }
 
 
-- (IBAction)loadWebView:(id)sender {
-    
-    WebViewController* wvc = [self.storyboard instantiateViewControllerWithIdentifier:@"webController"];
-    wvc.urlStr = @"http://www.google.com";
-    [self.navigationController pushViewController:wvc animated:YES];
-    
+- (void)loadWebView:(int)index {
+
 }
+
 @end
