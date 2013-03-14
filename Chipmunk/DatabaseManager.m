@@ -17,9 +17,9 @@
 @implementation DatabaseManager
 
 // start a connection and return the data to the delegate
-- (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo
+- (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo wantOnline:(unsigned int)online wantOutside:(unsigned int)outside
 {
-    FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"] method:FSNRequestMethodGET headers:[NSDictionary dictionary] parameters:[NSDictionary dictionaryWithObjectsAndKeys:@(time),@"minutes",@"-79.32,103.81",@"geo", nil]
+    FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"] method:FSNRequestMethodGET headers:[NSDictionary dictionary] parameters:[NSDictionary dictionaryWithObjectsAndKeys:@(time),@"minutes",@"-79.32,103.81",@"geo",@(online),@"online",@(outside),@"outside", nil]
                                             parseBlock:^id(FSNConnection *c, NSError *__autoreleasing *error) {
         return [c.responseData dictionaryFromJSONWithError:error];
     } completionBlock:^(FSNConnection *c) {

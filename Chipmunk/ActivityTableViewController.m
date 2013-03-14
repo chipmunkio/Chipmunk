@@ -42,7 +42,8 @@
 
     self.dbManager.delegate = self;
     NSLog(@"minutes: %i", self.minutes);
-    [self.dbManager getActivities:self.minutes currentLocation:nil];
+
+    [self.dbManager getActivities:self.minutes currentLocation:nil wantOnline:self.online wantOutside:self.outside];
     
     
 

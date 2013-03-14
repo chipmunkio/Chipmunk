@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TimeScrollView.h"
 #import "RotatingImageView.h"
 #import "DatabaseManager.h"
 #include <AudioToolbox/AudioToolbox.h>
 
-@interface ViewController : UIViewController <TimeScrollViewDelegate, RotatingImageDelegate>
+@interface ViewController : UIViewController <RotatingImageDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *circleImage;
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minLabel;
-@property (weak, nonatomic) IBOutlet TimeScrollView *timeScrollView;
 @property (weak, nonatomic) IBOutlet RotatingImageView *rotatingTimeSelect;
 @property (weak, nonatomic) IBOutlet UILabel *hourSymbol;
 @property (weak, nonatomic) IBOutlet UILabel *minuteSymbol;
@@ -33,9 +31,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *bothButton;
 @property (weak, nonatomic) IBOutlet UIButton *outsideButton;
 
-// for ticking sound
-@property (nonatomic) CFURLRef tickURLRef;
-@property (nonatomic) SystemSoundID	tickObject;
+// for sound
+//@property (nonatomic) CFURLRef tickURLRef;
+//@property (nonatomic) SystemSoundID	tickObject;
 @property (nonatomic) int	glowing;
 
 //- (IBAction)launchActiviesView:(id)sender;

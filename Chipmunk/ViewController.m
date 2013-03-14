@@ -21,14 +21,14 @@
 
 @implementation ViewController
 
-@synthesize tickURLRef;
-@synthesize tickObject;
+//@synthesize tickURLRef;
+//@synthesize tickObject;
 
 
 - (void)viewDidLoad
 {
     
-
+    
     //SET UP LABELS
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
     NSString *proxReg = [fontArr objectAtIndex:0];
@@ -63,11 +63,11 @@
     [self.slider setThumbImage:[UIImage imageNamed:@"sliderIcon.png"] forState:UIControlStateNormal];
     [self.slider setThumbImage:[UIImage imageNamed:@"sliderIcon.png"] forState:UIControlStateHighlighted];
 
-    
 
-
-    
-    // for setting up ticking sound
+/*
+  
+ 
+    // SOUND STUFF
 	CFBundleRef mainBundle = CFBundleGetMainBundle ();
     tickURLRef  =	CFBundleCopyResourceURL (
 												 mainBundle,
@@ -80,13 +80,10 @@
 									  tickURLRef,
 									  &tickObject
 									  );
-
+*/
 
     self.view.backgroundColor = [ChipmunkUtils chipmunkColor];
-    [self scrolledToHour:0 Minute:0];
-    [self.timeScrollView setupTimeScroll];
-    self.timeScrollView.timeDelegate = self;
-    self.rotatingTimeSelect.delegate = self;
+        self.rotatingTimeSelect.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -96,71 +93,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didStopScrolling{
-    
-    CALayer *currentLayer = (CALayer *)[self.circleImage.layer presentationLayer];
-    self.currentAngle = [(NSNumber *)[currentLayer valueForKeyPath:@"transform.rotation"] floatValue];
-
-    CGAffineTransform rot = CGAffineTransformMakeRotation(self.currentAngle);
-    self.circleImage.transform = rot;
-    
-    [self.circleImage.layer removeAllAnimations];
-    
-    
-}
-
-- (void)didBeginScrolling:(int)direction{
-    
-    CALayer *currentLayer = (CALayer *)[self.circleImage.layer presentationLayer];
-    self.currentAngle = [(NSNumber *)[currentLayer valueForKeyPath:@"transform.rotation"] floatValue];
-    
-    CGAffineTransform rot = CGAffineTransformMakeRotation(self.currentAngle);
-    self.circleImage.transform = rot;
-    if(direction == 1)
-    {
-        
-        CABasicAnimation *fullRotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        fullRotation.fillMode = kCAFillModeForwards;
-        fullRotation.fromValue = [NSNumber numberWithFloat:self.currentAngle];
-        fullRotation.toValue = [NSNumber numberWithFloat:((360*M_PI)/180+self.currentAngle)];
-        fullRotation.duration = 1.5;
-        fullRotation.repeatCount = 10000;
-        [self.circleImage.layer addAnimation:fullRotation forKey:@"360"];
-        
-    }
-    if(direction == 0){
-        CABasicAnimation *fullRotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        fullRotation.fillMode = kCAFillModeForwards;
-        fullRotation.fromValue = [NSNumber numberWithFloat:((360*M_PI)/180+self.currentAngle)];
-        fullRotation.toValue = [NSNumber numberWithFloat:self.currentAngle];
-        fullRotation.duration = 1.5;
-        fullRotation.repeatCount = 10000;
-        [self.circleImage.layer addAnimation:fullRotation forKey:@"360"];
-        
-    }
-  
-}
-
-- (void)scrolledToHour:(int)hour Minute:(int)minute
-{    
-    self.hourLabel.text = [NSString stringWithFormat:@"%d",hour];
-    self.minLabel.text = [NSString stringWithFormat:@"%d",minute];
-}
-
 - (void)rotatedToHour:(int)hour Minute:(int)minute
 {
-    if(self.glowing == 0)
-    {
-    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    pulseAnimation.duration = .5;
-    pulseAnimation.toValue = [NSNumber numberWithFloat:1.1];
-    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    pulseAnimation.autoreverses = YES;
-    pulseAnimation.repeatCount = FLT_MAX;
-    [self.minLabel.layer addAnimation:pulseAnimation forKey:nil];
-    [self.hourLabel.layer addAnimation:pulseAnimation forKey:nil];
-        self.glowing = 1;
-    }
+
     [self.freeTime setHidden:YES];
     self.minuteSymbol.hidden = false;
     self.minLabel.hidden = false;
@@ -274,6 +209,15 @@
     if(minutes > 0) {
         ActivityTableViewController* atvc = [self.storyboard instantiateViewControllerWithIdentifier:@"activityTable"];
         atvc.minutes = minutes;
+        atvc.online = 1;
+        atvc.outside = 1;
+        if(self.slider.value == 1)
+        {
+            atvc.outside = 0;
+        }
+        else if(self.slider.value == 3){
+            atvc.online = 0;
+        }
         [self.navigationController pushViewController:atvc animated:YES];
     } else {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -377,19 +321,19 @@
     pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     pulseAnimation.autoreverses = YES;
     pulseAnimation.repeatCount = FLT_MAX;
-    [self.minLabel.layer addAnimation:pulseAnimation forKey:nil];
-    [self.minuteSymbol.layer addAnimation:pulseAnimation forKey:nil];
-    [self.hourSymbol.layer addAnimation:pulseAnimation forKey:nil];
-    [self.hourLabel.layer addAnimation:pulseAnimation forKey:nil];
+    [self.minLabel.layer addAnimation:pulseAnimation forKey:@"glow"];
+    //[self.minuteSymbol.layer addAnimation:pulseAnimation forKey:@"glow"];
+   // [self.hourSymbol.layer addAnimation:pulseAnimation forKey:@"glow"];
+    [self.hourLabel.layer addAnimation:pulseAnimation forKey:@"glow"];
 
 }
 
 -(void) stopGlowing
 {
-    [self.minuteSymbol.layer removeAllAnimations];
-    [self.minLabel.layer removeAllAnimations];
-    [self.hourLabel.layer removeAllAnimations];
-    [self.hourSymbol.layer removeAllAnimations];
+    //[self.minuteSymbol.layer removeAnimationForKey:@"glow"];
+    [self.minLabel.layer removeAnimationForKey:@"glow"];
+    [self.hourLabel.layer removeAnimationForKey:@"glow"];
+    //C[self.hourSymbol.layer removeAnimationForKey:@"glow"];
 
     
 }

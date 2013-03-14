@@ -20,6 +20,6 @@
 @property (nonatomic,strong) id <DatabaseManagerDelegate> delegate;
 
 // the activities are passed back through a delegate call
-- (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo;
+- (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo wantOnline:(unsigned int)online wantOutside:(unsigned int)outside;
 
 @end
