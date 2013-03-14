@@ -362,9 +362,11 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="getActivitiesTable:"/>
                 <relationship kind="action" name="goBoth:"/>
                 <relationship kind="action" name="goOnline:"/>
                 <relationship kind="action" name="goOutside:"/>
+                <relationship kind="action" name="sliderTouch:"/>
                 <relationship kind="outlet" name="bothButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="bothLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="circleImage" candidateClass="UIImageView"/>

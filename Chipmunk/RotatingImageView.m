@@ -100,8 +100,16 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     }
     
     self.transform = CGAffineTransformMakeRotation(newAngle);
+    [self.delegate stopGlowing];
 
 }
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.delegate glowTime];
+
+}
+
 
 //*********************************************************
 //*********************************************************

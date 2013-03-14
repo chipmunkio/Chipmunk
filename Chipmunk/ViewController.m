@@ -383,5 +383,15 @@
     [self.hourLabel.layer addAnimation:pulseAnimation forKey:nil];
 
 }
+
+-(void) stopGlowing
+{
+    [self.minuteSymbol.layer removeAllAnimations];
+    [self.minLabel.layer removeAllAnimations];
+    [self.hourLabel.layer removeAllAnimations];
+    [self.hourSymbol.layer removeAllAnimations];
+
+    
+}
 @end
 

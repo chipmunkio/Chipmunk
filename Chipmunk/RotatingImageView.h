@@ -11,6 +11,9 @@
 @protocol RotatingImageDelegate <NSObject>
 
 - (void)rotatedToHour:(int)hour Minute:(int)minute;
+- (void)stopGlowing;
+- (void)glowTime;
+
 
 @end
 
