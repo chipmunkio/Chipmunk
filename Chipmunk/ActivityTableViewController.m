@@ -73,6 +73,7 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     ActivityCell* cell = [self.table dequeueReusableCellWithIdentifier:@"activityCell"];
     if(cell == nil) {
         cell = [[ActivityCell alloc]  init];

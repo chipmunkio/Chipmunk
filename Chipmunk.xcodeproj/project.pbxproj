@@ -11,6 +11,8 @@
 		2318A76C16EE9D4700EEBCBB /* sparelogov1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318A76B16EE9D4700EEBCBB /* sparelogov1.png */; };
 		2318A76E16EEA14D00EEBCBB /* BottomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318A76D16EEA14D00EEBCBB /* BottomBar.png */; };
 		2318A77016EEA5DE00EEBCBB /* sliderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318A76F16EEA5DE00EEBCBB /* sliderIcon.png */; };
+		2320316B16F2B7FF00C902AB /* 2ndpagetopbarv1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2320316A16F2B7FF00C902AB /* 2ndpagetopbarv1.png */; };
+		2320316E16F2B91100C902AB /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2320316D16F2B91100C902AB /* ActivityViewController.m */; };
 		23286F9616D98FC1005E16FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23286F9516D98FC1005E16FA /* QuartzCore.framework */; };
 		23286F9E16D99D25005E16FA /* Circle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23286F9D16D99D25005E16FA /* Circle2.png */; };
 		23286FA116D9B851005E16FA /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 23286FA016D9B851005E16FA /* Circle.png */; };
@@ -77,6 +79,9 @@
 		2318A76B16EE9D4700EEBCBB /* sparelogov1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sparelogov1.png; sourceTree = "<group>"; };
 		2318A76D16EEA14D00EEBCBB /* BottomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BottomBar.png; sourceTree = "<group>"; };
 		2318A76F16EEA5DE00EEBCBB /* sliderIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderIcon.png; sourceTree = "<group>"; };
+		2320316A16F2B7FF00C902AB /* 2ndpagetopbarv1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2ndpagetopbarv1.png; sourceTree = "<group>"; };
+		2320316C16F2B91100C902AB /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		2320316D16F2B91100C902AB /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		23286F9516D98FC1005E16FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23286F9D16D99D25005E16FA /* Circle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle2.png; sourceTree = "<group>"; };
 		23286FA016D9B851005E16FA /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
@@ -205,6 +210,8 @@
 				23FF258316D72AB200900166 /* AppDelegate.h */,
 				23FF258416D72AB200900166 /* AppDelegate.m */,
 				23FF258C16D72AB200900166 /* MainStoryboard.storyboard */,
+				2320316C16F2B91100C902AB /* ActivityViewController.h */,
+				2320316D16F2B91100C902AB /* ActivityViewController.m */,
 				23FF258F16D72AB200900166 /* ViewController.h */,
 				23FF259016D72AB200900166 /* ViewController.m */,
 				23BF0D8A16E57205007526F1 /* WebViewController.h */,
@@ -227,6 +234,7 @@
 		23FF257B16D72AB200900166 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2320316A16F2B7FF00C902AB /* 2ndpagetopbarv1.png */,
 				23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */,
 				23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */,
 				2318A76B16EE9D4700EEBCBB /* sparelogov1.png */,
@@ -399,6 +407,7 @@
 				23DBDDC316EFD80800708AA3 /* proximanovaregular.ttf in Resources */,
 				23DBDDC616EFDBF100708AA3 /* proximanovasemibold.ttf in Resources */,
 				23906CC116F03B2C00668F4B /* howmuchfreetime?v1.png in Resources */,
+				2320316B16F2B7FF00C902AB /* 2ndpagetopbarv1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +456,7 @@
 				8E7BDE8016DA15D000B67749 /* FSNData.m in Sources */,
 				8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */,
 				23BF0D8C16E57205007526F1 /* WebViewController.m in Sources */,
+				2320316E16F2B91100C902AB /* ActivityViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

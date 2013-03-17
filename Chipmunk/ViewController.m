@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ChipmunkUtils.h"
 #import "ActivityTableViewController.h"
+#import "ActivityViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
@@ -208,9 +209,16 @@
     unsigned int minutes = [self getTotalMinutes];
     if(minutes > 0) {
         ActivityTableViewController* atvc = [self.storyboard instantiateViewControllerWithIdentifier:@"activityTable"];
+        
         atvc.minutes = minutes;
         atvc.online = 1;
         atvc.outside = 1;
+        
+        //ActivityViewController* avc = [self.storyboard instantiateViewControllerWithIdentifier:@"activityView"];
+        
+        //avc.minutes = minutes;
+        //avc.online = 1;
+        //avc.outside = 1;
         if(self.slider.value == 1)
         {
             atvc.outside = 0;
