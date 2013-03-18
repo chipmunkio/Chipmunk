@@ -114,7 +114,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qjl-gA-96H">
-                                <rect key="frame" x="133" y="456" width="66" height="67"/>
+                                <rect key="frame" x="128" y="451" width="66" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -139,7 +139,7 @@
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LJX-RV-3uQ">
-                                <rect key="frame" x="249" y="458" width="62" height="64"/>
+                                <rect key="frame" x="245" y="458" width="70" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -154,7 +154,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="z8V-GV-6z8">
-                                <rect key="frame" x="20" y="457" width="55" height="65"/>
+                                <rect key="frame" x="12.5" y="460" width="60" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -182,7 +182,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="online" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XLG-uw-WUV">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="inside" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XLG-uw-WUV">
                                 <rect key="frame" x="-4" y="452" width="86" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -320,19 +320,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="rmQ-kI-P70">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="PGP-Is-BWk">
+                                    <navigationItem id="rmQ-kI-P70">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="GXh-HU-lcu">
                                             <connections>
-                                                <action selector="backtoActivies:" destination="DnH-XT-FmW" id="PIz-Ed-7fA"/>
+                                                <action selector="backtoActivies:" destination="DnH-XT-FmW" id="JRK-SC-lhG"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Share" id="uTD-yc-hQw">
+                                            <color key="tintColor" red="0.14515813908169012" green="0.21547408191803744" blue="0.67514349489795911" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="shareLink:" destination="DnH-XT-FmW" id="3hg-bF-Xj9"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <webView contentMode="scaleToFill" id="fZ1-tt-GDC">
+                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="fZ1-tt-GDC">
                                 <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -341,6 +348,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barTitle" destination="rmQ-kI-P70" id="zsV-HI-LMI"/>
                         <outlet property="webView" destination="fZ1-tt-GDC" id="5Yh-EA-AQl"/>
                     </connections>
                 </viewController>
@@ -417,6 +425,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WebViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backtoActivies:"/>
+                <relationship kind="action" name="shareLink:"/>
+                <relationship kind="outlet" name="barTitle" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>

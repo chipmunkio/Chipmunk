@@ -7,6 +7,7 @@
 //
 
 #import "WebViewController.h"
+#import <MessageUI/MessageUI.h>
 #import "ActivityTableViewController.h"
 
 
@@ -35,6 +36,8 @@
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     
     [self.webView loadRequest:requestObj];
+  
+    self.startedLoading = 0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,13 +58,65 @@
 
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
-    // stop showing that stuff is happening because the page is loaded
+
+    if(self.startedLoading > 3)
+    {
+
+        UIActivityIndicatorView *av = (UIActivityIndicatorView *)[self.webView viewWithTag:1];
+        [av stopAnimating];
+        [av removeFromSuperview];
+        
+    }
 }
 
 
 -( void)webViewDidStartLoad:(UIWebView *)webView {
-    // show the user that something is happening
+
+    if(self.startedLoading == 0)
+    {
+        UIActivityIndicatorView  *av = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [av setColor:[UIColor grayColor]];
+        av.frame=CGRectMake(145, 200, 40.0, 40.0);
+        av.tag  = 1;
+        [self.webView addSubview:av];
+        [av startAnimating];
+    }
+    self.startedLoading++;
 }
 
 
+- (IBAction)shareLink:(id)sender {
+    
+
+        MFMailComposeViewController *mailView = [[MFMailComposeViewController alloc] init];
+        mailView.mailComposeDelegate = self;
+        [mailView setSubject:@"A link from Spare"];
+        NSString *emailURL = self.urlStr;
+        [mailView setMessageBody:emailURL isHTML:NO];
+    [self.navigationController presentViewController:mailView animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    // Remove the mail view
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 @end
