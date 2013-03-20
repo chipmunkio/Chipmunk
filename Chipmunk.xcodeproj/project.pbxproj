@@ -577,14 +577,16 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "35E52189-AB48-44BD-8997-D93F78CCD3EC";
+				PROVISIONING_PROFILE = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -592,14 +594,16 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1BA4F119-E3C1-49B3-8474-9DA8E93C4EEC";
+				PROVISIONING_PROFILE = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

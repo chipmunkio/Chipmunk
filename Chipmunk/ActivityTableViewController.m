@@ -90,7 +90,7 @@
     
     
     NSDictionary* data = self.dataSource[indexPath.row];
-    cell.activityName.text = data[@"name"];
+    cell.activityName.text = [NSString stringWithFormat:@"READ \"%@\"", data[@"name"]];
     NSString *type = data[@"details_type"];
     if([type isEqualToString:@"Link"])
     {
