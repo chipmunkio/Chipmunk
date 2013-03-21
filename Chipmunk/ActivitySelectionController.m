@@ -176,7 +176,11 @@
     });
     NSDictionary* item = self.dataSource[0];
     [self.webView stopLoading];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
+    if([item[@"item_type"] isEqualToString:@"Link"]) {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
+    } else {
+        // do stuff for the venue
+    }
     NSLog(@"Item: %@", item);
 }
 
