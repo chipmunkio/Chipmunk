@@ -44,8 +44,6 @@
     NSLog(@"minutes: %i", self.minutes);
 
     [self.dbManager getActivities:self.minutes currentLocation:nil wantOnline:self.online wantOutside:self.outside];
-    
-    
 
 }
 
@@ -91,7 +89,7 @@
     
     NSDictionary* data = self.dataSource[indexPath.row];
     cell.activityName.text = [NSString stringWithFormat:@"READ \"%@\"", data[@"name"]];
-    NSString *type = data[@"details_type"];
+    NSString *type = data[@"items_type"];
     if([type isEqualToString:@"Link"])
     {
         cell.activityTypeIcon.image = [UIImage imageNamed:@"book.png"];

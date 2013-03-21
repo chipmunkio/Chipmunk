@@ -10,6 +10,7 @@
 #import "ChipmunkUtils.h"
 #import "ActivityTableViewController.h"
 #import "ActivityViewController.h"
+#import "ActivitySelectionController.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
@@ -204,6 +205,8 @@
     }
 }
 
+
+/*
 - (IBAction)getActivitiesTable:(id)sender
 {
     unsigned int minutes = [self getTotalMinutes];
@@ -234,7 +237,23 @@
     self.glowing = 0;
 
 }
+*/
 
+- (IBAction)getActivitiesController:(id)sender {
+    unsigned int totalMins = [self getTotalMinutes];
+    if(totalMins > 0) {
+        ActivitySelectionController* asc = [self.storyboard instantiateViewControllerWithIdentifier:@"selectionController"];
+        [asc getActivites:totalMins];
+        [self.navigationController pushViewController:asc animated:YES];
+        
+        
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    
+}
 
 //-(void)setTickURLRef:(CFURLRef)tickURLRef
 //{
@@ -272,6 +291,8 @@
 
 }
 
+// slideTo* functions are al exactly the same
+// create one function that all of these call with args
 
 -(void)slideToOnline{
     
@@ -290,6 +311,7 @@
     [self.view bringSubviewToFront:self.outsideButton];
 
 }
+
 -(void)slideToBoth{
     
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
@@ -305,6 +327,7 @@
     [self.view sendSubviewToBack:self.bothButton];
     [self.view bringSubviewToFront:self.outsideButton];
 }
+
 -(void)slideToOutside{
     
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];

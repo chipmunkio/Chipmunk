@@ -84,7 +84,6 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     float ang = atan2(dy,dx);
     float angleDifference = self.deltaAngle - ang;
     float newAngle = currentAngle - angleDifference;
-    NSLog(@"%f",newAngle);
     
     if(newAngle < 0 && [self totalMinutes] == 0) {
         [self timeBasedOnRotations];

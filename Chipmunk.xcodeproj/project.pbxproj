@@ -63,6 +63,9 @@
 		8E7BDE8416DA15F600B67749 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE8316DA15F600B67749 /* DatabaseManager.m */; };
 		8E7BDE8516DA160300B67749 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE8316DA15F600B67749 /* DatabaseManager.m */; };
 		8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3579916DD2F470069ADB0 /* RotatingImageView.m */; };
+		8EFA15D516FA20CA00D065F4 /* 2ndpagebottombar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */; };
+		8EFA15D716FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFA15D616FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png */; };
+		8EFA15DA16FA22C300D065F4 /* ActivitySelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +148,10 @@
 		8E7BDE8316DA15F600B67749 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		8EF3579816DD2F470069ADB0 /* RotatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingImageView.h; sourceTree = "<group>"; };
 		8EF3579916DD2F470069ADB0 /* RotatingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingImageView.m; sourceTree = "<group>"; };
+		8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2ndpagebottombar.png; sourceTree = "<group>"; };
+		8EFA15D616FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageoverlayarrow2ndpagev1.png; sourceTree = "<group>"; };
+		8EFA15D816FA22C300D065F4 /* ActivitySelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitySelectionController.h; sourceTree = "<group>"; };
+		8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitySelectionController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +221,8 @@
 				23FF258316D72AB200900166 /* AppDelegate.h */,
 				23FF258416D72AB200900166 /* AppDelegate.m */,
 				23FF258C16D72AB200900166 /* MainStoryboard.storyboard */,
+				8EFA15D816FA22C300D065F4 /* ActivitySelectionController.h */,
+				8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */,
 				2320316C16F2B91100C902AB /* ActivityViewController.h */,
 				2320316D16F2B91100C902AB /* ActivityViewController.m */,
 				23FF258F16D72AB200900166 /* ViewController.h */,
@@ -238,6 +247,8 @@
 		23FF257B16D72AB200900166 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8EFA15D616FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png */,
+				8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */,
 				2320316A16F2B7FF00C902AB /* 2ndpagetopbarv1.png */,
 				23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */,
 				23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */,
@@ -412,6 +423,8 @@
 				23DBDDC616EFDBF100708AA3 /* proximanovasemibold.ttf in Resources */,
 				23906CC116F03B2C00668F4B /* howmuchfreetime?v1.png in Resources */,
 				2320316B16F2B7FF00C902AB /* 2ndpagetopbarv1.png in Resources */,
+				8EFA15D516FA20CA00D065F4 /* 2ndpagebottombar.png in Resources */,
+				8EFA15D716FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +474,7 @@
 				8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */,
 				23BF0D8C16E57205007526F1 /* WebViewController.m in Sources */,
 				2320316E16F2B91100C902AB /* ActivityViewController.m in Sources */,
+				8EFA15DA16FA22C300D065F4 /* ActivitySelectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,15 +591,15 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				PROVISIONING_PROFILE = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -594,15 +608,15 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				PROVISIONING_PROFILE = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
