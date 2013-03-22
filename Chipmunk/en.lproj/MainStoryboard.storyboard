@@ -478,6 +478,7 @@
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="nextActivityButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nextArrow" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="timerImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
