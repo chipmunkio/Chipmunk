@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2312590816FC3AF400DA6A68 /* timer1.png in Resources */ = {isa = PBXBuildFile; fileRef = 231258FD16FC3AF200DA6A68 /* timer1.png */; };
+		2312590916FC3AF400DA6A68 /* timer2.png in Resources */ = {isa = PBXBuildFile; fileRef = 231258FE16FC3AF200DA6A68 /* timer2.png */; };
+		2312590A16FC3AF400DA6A68 /* timer3.png in Resources */ = {isa = PBXBuildFile; fileRef = 231258FF16FC3AF200DA6A68 /* timer3.png */; };
+		2312590B16FC3AF400DA6A68 /* timer4.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590016FC3AF200DA6A68 /* timer4.png */; };
+		2312590C16FC3AF400DA6A68 /* timer5.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590116FC3AF300DA6A68 /* timer5.png */; };
+		2312590D16FC3AF400DA6A68 /* timer6.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590216FC3AF300DA6A68 /* timer6.png */; };
+		2312590E16FC3AF400DA6A68 /* timer7.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590316FC3AF300DA6A68 /* timer7.png */; };
+		2312590F16FC3AF400DA6A68 /* timer8.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590416FC3AF300DA6A68 /* timer8.png */; };
+		2312591016FC3AF400DA6A68 /* timer9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590516FC3AF300DA6A68 /* timer9.png */; };
+		2312591116FC3AF400DA6A68 /* timer10.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590616FC3AF300DA6A68 /* timer10.png */; };
+		2312591216FC3AF400DA6A68 /* timer11.png in Resources */ = {isa = PBXBuildFile; fileRef = 2312590716FC3AF300DA6A68 /* timer11.png */; };
 		2318A76A16EE9CD600EEBCBB /* sparebackgroundv1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318A76916EE9CD600EEBCBB /* sparebackgroundv1.png */; };
 		2318A76C16EE9D4700EEBCBB /* sparelogov1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318A76B16EE9D4700EEBCBB /* sparelogov1.png */; };
 		2318A76E16EEA14D00EEBCBB /* BottomBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2318A76D16EEA14D00EEBCBB /* BottomBar.png */; };
@@ -84,6 +95,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		231258FD16FC3AF200DA6A68 /* timer1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer1.png; sourceTree = "<group>"; };
+		231258FE16FC3AF200DA6A68 /* timer2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer2.png; sourceTree = "<group>"; };
+		231258FF16FC3AF200DA6A68 /* timer3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer3.png; sourceTree = "<group>"; };
+		2312590016FC3AF200DA6A68 /* timer4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer4.png; sourceTree = "<group>"; };
+		2312590116FC3AF300DA6A68 /* timer5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer5.png; sourceTree = "<group>"; };
+		2312590216FC3AF300DA6A68 /* timer6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer6.png; sourceTree = "<group>"; };
+		2312590316FC3AF300DA6A68 /* timer7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer7.png; sourceTree = "<group>"; };
+		2312590416FC3AF300DA6A68 /* timer8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer8.png; sourceTree = "<group>"; };
+		2312590516FC3AF300DA6A68 /* timer9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer9.png; sourceTree = "<group>"; };
+		2312590616FC3AF300DA6A68 /* timer10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer10.png; sourceTree = "<group>"; };
+		2312590716FC3AF300DA6A68 /* timer11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer11.png; sourceTree = "<group>"; };
 		2318A76916EE9CD600EEBCBB /* sparebackgroundv1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sparebackgroundv1.png; sourceTree = "<group>"; };
 		2318A76B16EE9D4700EEBCBB /* sparelogov1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sparelogov1.png; sourceTree = "<group>"; };
 		2318A76D16EEA14D00EEBCBB /* BottomBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BottomBar.png; sourceTree = "<group>"; };
@@ -271,6 +293,17 @@
 				23A12EA916EA498A00D5CA5B /* sliderbackground.png */,
 				235E41DA16DDC7CE0051B3BB /* tick.wav */,
 				2345963B16DA1FB00088312D /* whitelogo.png */,
+				231258FD16FC3AF200DA6A68 /* timer1.png */,
+				231258FE16FC3AF200DA6A68 /* timer2.png */,
+				231258FF16FC3AF200DA6A68 /* timer3.png */,
+				2312590016FC3AF200DA6A68 /* timer4.png */,
+				2312590116FC3AF300DA6A68 /* timer5.png */,
+				2312590216FC3AF300DA6A68 /* timer6.png */,
+				2312590316FC3AF300DA6A68 /* timer7.png */,
+				2312590416FC3AF300DA6A68 /* timer8.png */,
+				2312590516FC3AF300DA6A68 /* timer9.png */,
+				2312590616FC3AF300DA6A68 /* timer10.png */,
+				2312590716FC3AF300DA6A68 /* timer11.png */,
 				23E28F2616FBA67C00CE97C9 /* timer.png */,
 				2345964916DA2A550088312D /* venue.png */,
 				23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */,
@@ -445,6 +478,17 @@
 				23E28F2316FBA0D500CE97C9 /* topbar.png in Resources */,
 				23E28F2516FBA30700CE97C9 /* 2ndpagebottombarup.png in Resources */,
 				23E28F2716FBA67C00CE97C9 /* timer.png in Resources */,
+				2312590816FC3AF400DA6A68 /* timer1.png in Resources */,
+				2312590916FC3AF400DA6A68 /* timer2.png in Resources */,
+				2312590A16FC3AF400DA6A68 /* timer3.png in Resources */,
+				2312590B16FC3AF400DA6A68 /* timer4.png in Resources */,
+				2312590C16FC3AF400DA6A68 /* timer5.png in Resources */,
+				2312590D16FC3AF400DA6A68 /* timer6.png in Resources */,
+				2312590E16FC3AF400DA6A68 /* timer7.png in Resources */,
+				2312590F16FC3AF400DA6A68 /* timer8.png in Resources */,
+				2312591016FC3AF400DA6A68 /* timer9.png in Resources */,
+				2312591116FC3AF400DA6A68 /* timer10.png in Resources */,
+				2312591216FC3AF400DA6A68 /* timer11.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,7 +36,20 @@
 {
     [super viewDidLoad];
     self.barUp = 1;
-    [self.timerLabel setText:@""];
+    self.seconds = 60;
+    NSString *time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
+    if(self.mins == 0)
+    {
+        time = [NSString stringWithFormat:@"%i:%i0", self.hours, self.mins];
+    }
+    else if(self.mins < 10 && self.mins > 0)
+    {
+        time = [NSString stringWithFormat:@"%i:0%i", self.hours, self.mins];
+    }
+    [self.timerLabel setText:[NSString stringWithFormat:@"%@", time]];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval: 60.0 target:self selector:@selector(updateTimer) userInfo:nil repeats: YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(updateTimerImage) userInfo:nil repeats: YES];
+
     [self addIndicatorToWebView];
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
@@ -75,7 +88,7 @@
 // IBActions
 - (IBAction)getNextActivity:(id)sender {
     // just have this here to check that the current location updates and is correct
-    NSLog(@"Current Location: %@", [ChipmunkUtils getCurrentLocation]);
+    //NSLog(@"Current Location: %@", [ChipmunkUtils getCurrentLocation]);
     if(self.dataSource != nil && self.dataSource.count > 0) {
         if(self.contentIsShown) {
             [self toggleFullActivity:nil];
@@ -121,8 +134,6 @@
 {
     self.hours = totalMins/60;
     self.mins  = totalMins - (self.hours * 60);
-    NSString *time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
-    [self.timerLabel setText:@"12"];
     [self.dbManager getActivities:totalMins currentLocation:[ChipmunkUtils getCurrentLocation] wantOnline:0 wantOutside:0];
 }
 
@@ -216,9 +227,103 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)startTimer{
+-(void)updateTimer{
+    
+    self.mins--;
+    self.seconds = 60;
+    NSString *time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
+    if(self.mins < 0 && self.hours > 0)
+    {
+        self.hours--;
+        self.mins = 59;
+    }
+    else if(self.mins == 0)
+    {
+        time = [NSString stringWithFormat:@"%i:%i0", self.hours, self.mins];
+    }
+    else if(self.mins < 10 && self.mins > 0)
+    {
+        time = [NSString stringWithFormat:@"%i:0%i", self.hours, self.mins];
+    }
+    else if( self.mins == 0 && self.hours == 0){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Free time spent!" message:@"You have spent all your free time! We hope you used it wisely!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    else{
+        time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
+    }
+    [self.timerLabel setText:[NSString stringWithFormat:@"%@", time]];
 
 
 }
+
+-(void)updateTimerImage{
+    
+    self.seconds--;
+    if(self.seconds >= 55 && self.seconds < 60)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer.png"]];
+        
+    }
+    if(self.seconds >= 50 && self.seconds < 55)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer1.png"]];
+
+    }
+    else if(self.seconds >= 45 && self.seconds < 50)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer2.png"]];
+        
+    }
+    else if(self.seconds >= 40 && self.seconds < 45)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer3.png"]];
+        
+    }
+    else if(self.seconds >= 35 && self.seconds < 40)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer4.png"]];
+        
+    }
+    else if(self.seconds >= 30 && self.seconds < 35)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer5.png"]];
+        
+    }
+    else if(self.seconds >= 25 && self.seconds < 30)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer6.png"]];
+        
+    }
+    else if(self.seconds >= 20 && self.seconds < 25)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer7.png"]];
+        
+    }
+    else if(self.seconds >= 15 && self.seconds < 20)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer8.png"]];
+        
+    }
+    else if(self.seconds >= 10 && self.seconds < 15)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer9.png"]];
+        
+    }
+    else if(self.seconds >= 5 && self.seconds < 10)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer10.png"]];
+        
+    }
+    else if(self.seconds >= 0 && self.seconds < 5)
+    {
+        [self.timerImage setImage:[UIImage imageNamed:@"timer11.png"]];
+        
+    }
+
+}
+
 
 @end

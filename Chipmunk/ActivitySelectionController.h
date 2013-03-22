@@ -24,6 +24,8 @@
 @property (nonatomic) NSTimer *timer;
 @property (nonatomic) int mins;
 @property (nonatomic) int hours;
+@property (nonatomic) int seconds;
+@property (weak, nonatomic) IBOutlet UIImageView *timerImage;
 
 
 
