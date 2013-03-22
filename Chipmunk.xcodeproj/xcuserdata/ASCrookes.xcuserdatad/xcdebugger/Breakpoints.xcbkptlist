@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Chipmunk/ActivitySelectionController.m"
-         timestampString = "385532194.719905"
+         timestampString = "385622929.703847"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "134"
          endingLineNumber = "134"
-         landmarkName = "-downloadContentForItems"
+         landmarkName = "-recievedActivities:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -59,6 +59,7 @@
 		23FF259B16D72AB200900166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257616D72AB200900166 /* Foundation.framework */; };
 		23FF25A316D72AB200900166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23FF25A116D72AB200900166 /* InfoPlist.strings */; };
 		23FF25A616D72AB200900166 /* ChipmunkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF25A516D72AB200900166 /* ChipmunkTests.m */; };
+		8E0EDE1216FC1EE7004FCDFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */; };
 		8E571C0116D9CA2800F946A3 /* ChipmunkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */; };
 		8E571C0516D9CBAA00F946A3 /* ringcitybitch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */; };
 		8E7BDE7E16DA15D000B67749 /* FSN_categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7916DA15D000B67749 /* FSN_categories.m */; };
@@ -143,6 +144,7 @@
 		23FF25A216D72AB200900166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23FF25A416D72AB200900166 /* ChipmunkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChipmunkTests.h; sourceTree = "<group>"; };
 		23FF25A516D72AB200900166 /* ChipmunkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChipmunkTests.m; sourceTree = "<group>"; };
+		8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8E571BFF16D9CA2800F946A3 /* ChipmunkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipmunkUtils.h; sourceTree = "<group>"; };
 		8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipmunkUtils.m; sourceTree = "<group>"; };
 		8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ringcitybitch.png; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E0EDE1216FC1EE7004FCDFA /* CoreLocation.framework in Frameworks */,
 				23267CE716F69A45005B5BDA /* MessageUI.framework in Frameworks */,
 				235E41D716DDC59F0051B3BB /* AudioToolbox.framework in Frameworks */,
 				23286F9616D98FC1005E16FA /* QuartzCore.framework in Frameworks */,
@@ -192,6 +195,7 @@
 		23FF256816D72AB200900166 = {
 			isa = PBXGroup;
 			children = (
+				8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */,
 				23267CE616F69A45005B5BDA /* MessageUI.framework */,
 				23FF257A16D72AB200900166 /* Chipmunk */,
 				23FF259E16D72AB200900166 /* ChipmunkTests */,
@@ -607,15 +611,15 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
+				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -624,15 +628,15 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
+				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

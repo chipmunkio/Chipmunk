@@ -28,6 +28,6 @@
 
 
 
-- (void)getActivites:(unsigned int)totalMins withMins:(int)sepMins withHours:(int)sepHours; // should add more parameters for in vs outside
+- (void)getActivites:(unsigned int)totalMins;
 
 @end

@@ -244,9 +244,7 @@
 
     if(totalMins > 0) {
         ActivitySelectionController* asc = [self.storyboard instantiateViewControllerWithIdentifier:@"selectionController"];
-        int h = [self.hourLabel.text intValue];
-        int m = [self.minLabel.text intValue];
-        [asc getActivites:totalMins withMins:m withHours:h];
+        [asc getActivites:totalMins];
         [self.navigationController pushViewController:asc animated:YES];
         
         

@@ -10,9 +10,12 @@
 
 @implementation AppDelegate
 
+@synthesize locationManager = _locationManager;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self.locationManager startUpdatingLocation];
     return YES;
 }
 							
@@ -41,6 +44,15 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (CLLocationManager*)locationManager {
+    if(!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = kCLDistanceFilterNone;
+    }
+    return _locationManager;
 }
 
 @end

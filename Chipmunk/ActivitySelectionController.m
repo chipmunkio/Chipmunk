@@ -7,6 +7,7 @@
 //
 
 #import "ActivitySelectionController.h"
+#import "ChipmunkUtils.h"
 
 
 @interface ActivitySelectionController ()
@@ -73,6 +74,8 @@
 
 // IBActions
 - (IBAction)getNextActivity:(id)sender {
+    // just have this here to check that the current location updates and is correct
+    NSLog(@"Current Location: %@", [ChipmunkUtils getCurrentLocation]);
     if(self.dataSource != nil && self.dataSource.count > 0) {
         if(self.contentIsShown) {
             [self toggleFullActivity:nil];
@@ -90,40 +93,37 @@
     // move the [web,map] view up so it covers the whole screen
     // DELME - this is hardcoded for the iPhone 5, MAKE DYNAMIC
     // also change the height when it is not full
-    if (self.barUp == 1) {
-        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombar.png"] forState:UIControlStateNormal];
-        self.barUp = 0;
-    }
-    else {
-        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombarup.png"] forState:UIControlStateNormal];
-        self.barUp = 1;
-
-    }
+    
     CGFloat viewHeight = 504;
     CGRect newFrame;
+    CGFloat newAlpha = 0;
     if(self.contentIsShown) {
+        newAlpha = 1;
+        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombarup.png"] forState:UIControlStateNormal];
         newFrame = CGRectMake(0, 262, 320, viewHeight);
     } else {
+        newAlpha = 0;
+        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombar.png"] forState:UIControlStateNormal];
         newFrame = CGRectMake(0, 44, 320, viewHeight);
     }
     self.contentIsShown = !self.contentIsShown;
     
     [UIView animateWithDuration:0.4 animations:^{
         self.webView.frame = newFrame;
-    } completion:^(BOOL finished) {
-        self.nextArrow.hidden = self.contentIsShown;
+        self.nextArrow.alpha = newAlpha;
     }];
+    
     self.webView.scrollView.scrollEnabled = self.contentIsShown;
 }
 
 
-- (void)getActivites:(unsigned int)totalMins withMins:(int)sepMins withHours:(int)sepHours
+- (void)getActivites:(unsigned int)totalMins
 {
-    self.mins = sepMins;
-    self.hours = sepHours;
+    self.hours = totalMins/60;
+    self.mins  = totalMins - (self.hours * 60);
     NSString *time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
     [self.timerLabel setText:@"12"];
-    [self.dbManager getActivities:totalMins currentLocation:nil wantOnline:0 wantOutside:0];
+    [self.dbManager getActivities:totalMins currentLocation:[ChipmunkUtils getCurrentLocation] wantOnline:0 wantOutside:0];
 }
 
 - (void)recievedActivities:(NSArray *)activities {
@@ -149,14 +149,11 @@
         for(int i = 0; i < self.dataSource.count; i++) {
             NSDictionary* item = self.dataSource[i];
             NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"img_url"]]];
-            NSError* error;
-            // check the error
-            // if the article is no longer there tell the server to remove it
+            
             self.imgDataSource[i] = imgData;
             if(i == 0) {
                 [self updateUI];
             }
-            //NSLog(@"at index: %i", i);
         }
     });
     
@@ -179,25 +176,25 @@
     return _imgDataSource;
 }
 
-// take whatever is at the front and display it
-- (void)updateUI {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if([self.dataSource count] > 0) {
-            UIActivityIndicatorView* av = (UIActivityIndicatorView*)[self.webView viewWithTag:1];
-            if(self.imgDataSource.count > 0 && self.imgDataSource[0] != [NSNull null]) {
-                //[av stopAnimating];
-                self.imageView.image = [UIImage imageWithData:self.imgDataSource[0]];
+    // take whatever is at the front and display it
+    - (void)updateUI {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([self.dataSource count] > 0) {
+                if(self.imgDataSource.count > 0 && self.imgDataSource[0] != [NSNull null]) {
+                    //[av stopAnimating];
+                    self.imageView.image = [UIImage imageWithData:self.imgDataSource[0]];
             }
         }
     });
-    NSDictionary* item = self.dataSource[0];
-    [self.webView stopLoading];
-    if([item[@"item_type"] isEqualToString:@"Link"]) {
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
-    } else {
-        // do stuff for the venue
+    if(self.dataSource.count > 0) {
+        NSDictionary* item = self.dataSource[0];
+        [self.webView stopLoading];
+        if([item[@"item_type"] isEqualToString:@"Link"]) {
+            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
+        } else {
+            // do stuff for the venue
+        }
     }
-    NSLog(@"Item: %@", item);
 }
 
 
