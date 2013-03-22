@@ -17,8 +17,17 @@
 
 @property (strong, nonatomic) DatabaseManager* dbManager;
 @property (strong, nonatomic) NSMutableArray* dataSource;
+@property (weak, nonatomic) IBOutlet UIButton *bottomBar;
 @property (strong, nonatomic) NSMutableArray* imgDataSource;
+@property (nonatomic) int barUp;
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+@property (nonatomic) NSTimer *timer;
+@property (nonatomic) int mins;
+@property (nonatomic) int hours;
 
-- (void)getActivites:(unsigned int)mins; // should add more parameters for in vs outside
+
+
+
+- (void)getActivites:(unsigned int)totalMins withMins:(int)sepMins withHours:(int)sepHours; // should add more parameters for in vs outside
 
 @end

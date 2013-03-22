@@ -241,9 +241,12 @@
 
 - (IBAction)getActivitiesController:(id)sender {
     unsigned int totalMins = [self getTotalMinutes];
+
     if(totalMins > 0) {
         ActivitySelectionController* asc = [self.storyboard instantiateViewControllerWithIdentifier:@"selectionController"];
-        [asc getActivites:totalMins];
+        int h = [self.hourLabel.text intValue];
+        int m = [self.minLabel.text intValue];
+        [asc getActivites:totalMins withMins:m withHours:h];
         [self.navigationController pushViewController:asc animated:YES];
         
         

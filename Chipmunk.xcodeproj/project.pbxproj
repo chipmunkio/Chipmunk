@@ -41,6 +41,10 @@
 		23DBDDC316EFD80800708AA3 /* proximanovaregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */; };
 		23DBDDC516EFDAAE00708AA3 /* proximanovasemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */; };
 		23DBDDC616EFDBF100708AA3 /* proximanovasemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */; };
+		23E28F2116FB9CE000CE97C9 /* backbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E28F2016FB9CE000CE97C9 /* backbutton.png */; };
+		23E28F2316FBA0D500CE97C9 /* topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E28F2216FBA0D500CE97C9 /* topbar.png */; };
+		23E28F2516FBA30700CE97C9 /* 2ndpagebottombarup.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E28F2416FBA30700CE97C9 /* 2ndpagebottombarup.png */; };
+		23E28F2716FBA67C00CE97C9 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E28F2616FBA67C00CE97C9 /* timer.png */; };
 		23FF257516D72AB200900166 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257416D72AB200900166 /* UIKit.framework */; };
 		23FF257716D72AB200900166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257616D72AB200900166 /* Foundation.framework */; };
 		23FF257916D72AB200900166 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257816D72AB200900166 /* CoreGraphics.framework */; };
@@ -113,6 +117,10 @@
 		23BF0D8B16E57205007526F1 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovaregular.ttf; sourceTree = "<group>"; };
 		23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovasemibold.ttf; sourceTree = "<group>"; };
+		23E28F2016FB9CE000CE97C9 /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backbutton.png; sourceTree = "<group>"; };
+		23E28F2216FBA0D500CE97C9 /* topbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbar.png; sourceTree = "<group>"; };
+		23E28F2416FBA30700CE97C9 /* 2ndpagebottombarup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2ndpagebottombarup.png; sourceTree = "<group>"; };
+		23E28F2616FBA67C00CE97C9 /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
 		23FF257116D72AB200900166 /* Chipmunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chipmunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FF257416D72AB200900166 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		23FF257616D72AB200900166 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -247,18 +255,22 @@
 		23FF257B16D72AB200900166 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				23E28F2016FB9CE000CE97C9 /* backbutton.png */,
 				8EFA15D616FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png */,
 				8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */,
 				2320316A16F2B7FF00C902AB /* 2ndpagetopbarv1.png */,
 				23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */,
 				23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */,
 				2318A76B16EE9D4700EEBCBB /* sparelogov1.png */,
+				23E28F2416FBA30700CE97C9 /* 2ndpagebottombarup.png */,
 				2318A76916EE9CD600EEBCBB /* sparebackgroundv1.png */,
 				23A12EA916EA498A00D5CA5B /* sliderbackground.png */,
 				235E41DA16DDC7CE0051B3BB /* tick.wav */,
 				2345963B16DA1FB00088312D /* whitelogo.png */,
+				23E28F2616FBA67C00CE97C9 /* timer.png */,
 				2345964916DA2A550088312D /* venue.png */,
 				23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */,
+				23E28F2216FBA0D500CE97C9 /* topbar.png */,
 				8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */,
 				23541C9A16EBD267006FB980 /* sliderbar.png */,
 				23FF257C16D72AB200900166 /* Chipmunk-Info.plist */,
@@ -425,6 +437,10 @@
 				2320316B16F2B7FF00C902AB /* 2ndpagetopbarv1.png in Resources */,
 				8EFA15D516FA20CA00D065F4 /* 2ndpagebottombar.png in Resources */,
 				8EFA15D716FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png in Resources */,
+				23E28F2116FB9CE000CE97C9 /* backbutton.png in Resources */,
+				23E28F2316FBA0D500CE97C9 /* topbar.png in Resources */,
+				23E28F2516FBA30700CE97C9 /* 2ndpagebottombarup.png in Resources */,
+				23E28F2716FBA67C00CE97C9 /* timer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

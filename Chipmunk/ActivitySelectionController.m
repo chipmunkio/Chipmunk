@@ -34,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.barUp = 1;
+    [self.timerLabel setText:@""];
     [self addIndicatorToWebView];
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
@@ -88,6 +90,15 @@
     // move the [web,map] view up so it covers the whole screen
     // DELME - this is hardcoded for the iPhone 5, MAKE DYNAMIC
     // also change the height when it is not full
+    if (self.barUp == 1) {
+        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombar.png"] forState:UIControlStateNormal];
+        self.barUp = 0;
+    }
+    else {
+        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombarup.png"] forState:UIControlStateNormal];
+        self.barUp = 1;
+
+    }
     CGFloat viewHeight = 504;
     CGRect newFrame;
     if(self.contentIsShown) {
@@ -106,8 +117,13 @@
 }
 
 
-- (void)getActivites:(unsigned int)mins {
-    [self.dbManager getActivities:mins currentLocation:nil wantOnline:0 wantOutside:0];
+- (void)getActivites:(unsigned int)totalMins withMins:(int)sepMins withHours:(int)sepHours
+{
+    self.mins = sepMins;
+    self.hours = sepHours;
+    NSString *time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
+    [self.timerLabel setText:@"12"];
+    [self.dbManager getActivities:totalMins currentLocation:nil wantOnline:0 wantOutside:0];
 }
 
 - (void)recievedActivities:(NSArray *)activities {
@@ -140,7 +156,7 @@
             if(i == 0) {
                 [self updateUI];
             }
-            NSLog(@"at index: %i", i);
+            //NSLog(@"at index: %i", i);
         }
     });
     
@@ -201,6 +217,11 @@
 
 - (IBAction)back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)startTimer{
+
+
 }
 
 @end
