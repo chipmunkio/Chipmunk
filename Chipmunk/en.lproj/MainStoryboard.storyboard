@@ -109,6 +109,7 @@
                                 <color key="maximumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="thumbTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <action selector="checkHalf:" destination="2" eventType="valueChanged" id="KFF-pl-Bd5"/>
                                     <action selector="sliderTouch:" destination="2" eventType="touchUpInside" id="EIS-85-Aw3"/>
                                 </connections>
                             </slider>
@@ -486,6 +487,7 @@
         <class className="ActivityTableViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivityTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="popView:"/>
                 <relationship kind="outlet" name="table" candidateClass="UITableView"/>
             </relationships>
         </class>

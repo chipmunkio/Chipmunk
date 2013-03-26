@@ -263,6 +263,7 @@
 
 - (IBAction)sliderTouch:(id)sender {
     
+    NSLog(@"%f", self.slider.value);
     if(self.slider.value > 2.4)
     {
         [self slideToOutside];
@@ -276,6 +277,32 @@
         [self slideToBoth];
     }
     
+}
+- (IBAction)checkHalf:(id)sender {
+    
+    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
+    NSString *proxReg = [fontArr objectAtIndex:0];
+    NSString *proxBold = [fontArr objectAtIndex:1];
+    
+    
+    if(self.slider.value > 2.4)
+    {
+        [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.outsideLabel setFont:[UIFont fontWithName:proxBold size:23]];
+        [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    }
+    else if(self.slider.value < 1.6)
+    {
+        [self.insideLabel setFont:[UIFont fontWithName:proxBold size:23]];
+        [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
+    }
+    else
+    {
+        [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
+        [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
+    }
 }
 
 
