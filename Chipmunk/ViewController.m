@@ -62,8 +62,8 @@
     UIImage *sliderRightTrackImage = [[UIImage imageNamed: @"sliderbackground.png"] stretchableImageWithLeftCapWidth: 9 topCapHeight: 0];
     [self.slider setMinimumTrackImage: sliderLeftTrackImage forState: UIControlStateNormal];
     [self.slider setMaximumTrackImage: sliderRightTrackImage forState: UIControlStateNormal];
-    [self.slider setThumbImage:[UIImage imageNamed:@"sliderIcon.png"] forState:UIControlStateNormal];
-    [self.slider setThumbImage:[UIImage imageNamed:@"sliderIcon.png"] forState:UIControlStateHighlighted];
+    [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateNormal];
+    [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateHighlighted];
 
 
 /*
@@ -84,7 +84,7 @@
 									  );
 */
 
-    self.view.backgroundColor = [ChipmunkUtils chipmunkColor];
+    self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
         self.rotatingTimeSelect.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
 }

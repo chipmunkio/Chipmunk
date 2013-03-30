@@ -27,7 +27,6 @@
 		23267CE716F69A45005B5BDA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23267CE616F69A45005B5BDA /* MessageUI.framework */; };
 		23286F9616D98FC1005E16FA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23286F9516D98FC1005E16FA /* QuartzCore.framework */; };
 		23286F9E16D99D25005E16FA /* Circle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23286F9D16D99D25005E16FA /* Circle2.png */; };
-		23286FA116D9B851005E16FA /* Circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 23286FA016D9B851005E16FA /* Circle.png */; };
 		23286FB316D9FC5B005E16FA /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */; };
 		23286FB416D9FC5B005E16FA /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */; };
 		2345962516DA08450088312D /* leopard.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2345962416DA08450088312D /* leopard.jpeg */; };
@@ -49,6 +48,11 @@
 		23BAE0EB16DA013B00385268 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BAE0EA16DA013B00385268 /* ActivityCell.m */; };
 		23BF0D8C16E57205007526F1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23BF0D8B16E57205007526F1 /* WebViewController.m */; };
 		23D43FC01707658400E9E76D /* refresh boston.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FBF1707658400E9E76D /* refresh boston.png */; };
+		23D43FC717076DD200E9E76D /* buttonslider.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC217076DD200E9E76D /* buttonslider.png */; };
+		23D43FC917076DD200E9E76D /* howmuchfreetime.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC417076DD200E9E76D /* howmuchfreetime.png */; };
+		23D43FCA17076DD200E9E76D /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC517076DD200E9E76D /* slider.png */; };
+		23D43FCB17076DD200E9E76D /* sparelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC617076DD200E9E76D /* sparelogo.png */; };
+		23D43FCD1707748700E9E76D /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FCC1707748700E9E76D /* circle.png */; };
 		23DBDDC116EFD7E400708AA3 /* proximanovaregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */; };
 		23DBDDC316EFD80800708AA3 /* proximanovaregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */; };
 		23DBDDC516EFDAAE00708AA3 /* proximanovasemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */; };
@@ -117,7 +121,6 @@
 		23267CE616F69A45005B5BDA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		23286F9516D98FC1005E16FA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23286F9D16D99D25005E16FA /* Circle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle2.png; sourceTree = "<group>"; };
-		23286FA016D9B851005E16FA /* Circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle.png; sourceTree = "<group>"; };
 		23286FB116D9FC5B005E16FA /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
 		23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
 		2345962416DA08450088312D /* leopard.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leopard.jpeg; sourceTree = "<group>"; };
@@ -140,6 +143,11 @@
 		23BF0D8A16E57205007526F1 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		23BF0D8B16E57205007526F1 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		23D43FBF1707658400E9E76D /* refresh boston.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh boston.png"; sourceTree = "<group>"; };
+		23D43FC217076DD200E9E76D /* buttonslider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonslider.png; sourceTree = "<group>"; };
+		23D43FC417076DD200E9E76D /* howmuchfreetime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howmuchfreetime.png; sourceTree = "<group>"; };
+		23D43FC517076DD200E9E76D /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
+		23D43FC617076DD200E9E76D /* sparelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sparelogo.png; sourceTree = "<group>"; };
+		23D43FCC1707748700E9E76D /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovaregular.ttf; sourceTree = "<group>"; };
 		23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovasemibold.ttf; sourceTree = "<group>"; };
 		23E28F2016FB9CE000CE97C9 /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backbutton.png; sourceTree = "<group>"; };
@@ -216,6 +224,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23D43FC117076DD200E9E76D /* New white design */ = {
+			isa = PBXGroup;
+			children = (
+				23D43FCC1707748700E9E76D /* circle.png */,
+				23D43FC217076DD200E9E76D /* buttonslider.png */,
+				23D43FC417076DD200E9E76D /* howmuchfreetime.png */,
+				23D43FC517076DD200E9E76D /* slider.png */,
+				23D43FC617076DD200E9E76D /* sparelogo.png */,
+			);
+			path = "New white design";
+			sourceTree = "<group>";
+		};
 		23FF256816D72AB200900166 = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				23E28F2016FB9CE000CE97C9 /* backbutton.png */,
+				23D43FC117076DD200E9E76D /* New white design */,
 				8EFA15D616FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png */,
 				23D43FBF1707658400E9E76D /* refresh boston.png */,
 				8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */,
@@ -315,7 +336,6 @@
 				23541C9A16EBD267006FB980 /* sliderbar.png */,
 				23FF257C16D72AB200900166 /* Chipmunk-Info.plist */,
 				23286F9D16D99D25005E16FA /* Circle2.png */,
-				23286FA016D9B851005E16FA /* Circle.png */,
 				2345964116DA25270088312D /* Icon.png */,
 				2318A76F16EEA5DE00EEBCBB /* sliderIcon.png */,
 				2345962A16DA085D0088312D /* toporangebar.png */,
@@ -451,7 +471,6 @@
 				23FF258716D72AB200900166 /* Default.png in Resources */,
 				23FF258E16D72AB200900166 /* MainStoryboard.storyboard in Resources */,
 				23286F9E16D99D25005E16FA /* Circle2.png in Resources */,
-				23286FA116D9B851005E16FA /* Circle.png in Resources */,
 				8E571C0516D9CBAA00F946A3 /* ringcitybitch.png in Resources */,
 				2345962516DA08450088312D /* leopard.jpeg in Resources */,
 				2345962716DA084F0088312D /* videoicon.png in Resources */,
@@ -493,6 +512,11 @@
 				2312591116FC3AF400DA6A68 /* timer10.png in Resources */,
 				2312591216FC3AF400DA6A68 /* timer11.png in Resources */,
 				23D43FC01707658400E9E76D /* refresh boston.png in Resources */,
+				23D43FC717076DD200E9E76D /* buttonslider.png in Resources */,
+				23D43FC917076DD200E9E76D /* howmuchfreetime.png in Resources */,
+				23D43FCA17076DD200E9E76D /* slider.png in Resources */,
+				23D43FCB17076DD200E9E76D /* sparelogo.png in Resources */,
+				23D43FCD1707748700E9E76D /* circle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

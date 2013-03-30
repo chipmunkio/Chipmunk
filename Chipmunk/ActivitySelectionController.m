@@ -8,6 +8,7 @@
 
 #import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface ActivitySelectionController ()
@@ -54,6 +55,7 @@
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
     self.webView.scrollView.scrollEnabled = NO;
+    [self drawNavigationBar];
 	// Do any additional setup after loading the view.
 }
 
@@ -322,6 +324,32 @@
         [self.timerImage setImage:[UIImage imageNamed:@"timer11.png"]];
         
     }
+
+}
+
+-(void)drawNavigationBar
+{
+ 
+    
+    self.navigationBar.tintColor = [ChipmunkUtils chipmunkColor];
+    
+    CALayer *capa = self.navigationBar.layer;
+    
+    
+    
+    //Round
+    CGRect bounds = capa.bounds;
+    bounds.size.height += 10.0f;    //I'm reserving enough room for the shadow
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bounds
+                                                   byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
+                                                         cornerRadii:CGSizeMake(5.0, 5.0)];
+    
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = bounds;
+    maskLayer.path = maskPath.CGPath;
+    
+    [capa addSublayer:maskLayer];
+    capa.mask = maskLayer;
 
 }
 

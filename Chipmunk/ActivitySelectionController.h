@@ -26,6 +26,7 @@
 @property (nonatomic) int hours;
 @property (nonatomic) int seconds;
 @property (weak, nonatomic) IBOutlet UIImageView *timerImage;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 
 

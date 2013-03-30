@@ -11,7 +11,7 @@
 @implementation ChipmunkUtils
 
 + (UIColor*)chipmunkColor {
-    return [UIColor colorWithRed:88.0/255.0 green:151.0/255.0 blue:60.0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:63.0/255.0 green:169.0/255.0 blue:245.0/255.0 alpha:1.0];
 }
 + (UIColor*)tableColor {
     return [UIColor colorWithRed:228.0/255.0 green:229.0/255.0 blue:230.0/255.0 alpha:1.0];
