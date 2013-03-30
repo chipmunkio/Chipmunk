@@ -320,20 +320,6 @@
                                     <action selector="toggleFullActivity:" destination="Y7k-Ip-DCQ" eventType="touchUpInside" id="VNg-VZ-mCd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3K-JS-roe">
-                                <rect key="frame" x="247" y="132" width="73" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="imageoverlayarrow2ndpagev1.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getNextActivity:" destination="Y7k-Ip-DCQ" eventType="touchUpInside" id="RVx-nY-gtn"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="topbar.png" id="c8N-fP-k6M">
                                 <rect key="frame" x="0.0" y="-1" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -353,12 +339,27 @@
                                     <action selector="back:" destination="Y7k-Ip-DCQ" eventType="touchUpInside" id="n1r-O6-Bzh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rbF-RW-mZy">
+                                <rect key="frame" x="273" y="0.0" width="47" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="refresh boston.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getNextActivity:" destination="Y7k-Ip-DCQ" eventType="touchUpInside" id="GbH-ep-Zp7"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="timer.png" id="aFd-x3-NnL">
-                                <rect key="frame" x="247" y="4" width="70" height="38"/>
+                                <rect key="frame" x="132" y="4" width="70" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z28-ym-fBv">
-                                <rect key="frame" x="247" y="12" width="42" height="21"/>
+                                <rect key="frame" x="132" y="12" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -370,8 +371,6 @@
                     <connections>
                         <outlet property="bottomBar" destination="e5L-DZ-HUp" id="OZC-N5-BqH"/>
                         <outlet property="imageView" destination="OP3-Kb-l4L" id="UkH-AJ-nlK"/>
-                        <outlet property="nextActivityButton" destination="t3K-JS-roe" id="FRD-Dz-2cj"/>
-                        <outlet property="nextArrow" destination="t3K-JS-roe" id="CQk-zq-Rry"/>
                         <outlet property="timerImage" destination="aFd-x3-NnL" id="ds3-bl-HLU"/>
                         <outlet property="timerLabel" destination="z28-ym-fBv" id="ABd-AN-sDg"/>
                         <outlet property="webView" destination="IHw-AS-dUj" id="ULg-KZ-A51"/>
@@ -448,8 +447,8 @@
         <image name="backbutton.png" width="38" height="38"/>
         <image name="bottombarwhite.png" width="290" height="38"/>
         <image name="howmuchfreetime?v1.png" width="225" height="70"/>
-        <image name="imageoverlayarrow2ndpagev1.png" width="613" height="529"/>
         <image name="leopard.jpeg" width="290" height="148"/>
+        <image name="refresh boston.png" width="38" height="38"/>
         <image name="sparebackgroundv1.png" width="640" height="1136"/>
         <image name="sparelogov1.png" width="125" height="125"/>
         <image name="timer.png" width="84" height="45"/>
@@ -497,6 +496,7 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="checkHalf:"/>
                 <relationship kind="action" name="getActivitiesController:"/>
                 <relationship kind="action" name="goBoth:"/>
                 <relationship kind="action" name="goOnline:"/>
