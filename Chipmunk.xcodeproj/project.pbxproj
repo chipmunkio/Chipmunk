@@ -52,7 +52,6 @@
 		23D43FC917076DD200E9E76D /* howmuchfreetime.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC417076DD200E9E76D /* howmuchfreetime.png */; };
 		23D43FCA17076DD200E9E76D /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC517076DD200E9E76D /* slider.png */; };
 		23D43FCB17076DD200E9E76D /* sparelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC617076DD200E9E76D /* sparelogo.png */; };
-		23D43FCD1707748700E9E76D /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FCC1707748700E9E76D /* circle.png */; };
 		23DBDDC116EFD7E400708AA3 /* proximanovaregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */; };
 		23DBDDC316EFD80800708AA3 /* proximanovaregular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */; };
 		23DBDDC516EFDAAE00708AA3 /* proximanovasemibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */; };
@@ -78,6 +77,8 @@
 		8E0EDE1216FC1EE7004FCDFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */; };
 		8E571C0116D9CA2800F946A3 /* ChipmunkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */; };
 		8E571C0516D9CBAA00F946A3 /* ringcitybitch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */; };
+		8E7026CB1707BB9D0084C33F /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7026CA1707BB9D0084C33F /* circle.png */; };
+		8E7026CD1707BBFB0084C33F /* newWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7026CC1707BBFB0084C33F /* newWheel.png */; };
 		8E7BDE7E16DA15D000B67749 /* FSN_categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7916DA15D000B67749 /* FSN_categories.m */; };
 		8E7BDE7F16DA15D000B67749 /* FSNConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7B16DA15D000B67749 /* FSNConnection.m */; };
 		8E7BDE8016DA15D000B67749 /* FSNData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7D16DA15D000B67749 /* FSNData.m */; };
@@ -147,7 +148,6 @@
 		23D43FC417076DD200E9E76D /* howmuchfreetime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howmuchfreetime.png; sourceTree = "<group>"; };
 		23D43FC517076DD200E9E76D /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
 		23D43FC617076DD200E9E76D /* sparelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sparelogo.png; sourceTree = "<group>"; };
-		23D43FCC1707748700E9E76D /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		23DBDDC016EFD7E400708AA3 /* proximanovaregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovaregular.ttf; sourceTree = "<group>"; };
 		23DBDDC416EFDAAE00708AA3 /* proximanovasemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = proximanovasemibold.ttf; sourceTree = "<group>"; };
 		23E28F2016FB9CE000CE97C9 /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backbutton.png; sourceTree = "<group>"; };
@@ -180,6 +180,8 @@
 		8E571BFF16D9CA2800F946A3 /* ChipmunkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipmunkUtils.h; sourceTree = "<group>"; };
 		8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipmunkUtils.m; sourceTree = "<group>"; };
 		8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ringcitybitch.png; sourceTree = "<group>"; };
+		8E7026CA1707BB9D0084C33F /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		8E7026CC1707BBFB0084C33F /* newWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newWheel.png; sourceTree = "<group>"; };
 		8E7BDE7816DA15D000B67749 /* FSN_categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSN_categories.h; sourceTree = "<group>"; };
 		8E7BDE7916DA15D000B67749 /* FSN_categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSN_categories.m; sourceTree = "<group>"; };
 		8E7BDE7A16DA15D000B67749 /* FSNConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNConnection.h; sourceTree = "<group>"; };
@@ -227,7 +229,8 @@
 		23D43FC117076DD200E9E76D /* New white design */ = {
 			isa = PBXGroup;
 			children = (
-				23D43FCC1707748700E9E76D /* circle.png */,
+				8E7026CC1707BBFB0084C33F /* newWheel.png */,
+				8E7026CA1707BB9D0084C33F /* circle.png */,
 				23D43FC217076DD200E9E76D /* buttonslider.png */,
 				23D43FC417076DD200E9E76D /* howmuchfreetime.png */,
 				23D43FC517076DD200E9E76D /* slider.png */,
@@ -516,7 +519,8 @@
 				23D43FC917076DD200E9E76D /* howmuchfreetime.png in Resources */,
 				23D43FCA17076DD200E9E76D /* slider.png in Resources */,
 				23D43FCB17076DD200E9E76D /* sparelogo.png in Resources */,
-				23D43FCD1707748700E9E76D /* circle.png in Resources */,
+				8E7026CB1707BB9D0084C33F /* circle.png in Resources */,
+				8E7026CD1707BBFB0084C33F /* newWheel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,15 +687,15 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -700,15 +704,15 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
+				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

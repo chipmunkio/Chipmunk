@@ -31,7 +31,7 @@
                                 <rect key="frame" x="25" y="7" width="271" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView contentMode="scaleAspectFit" image="circle.png" id="Z7Z-FE-uyz" customClass="RotatingImageView">
+                            <imageView contentMode="scaleAspectFit" image="newWheel.png" id="Z7Z-FE-uyz" customClass="RotatingImageView">
                                 <rect key="frame" x="22" y="145" width="276" height="275"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-180" y="158"/>
+            <point key="canvasLocation" x="-180" y="148"/>
         </scene>
         <!--Activity Table View Controller-->
         <scene sceneID="HNM-Wg-fVp">
@@ -444,9 +444,9 @@
         <image name="arrow.png" width="800" height="668"/>
         <image name="backbutton.png" width="38" height="38"/>
         <image name="bottombarwhite.png" width="290" height="38"/>
-        <image name="circle.png" width="2203" height="2203"/>
         <image name="howmuchfreetime.png" width="1789" height="556"/>
         <image name="leopard.jpeg" width="290" height="148"/>
+        <image name="newWheel.png" width="487" height="488"/>
         <image name="refresh boston.png" width="38" height="38"/>
         <image name="slider.png" width="2352" height="158"/>
         <image name="sparelogo.png" width="1563" height="780"/>
@@ -468,10 +468,6 @@
         <class className="ActivitySelectionController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivitySelectionController.h"/>
             <relationships>
-                <relationship kind="action" name="back:"/>
-                <relationship kind="action" name="getNextActivity:"/>
-                <relationship kind="action" name="swipeWebView:"/>
-                <relationship kind="action" name="toggleFullActivity:"/>
                 <relationship kind="outlet" name="bottomBar" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
