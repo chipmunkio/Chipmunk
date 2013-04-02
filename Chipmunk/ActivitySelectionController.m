@@ -90,6 +90,9 @@
 }
 
 - (void)addSwipeImageViewWithFrame:(CGRect)frame {
+    if (self.imageView) {
+        [self.imageView removeFromSuperview];
+    }
     self.imageView = [[SwipableImageView alloc] initWithFrame:frame];
     [self.view insertSubview:self.imageView belowSubview:self.webView];
     self.imageView.delegate = self;
