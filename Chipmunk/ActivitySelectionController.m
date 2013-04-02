@@ -21,6 +21,8 @@
 
 @implementation ActivitySelectionController
 
+@synthesize imageView = _imageView;
+@synthesize webView = _webView;
 @synthesize dbManager = _dbManager;
 @synthesize dataSource = _dataSource;
 
@@ -51,12 +53,51 @@
     self.timer = [NSTimer scheduledTimerWithTimeInterval: 60.0 target:self selector:@selector(updateTimer) userInfo:nil repeats: YES];
     self.timer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(updateTimerImage) userInfo:nil repeats: YES];
 
+   
+    [self setupUI];
+    
+
+	// Do any additional setup after loading the view.
+}
+
+// should add the image and webview to the view
+// later on also add the navigation bar stuff here as well
+- (void)setupUI {
+    // must add webview first
+    // the image is always put behind it so the webview can slide on top of it
+    [self addSlidingWebView];
+    [self addSwipeImageView];
+    [self drawNavigationBar];
+    [self.view insertSubview:self.bottomBar aboveSubview:self.webView];
+}
+
+// added sliding to name because addWebView is already a function
+- (void)addSlidingWebView {
+    
+    // the numbers for the frame are the same number as when we used the storyboard
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 262, 320, 504)];
+    [self.view addSubview:self.webView];
     [self addIndicatorToWebView];
     self.webView.delegate = self;
     self.webView.scalesPageToFit = YES;
     self.webView.scrollView.scrollEnabled = NO;
-    [self drawNavigationBar];
-	// Do any additional setup after loading the view.
+    
+    UISwipeGestureRecognizer* gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeWebView:)];
+    gesture.numberOfTouchesRequired = 1;
+    gesture.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.webView addGestureRecognizer:gesture];
+    
+}
+
+- (void)addSwipeImageViewWithFrame:(CGRect)frame {
+    self.imageView = [[SwipableImageView alloc] initWithFrame:frame];
+    [self.view insertSubview:self.imageView belowSubview:self.webView];
+    self.imageView.delegate = self;
+    self.imageView.userInteractionEnabled = YES;
+}
+
+- (void)addSwipeImageView {
+    [self addSwipeImageViewWithFrame:CGRectMake(0, 44/*navbar height*/, 320, 220)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,6 +172,22 @@
     self.webView.scrollView.scrollEnabled = self.contentIsShown;
 }
 
+// swipe image delegate functions
+
+- (void)animateSwipeImageOffScreen {
+    
+    int screenWidth = 320;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.imageView.center = CGPointMake(-(screenWidth/2), self.imageView.center.y);
+    } completion:^(BOOL finished) {
+        [self addSwipeImageViewWithFrame:CGRectMake(150, 144, 20, 20)];
+        [self getNextActivity:nil];
+        [UIView animateWithDuration:0.5 animations:^{
+            self.imageView.frame = CGRectMake(0, 44/*navbar height*/, 320, 220);
+        }];
+    }];
+}
+
 
 - (void)getActivites:(unsigned int)totalMins
 {
@@ -190,14 +247,14 @@
 }
 
     // take whatever is at the front and display it
-    - (void)updateUI {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if([self.dataSource count] > 0) {
-                if(self.imgDataSource.count > 0 && self.imgDataSource[0] != [NSNull null]) {
-                    //[av stopAnimating];
-                    self.imageView.image = [UIImage imageWithData:self.imgDataSource[0]];
-            }
+- (void)updateUI {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if([self.dataSource count] > 0) {
+            if(self.imgDataSource.count > 0 && self.imgDataSource[0] != [NSNull null]) {
+                //[av stopAnimating];
+                self.imageView.image = [UIImage imageWithData:self.imgDataSource[0]];
         }
+    }
     });
     if(self.dataSource.count > 0) {
         NSDictionary* item = self.dataSource[0];
@@ -221,6 +278,7 @@
 }
 
 - (IBAction)swipeWebView:(id)sender {
+    NSLog(@"swipe that view doode");
     if(!self.contentIsShown)
         [self toggleFullActivity:nil];
 }

@@ -7,13 +7,14 @@
 //
 
 #import "DatabaseManager.h"
+#import "SwipableImageView.h"
 #import <UIKit/UIKit.h>
 
-@interface ActivitySelectionController : UIViewController <UIWebViewDelegate, DatabaseManagerDelegate>
+@interface ActivitySelectionController : UIViewController <UIWebViewDelegate, DatabaseManagerDelegate, SwipingImageDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *nextActivityButton;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet SwipableImageView *imageView;
 // this will have to change once venues are an option as venues will not always have webcontent
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @property (strong, nonatomic) DatabaseManager* dbManager;
 @property (strong, nonatomic) NSMutableArray* dataSource;

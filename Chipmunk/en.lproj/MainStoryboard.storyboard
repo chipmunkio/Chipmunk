@@ -294,21 +294,6 @@
                                     <navigationItem id="waa-nE-9ps"/>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="OP3-Kb-l4L">
-                                <rect key="frame" x="0.0" y="44" width="320" height="220"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <webView contentMode="scaleToFill" id="IHw-AS-dUj">
-                                <rect key="frame" x="0.0" y="262" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outlet property="delegate" destination="Y7k-Ip-DCQ" id="zPi-qf-OGf"/>
-                                    <outletCollection property="gestureRecognizers" destination="m02-zN-3Rm" appends="YES" id="ejq-Nk-qxU"/>
-                                    <outletCollection property="gestureRecognizers" destination="Y9E-lm-8xS" appends="YES" id="SYl-XB-tu2"/>
-                                </connections>
-                            </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="e5L-DZ-HUp">
                                 <rect key="frame" x="0.0" y="515" width="320" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -369,11 +354,9 @@
                     </view>
                     <connections>
                         <outlet property="bottomBar" destination="e5L-DZ-HUp" id="OZC-N5-BqH"/>
-                        <outlet property="imageView" destination="OP3-Kb-l4L" id="UkH-AJ-nlK"/>
                         <outlet property="navigationBar" destination="BD0-yF-uA9" id="aXO-5y-Cgb"/>
                         <outlet property="timerImage" destination="aFd-x3-NnL" id="ds3-bl-HLU"/>
                         <outlet property="timerLabel" destination="z28-ym-fBv" id="ABd-AN-sDg"/>
-                        <outlet property="webView" destination="IHw-AS-dUj" id="ULg-KZ-A51"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCO-Wh-r6j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -468,8 +451,12 @@
         <class className="ActivitySelectionController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivitySelectionController.h"/>
             <relationships>
+                <relationship kind="action" name="back:"/>
+                <relationship kind="action" name="getNextActivity:"/>
+                <relationship kind="action" name="swipeWebView:"/>
+                <relationship kind="action" name="toggleFullActivity:"/>
                 <relationship kind="outlet" name="bottomBar" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="imageView" candidateClass="SwipableImageView"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="nextActivityButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nextArrow" candidateClass="UIButton"/>
@@ -486,6 +473,9 @@
         </class>
         <class className="RotatingImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingImageView.h"/>
+        </class>
+        <class className="SwipableImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SwipableImageView.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
