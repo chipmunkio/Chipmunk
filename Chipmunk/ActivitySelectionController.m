@@ -330,7 +330,7 @@
 -(void)drawNavigationBar
 {
  
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     self.navigationBar.tintColor = [ChipmunkUtils chipmunkColor];
     
     CALayer *capa = self.navigationBar.layer;
