@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-@interface ActivitySelectionController ()
+@interface ActivitySelectionController () <UIAlertViewDelegate>
 
 @property (nonatomic) BOOL contentIsShown;
 @property (weak, nonatomic) IBOutlet UIButton *nextArrow;
@@ -75,6 +75,7 @@
 - (void)addSlidingWebView {
     
     // the numbers for the frame are the same number as when we used the storyboard
+    // DELME -- for 3.5 inch screen should change this
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 262, 320, 504)];
     [self.view addSubview:self.webView];
     [self addIndicatorToWebView];
@@ -203,9 +204,8 @@
     self.dataSource = [activities mutableCopy];
     if(self.dataSource.count == 0) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Uh Oh!" message:@"Nothing was found..." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        alert.delegate = self;
         [alert show];
-        return;
-        [self.navigationController popViewControllerAnimated:YES];
     }
     for(id thing in self.dataSource) {
         [self.imgDataSource addObject:[NSNull null]];
@@ -222,15 +222,14 @@
         for(int i = 0; i < self.dataSource.count; i++) {
             NSDictionary* item = self.dataSource[i];
             NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"img_url"]]];
-            
-            self.imgDataSource[i] = imgData;
-            if(i == 0) {
-                [self updateUI];
+            if(imgData) {
+                self.imgDataSource[i] = imgData;
+                if(i == 0) {
+                    [self updateUI];
+                }
             }
         }
     });
-    
-    
 }
 
 
@@ -383,7 +382,6 @@
     else if(self.seconds >= 0 && self.seconds < 5)
     {
         [self.timerImage setImage:[UIImage imageNamed:@"timer11.png"]];
-        
     }
 
 }
@@ -414,5 +412,8 @@
 
 }
 
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

@@ -24,8 +24,13 @@
         return [c.responseData dictionaryFromJSONWithError:error];
     } completionBlock:^(FSNConnection *c) {
         NSError* error;
-        NSArray* response = [NSJSONSerialization JSONObjectWithData:c.responseData options:0 error:&error];
-        [self.delegate recievedActivities:response];
+        if(c.responseData) {
+            NSArray* response = [NSJSONSerialization JSONObjectWithData:c.responseData options:0 error:&error];
+            [self.delegate recievedActivities:response];
+        } else {
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"check your internet connection" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
     } progressBlock:^(FSNConnection *c) {
         
     }];
