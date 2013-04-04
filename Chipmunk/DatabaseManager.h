@@ -11,7 +11,7 @@
 
 @protocol DatabaseManagerDelegate <NSObject>
 
-- (void)recievedActivities:(NSArray*)activities;
+- (void)receivedActivities:(NSArray*)activities;
 
 @end
 

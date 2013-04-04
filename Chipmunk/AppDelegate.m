@@ -16,6 +16,13 @@
 {
     // Override point for customization after application launch.
     [self.locationManager startUpdatingLocation];
+    
+    // store if the phone is retina or not
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    result = CGSizeMake(result.width * scale, result.height * scale);
+    [[NSUserDefaults standardUserDefaults] setBool:(result.height > 480) forKey:@"isRetina"];
+    
     return YES;
 }
 							

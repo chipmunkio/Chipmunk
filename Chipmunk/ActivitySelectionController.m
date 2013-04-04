@@ -195,12 +195,12 @@
 
 - (void)getActivites:(unsigned int)totalMins
 {
-    self.hours = totalMins/60;
+    self.hours = totalMins / 60;
     self.mins  = totalMins - (self.hours * 60);
     [self.dbManager getActivities:totalMins currentLocation:[ChipmunkUtils getCurrentLocation] wantOnline:0 wantOutside:0];
 }
 
-- (void)recievedActivities:(NSArray *)activities {
+- (void)receivedActivities:(NSArray *)activities {
     self.dataSource = [activities mutableCopy];
     if(self.dataSource.count == 0) {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Uh Oh!" message:@"Nothing was found..." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -219,9 +219,11 @@
 - (void)downloadContentForItems {
     dispatch_queue_t queue = dispatch_queue_create("download.content.spare", nil);
     dispatch_async(queue, ^{
+        BOOL isRetina = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRetina"];
+        NSString* imgType = isRetina ? @"retina" : @"regular";
         for(int i = 0; i < self.dataSource.count; i++) {
             NSDictionary* item = self.dataSource[i];
-            NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"img_url"]]];
+            NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"image"][imgType]]];
             if(imgData) {
                 self.imgDataSource[i] = imgData;
                 if(i == 0) {
@@ -261,7 +263,7 @@
     if(self.dataSource.count > 0) {
         NSDictionary* item = self.dataSource[0];
         [self.webView stopLoading];
-        if([item[@"item_type"] isEqualToString:@"Link"]) {
+        if([item[@"type"] isEqualToString:@"Link"]) {
             [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
         } else {
             // do stuff for the venue

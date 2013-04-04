@@ -26,7 +26,9 @@
         NSError* error;
         if(c.responseData) {
             NSArray* response = [NSJSONSerialization JSONObjectWithData:c.responseData options:0 error:&error];
-            [self.delegate recievedActivities:response];
+            // remove the item key from each object and return an array of those new objects
+            NSArray* items = [response valueForKey:@"item"];
+            [self.delegate receivedActivities:items];
         } else {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"check your internet connection" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
