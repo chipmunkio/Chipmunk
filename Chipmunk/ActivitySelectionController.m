@@ -234,7 +234,6 @@
     });
 }
 
-
 - (DatabaseManager*)dbManager {
     if(!_dbManager) {
         _dbManager = [[DatabaseManager alloc] init];
