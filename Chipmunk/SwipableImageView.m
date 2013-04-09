@@ -38,7 +38,6 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch* touch = [touches anyObject];
     self.beganTouchLocation = [touch locationInView:self];
-    NSLog(@"began");
 }
 
 
@@ -51,7 +50,6 @@
     if(pageMiddle >= newX) {
         self.center = CGPointMake(newX, self.center.y);
     }
-    NSLog(@"MOVE DAMN IR");
 }
 
 

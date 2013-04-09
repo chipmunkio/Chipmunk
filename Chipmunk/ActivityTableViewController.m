@@ -36,12 +36,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"activity table view controller did load");
     self.table.backgroundColor = [ChipmunkUtils tableColor];
     self.view.backgroundColor = [ChipmunkUtils tableColor];
 
     self.dbManager.delegate = self;
-    NSLog(@"minutes: %i", self.minutes);
 
     [self.dbManager getActivities:self.minutes currentLocation:nil wantOnline:self.online wantOutside:self.outside];
 
@@ -160,7 +158,6 @@
     NSMutableArray* allActivities = [NSMutableArray arrayWithArray:self.dataSource];
     [allActivities addObjectsFromArray:activities];
     self.dataSource = [NSArray arrayWithArray:allActivities];
-    NSLog(@"activities: %@", self.dataSource);
 }
 
 

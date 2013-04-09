@@ -223,7 +223,12 @@
         NSString* imgType = isRetina ? @"retina" : @"regular";
         for(int i = 0; i < self.dataSource.count; i++) {
             NSDictionary* item = self.dataSource[i];
-            NSData* imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"image"][imgType]]];
+            NSData* imgData;
+            if([item[@"image"] isMemberOfClass:[NSNull class]]) {
+                imgData = nil;
+            } else {
+                imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"image"][imgType]]];
+            }
             if(imgData) {
                 self.imgDataSource[i] = imgData;
                 if(i == 0) {
@@ -262,7 +267,7 @@
     if(self.dataSource.count > 0) {
         NSDictionary* item = self.dataSource[0];
         [self.webView stopLoading];
-        if([item[@"type"] isEqualToString:@"Link"]) {
+        if([item[@"item_type"] isEqualToString:@"Link"]) {
             [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
         } else {
             // do stuff for the venue
@@ -281,7 +286,6 @@
 }
 
 - (IBAction)swipeWebView:(id)sender {
-    NSLog(@"swipe that view doode");
     if(!self.contentIsShown)
         [self toggleFullActivity:nil];
 }
