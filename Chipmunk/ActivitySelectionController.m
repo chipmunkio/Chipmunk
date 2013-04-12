@@ -69,6 +69,10 @@
     [self addSwipeImageView];
     [self drawNavigationBar];
     [self.view insertSubview:self.bottomBar aboveSubview:self.webView];
+    [self.view insertSubview:self.progressBarBlue aboveSubview:self.webView];
+    [self.view insertSubview:self.progressBarGrey aboveSubview:self.webView];
+
+
 }
 
 // added sliding to name because addWebView is already a function
@@ -76,10 +80,11 @@
     
     // the numbers for the frame are the same number as when we used the storyboard
     // DELME -- for 3.5 inch screen should change this
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 262, 320, 504)];
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 220, 320, 504)];
     [self.view addSubview:self.webView];
     [self addIndicatorToWebView];
     self.webView.delegate = self;
+    self.webView.scrollView.delegate = self;
     self.webView.scalesPageToFit = YES;
     self.webView.scrollView.scrollEnabled = NO;
     
@@ -94,14 +99,14 @@
     if (self.imageView) {
         [self.imageView removeFromSuperview];
     }
-    self.imageView = [[SwipableImageView alloc] initWithFrame:frame];
+    self.imageView = [[UIImageView alloc] initWithFrame:frame];
     [self.view insertSubview:self.imageView belowSubview:self.webView];
-    self.imageView.delegate = self;
     self.imageView.userInteractionEnabled = YES;
+
 }
 
 - (void)addSwipeImageView {
-    [self addSwipeImageViewWithFrame:CGRectMake(0, 44/*navbar height*/, 320, 220)];
+    [self addSwipeImageViewWithFrame:CGRectMake(0, 0/*navbar height*/, 320, 220)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,20 +161,33 @@
     
     CGFloat viewHeight = 504;
     CGRect newFrame;
+    CGRect newProgressGreyFrame;
+    CGRect newProgressBlueFrame;
+
     CGFloat newAlpha = 0;
     if(self.contentIsShown) {
         newAlpha = 1;
         [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombarup.png"] forState:UIControlStateNormal];
-        newFrame = CGRectMake(0, 262, 320, viewHeight);
+        newFrame = CGRectMake(0, 220, 320, viewHeight);
+        newProgressGreyFrame = CGRectMake(0, 220, 320, 6);
+        newProgressBlueFrame = CGRectMake(0, 220, (self.progressBarBlue.bounds.size.width), 6);
+
     } else {
         newAlpha = 0;
         [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombar.png"] forState:UIControlStateNormal];
         newFrame = CGRectMake(0, 44, 320, viewHeight);
+        newProgressGreyFrame = CGRectMake(0, 44, 320, 6);
+        newProgressBlueFrame = CGRectMake(0, 44, (self.progressBarBlue.bounds.size.width), 6);
+
+
     }
     self.contentIsShown = !self.contentIsShown;
     
     [UIView animateWithDuration:0.4 animations:^{
         self.webView.frame = newFrame;
+        self.progressBarGrey.frame = newProgressGreyFrame;
+        self.progressBarBlue.frame = newProgressBlueFrame;
+
         self.nextArrow.alpha = newAlpha;
     }];
     
@@ -187,7 +205,7 @@
         [self addSwipeImageViewWithFrame:CGRectMake(150, 144, 20, 20)];
         [self getNextActivity:nil];
         [UIView animateWithDuration:0.5 animations:^{
-            self.imageView.frame = CGRectMake(0, 44/*navbar height*/, 320, 220);
+            self.imageView.frame = CGRectMake(0, 0/*navbar height*/, 320, 220);
         }];
     }];
 }
@@ -261,6 +279,8 @@
             if(self.imgDataSource.count > 0 && self.imgDataSource[0] != [NSNull null]) {
                 //[av stopAnimating];
                 self.imageView.image = [UIImage imageWithData:self.imgDataSource[0]];
+                UIImage *blurredImage =[self.imageView.image stackBlur:7.0];
+                self.imageView.image = blurredImage;
         }
     }
     });
@@ -419,6 +439,17 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // Get some details about the view
+    CGSize size = [scrollView frame].size;
+    CGPoint offset = [scrollView contentOffset];
+    CGSize contentSize = [scrollView contentSize];
+    CGFloat blueWidth = ((offset.y + size.height)/(contentSize.height))*320;
+    self.progressBarBlue.frame = CGRectMake(0, 44, blueWidth, 6);
+
+
 }
 
 @end

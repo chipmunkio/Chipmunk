@@ -7,12 +7,12 @@
 //
 
 #import "DatabaseManager.h"
-#import "SwipableImageView.h"
+#import "UIImage+StackBlur.h"
 #import <UIKit/UIKit.h>
 
-@interface ActivitySelectionController : UIViewController <UIWebViewDelegate, DatabaseManagerDelegate, SwipingImageDelegate>
+@interface ActivitySelectionController : UIViewController <UIWebViewDelegate, DatabaseManagerDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *nextActivityButton;
-@property (strong, nonatomic) IBOutlet SwipableImageView *imageView;
+@property (strong, nonatomic) UIImageView *imageView;
 // this will have to change once venues are an option as venues will not always have webcontent
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
@@ -28,6 +28,8 @@
 @property (nonatomic) int seconds;
 @property (weak, nonatomic) IBOutlet UIImageView *timerImage;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UIView *progressBarGrey;
+@property (weak, nonatomic) IBOutlet UIView *progressBarBlue;
 
 
 

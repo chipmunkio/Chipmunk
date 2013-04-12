@@ -60,6 +60,7 @@
 		23E28F2316FBA0D500CE97C9 /* topbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E28F2216FBA0D500CE97C9 /* topbar.png */; };
 		23E28F2516FBA30700CE97C9 /* 2ndpagebottombarup.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E28F2416FBA30700CE97C9 /* 2ndpagebottombarup.png */; };
 		23E28F2716FBA67C00CE97C9 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 23E28F2616FBA67C00CE97C9 /* timer.png */; };
+		23E5FEDF1718B22900E3F9A8 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 23E5FEDE1718B22900E3F9A8 /* UIImage+StackBlur.m */; };
 		23FF257516D72AB200900166 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257416D72AB200900166 /* UIKit.framework */; };
 		23FF257716D72AB200900166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257616D72AB200900166 /* Foundation.framework */; };
 		23FF257916D72AB200900166 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257816D72AB200900166 /* CoreGraphics.framework */; };
@@ -84,7 +85,6 @@
 		8E7BDE8016DA15D000B67749 /* FSNData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7D16DA15D000B67749 /* FSNData.m */; };
 		8E7BDE8416DA15F600B67749 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE8316DA15F600B67749 /* DatabaseManager.m */; };
 		8E7BDE8516DA160300B67749 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE8316DA15F600B67749 /* DatabaseManager.m */; };
-		8E86EC03170AB13E006591F8 /* SwipableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E86EC02170AB13E006591F8 /* SwipableImageView.m */; };
 		8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3579916DD2F470069ADB0 /* RotatingImageView.m */; };
 		8EFA15D516FA20CA00D065F4 /* 2ndpagebottombar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */; };
 		8EFA15D716FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFA15D616FA21C300D065F4 /* imageoverlayarrow2ndpagev1.png */; };
@@ -155,6 +155,8 @@
 		23E28F2216FBA0D500CE97C9 /* topbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbar.png; sourceTree = "<group>"; };
 		23E28F2416FBA30700CE97C9 /* 2ndpagebottombarup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2ndpagebottombarup.png; sourceTree = "<group>"; };
 		23E28F2616FBA67C00CE97C9 /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer.png; sourceTree = "<group>"; };
+		23E5FEDD1718B22900E3F9A8 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
+		23E5FEDE1718B22900E3F9A8 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
 		23FF257116D72AB200900166 /* Chipmunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chipmunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FF257416D72AB200900166 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		23FF257616D72AB200900166 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -191,8 +193,6 @@
 		8E7BDE7D16DA15D000B67749 /* FSNData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNData.m; sourceTree = "<group>"; };
 		8E7BDE8216DA15F600B67749 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		8E7BDE8316DA15F600B67749 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
-		8E86EC01170AB13E006591F8 /* SwipableImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipableImageView.h; sourceTree = "<group>"; };
-		8E86EC02170AB13E006591F8 /* SwipableImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipableImageView.m; sourceTree = "<group>"; };
 		8EF3579816DD2F470069ADB0 /* RotatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingImageView.h; sourceTree = "<group>"; };
 		8EF3579916DD2F470069ADB0 /* RotatingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingImageView.m; sourceTree = "<group>"; };
 		8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2ndpagebottombar.png; sourceTree = "<group>"; };
@@ -242,6 +242,15 @@
 			path = "New white design";
 			sourceTree = "<group>";
 		};
+		23E5FEDC1718B22900E3F9A8 /* Blur Library */ = {
+			isa = PBXGroup;
+			children = (
+				23E5FEDD1718B22900E3F9A8 /* UIImage+StackBlur.h */,
+				23E5FEDE1718B22900E3F9A8 /* UIImage+StackBlur.m */,
+			);
+			path = "Blur Library";
+			sourceTree = "<group>";
+		};
 		23FF256816D72AB200900166 = {
 			isa = PBXGroup;
 			children = (
@@ -279,11 +288,10 @@
 		23FF257A16D72AB200900166 /* Chipmunk */ = {
 			isa = PBXGroup;
 			children = (
+				23E5FEDC1718B22900E3F9A8 /* Blur Library */,
 				8E7BDE8116DA15E200B67749 /* 3rdPartyCode */,
 				23FF258316D72AB200900166 /* AppDelegate.h */,
 				23FF258416D72AB200900166 /* AppDelegate.m */,
-				8E86EC01170AB13E006591F8 /* SwipableImageView.h */,
-				8E86EC02170AB13E006591F8 /* SwipableImageView.m */,
 				23FF258C16D72AB200900166 /* MainStoryboard.storyboard */,
 				8EFA15D816FA22C300D065F4 /* ActivitySelectionController.h */,
 				8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */,
@@ -576,7 +584,7 @@
 				23BF0D8C16E57205007526F1 /* WebViewController.m in Sources */,
 				2320316E16F2B91100C902AB /* ActivityViewController.m in Sources */,
 				8EFA15DA16FA22C300D065F4 /* ActivitySelectionController.m in Sources */,
-				8E86EC03170AB13E006591F8 /* SwipableImageView.m in Sources */,
+				23E5FEDF1718B22900E3F9A8 /* UIImage+StackBlur.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
