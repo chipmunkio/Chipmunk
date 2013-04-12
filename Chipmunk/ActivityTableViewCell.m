@@ -39,6 +39,7 @@
     atvc.imageview.backgroundColor = [UIColor blackColor];
     [ActivityTableViewCell roundImageViewCorners:atvc.imageview];
     
+    atvc.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return atvc;
 }

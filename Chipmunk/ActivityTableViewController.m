@@ -9,6 +9,7 @@
 #import "ActivityTableViewController.h"
 #import "ActivityTableViewCell.h"
 #import "DatabaseManager.h"
+#import "ActivitySelectionController.h"
 
 @interface ActivityTableViewController () 
 
@@ -44,6 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableView.hidden = YES;
+    self.view.backgroundColor = [UIColor lightGrayColor];
     [self setupTableView];
 	// Do any additional setup after loading the view.
 }
@@ -64,6 +67,11 @@
     
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator   = NO;
+    
+    UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 38, 38)];
+    back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
+    [self.view addSubview:back];
+    [back addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,9 +119,9 @@
             }
             if(imgData) {
                 self.imgDataSource[i] = imgData;
-                if(i == 0) {
+                dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
-                }
+                });
             }
         }
     });
@@ -128,14 +136,19 @@
 //*********************************************************
 
 // use this to reload any part of the UI
-- (void)updateUI {
-    
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ActivitySelectionController* selection = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"selectionController"];
+    
+    // give the view the item
+    NSMutableDictionary* item = [self.dataSource[indexPath.row] mutableCopy];
+    item[@"imageData"] = self.imgDataSource[indexPath.row];
+    selection.item = item;
+    [self.navigationController pushViewController:selection animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    self.tableView.hidden = (self.dataSource.count == 0);
     return self.dataSource.count;
 }
 
@@ -151,12 +164,11 @@
     }
     UIImage* image;
     if(![self.imgDataSource[indexPath.row] isMemberOfClass:[NSNull class]]) {
-        NSLog(@"Set image");
         image = [UIImage imageWithData:self.imgDataSource[indexPath.row]];
     } else {
-        NSLog(@"didnt set image");
         // add an activity indicator on top of where the image should be
-        image = [[UIImage alloc] init];
+        // or a default image saying that there is not image
+        image = [UIImage imageNamed:@"leopard.jpeg"];
     }
     cell.imageview.image = image;
     

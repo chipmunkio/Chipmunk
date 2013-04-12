@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIView *progressBarGrey;
 @property (weak, nonatomic) IBOutlet UIView *progressBarBlue;
 
+@property (nonatomic,strong) NSDictionary* item;
 
 
 

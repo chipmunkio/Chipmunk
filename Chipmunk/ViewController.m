@@ -243,10 +243,11 @@
     unsigned int totalMins = [self getTotalMinutes];
 
     if(totalMins > 0) {
-        ActivitySelectionController* asc = [self.storyboard instantiateViewControllerWithIdentifier:@"selectionController"];
-        [asc getActivites:totalMins];
-        [self.navigationController pushViewController:asc animated:YES];
-        
+        ActivityTableViewController* atvc = [ActivityTableViewController activityTableWithMinutes:totalMins
+                                                                                  currentLocation:[ChipmunkUtils getCurrentLocation]
+                                                                                       wantOnline:0
+                                                                                      wantOutside:0];
+        [self.navigationController pushViewController:atvc animated:YES];
         
     } else {
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

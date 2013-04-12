@@ -25,6 +25,7 @@
 @synthesize webView = _webView;
 @synthesize dbManager = _dbManager;
 @synthesize dataSource = _dataSource;
+@synthesize item = _item;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,24 +40,8 @@
 {
     [super viewDidLoad];
     self.barUp = 1;
-    self.seconds = 60;
-    NSString *time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
-    if(self.mins == 0)
-    {
-        time = [NSString stringWithFormat:@"%i:%i0", self.hours, self.mins];
-    }
-    else if(self.mins < 10 && self.mins > 0)
-    {
-        time = [NSString stringWithFormat:@"%i:0%i", self.hours, self.mins];
-    }
-    [self.timerLabel setText:[NSString stringWithFormat:@"%@", time]];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval: 60.0 target:self selector:@selector(updateTimer) userInfo:nil repeats: YES];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target:self selector:@selector(updateTimerImage) userInfo:nil repeats: YES];
-
-   
     [self setupUI];
-    
-
+    [self updateUI];
 	// Do any additional setup after loading the view.
 }
 
@@ -67,12 +52,13 @@
     // the image is always put behind it so the webview can slide on top of it
     [self addSlidingWebView];
     [self addSwipeImageView];
-    [self drawNavigationBar];
     [self.view insertSubview:self.bottomBar aboveSubview:self.webView];
     [self.view insertSubview:self.progressBarBlue aboveSubview:self.webView];
     [self.view insertSubview:self.progressBarGrey aboveSubview:self.webView];
-
-
+    UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 38, 38)];
+    back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
+    [self.view addSubview:back];
+    [back addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 // added sliding to name because addWebView is already a function
@@ -230,65 +216,21 @@
     }
     
     // begin loading the images and the web content to fill the data
-    [self downloadContentForItems];
     [self updateUI];
 }
 
-- (void)downloadContentForItems {
-    dispatch_queue_t queue = dispatch_queue_create("download.content.spare", nil);
-    dispatch_async(queue, ^{
-        BOOL isRetina = [[NSUserDefaults standardUserDefaults] boolForKey:@"isRetina"];
-        NSString* imgType = isRetina ? @"retina" : @"regular";
-        for(int i = 0; i < self.dataSource.count; i++) {
-            NSDictionary* item = self.dataSource[i];
-            NSData* imgData;
-            if([item[@"image"] isMemberOfClass:[NSNull class]]) {
-                imgData = nil;
-            } else {
-                imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item[@"image"][imgType]]];
-            }
-            if(imgData) {
-                self.imgDataSource[i] = imgData;
-                if(i == 0) {
-                    [self updateUI];
-                }
-            }
-        }
-    });
-}
 
-- (DatabaseManager*)dbManager {
-    if(!_dbManager) {
-        _dbManager = [[DatabaseManager alloc] init];
-        _dbManager.delegate = self;
-    }
-    return _dbManager;
-}
-
-- (NSMutableArray*)imgDataSource {
-    if(!_imgDataSource) {
-        _imgDataSource = [[NSMutableArray alloc] init];
-    }
-    return _imgDataSource;
-}
 
     // take whatever is at the front and display it
 - (void)updateUI {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if([self.dataSource count] > 0) {
-            if(self.imgDataSource.count > 0 && self.imgDataSource[0] != [NSNull null]) {
-                //[av stopAnimating];
-                self.imageView.image = [UIImage imageWithData:self.imgDataSource[0]];
-                UIImage *blurredImage =[self.imageView.image stackBlur:7.0];
-                self.imageView.image = blurredImage;
-        }
-    }
-    });
-    if(self.dataSource.count > 0) {
-        NSDictionary* item = self.dataSource[0];
+    if(self.item) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(self.item && ![self.item[@"imageData"] isMemberOfClass:[NSNull class]])
+                self.imageView.image = [[UIImage imageWithData:self.item[@"imageData"]] stackBlur:7.0];
+        });
         [self.webView stopLoading];
-        if([item[@"item_type"] isEqualToString:@"Link"]) {
-            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
+        if([self.item[@"item_type"] isEqualToString:@"Link"]) {
+            [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
         } else {
             // do stuff for the venue
         }
@@ -311,40 +253,10 @@
 }
 
 - (IBAction)back:(id)sender {
+    [self.webView stopLoading];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)updateTimer{
-    
-    self.mins--;
-    self.seconds = 60;
-    NSString *time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
-    if(self.mins < 0 && self.hours > 0)
-    {
-        self.hours--;
-        self.mins = 59;
-    }
-    else if(self.mins == 0)
-    {
-        time = [NSString stringWithFormat:@"%i:%i0", self.hours, self.mins];
-    }
-    else if(self.mins < 10 && self.mins > 0)
-    {
-        time = [NSString stringWithFormat:@"%i:0%i", self.hours, self.mins];
-    }
-    else if( self.mins == 0 && self.hours == 0){
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Free time spent!" message:@"You have spent all your free time! We hope you used it wisely!" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [alert show];
-        [self.timer invalidate];
-        self.timer = nil;
-    }
-    else{
-        time = [NSString stringWithFormat:@"%i:%i", self.hours, self.mins];
-    }
-    [self.timerLabel setText:[NSString stringWithFormat:@"%@", time]];
-
-
-}
 
 -(void)updateTimerImage{
     
@@ -411,31 +323,7 @@
 
 }
 
--(void)drawNavigationBar
-{
- 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-    self.navigationBar.tintColor = [ChipmunkUtils chipmunkColor];
-    
-    CALayer *capa = self.navigationBar.layer;
-    
-    
-    
-    //Round
-    CGRect bounds = capa.bounds;
-    bounds.size.height += 10.0f;    //I'm reserving enough room for the shadow
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bounds
-                                                   byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
-                                                         cornerRadii:CGSizeMake(5.0, 5.0)];
-    
-    CAShapeLayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.frame = bounds;
-    maskLayer.path = maskPath.CGPath;
-    
-    [capa addSublayer:maskLayer];
-    capa.mask = maskLayer;
 
-}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     [self.navigationController popViewControllerAnimated:YES];
