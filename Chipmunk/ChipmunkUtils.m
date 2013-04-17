@@ -7,6 +7,7 @@
 //
 
 #import "ChipmunkUtils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation ChipmunkUtils
 
@@ -20,6 +21,25 @@
 + (CLLocation*)getCurrentLocation {
     AppDelegate* del = [[UIApplication sharedApplication] delegate];
     return del.locationManager.location;
+}
+
+
++ (void)roundView:(UIView*)view withCorners:(UIRectCorner)corners andRadius:(CGFloat)radius {
+    
+    CALayer *capa = view.layer;
+    
+    //Round
+    CGRect bounds = capa.bounds;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bounds
+                                                   byRoundingCorners:corners
+                                                         cornerRadii:CGSizeMake(radius, radius)];
+    
+    CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.frame = bounds;
+    maskLayer.path = maskPath.CGPath;
+    
+    [capa addSublayer:maskLayer];
+    capa.mask = maskLayer;
 }
 
 

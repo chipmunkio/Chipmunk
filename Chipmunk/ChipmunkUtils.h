@@ -14,5 +14,6 @@
 + (UIColor*)chipmunkColor;
 + (UIColor*)tableColor;
 + (CLLocation*)getCurrentLocation;
++ (void)roundView:(UIView*)view withCorners:(UIRectCorner)corners andRadius:(CGFloat)radius;
     
 @end

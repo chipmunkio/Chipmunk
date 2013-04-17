@@ -12,9 +12,10 @@
 
 
 @property (nonatomic,strong) UIImageView* imageview;
+@property (nonatomic,strong) UILabel* label;
 
 
-+ (ActivityTableViewCell*)activityCell:(NSDictionary*)item;
-
-
++ (ActivityTableViewCell*)activityCell;
+- (void)addTextToCell:(NSString*)text;
+    
 @end

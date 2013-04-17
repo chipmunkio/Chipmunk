@@ -10,6 +10,7 @@
 #import "ActivityTableViewCell.h"
 #import "DatabaseManager.h"
 #import "ActivitySelectionController.h"
+#import "ChipmunkUtils.h"
 
 @interface ActivityTableViewController () 
 
@@ -45,15 +46,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.hidden = YES;
     self.view.backgroundColor = [UIColor lightGrayColor];
-    [self setupTableView];
+    [self setupUI];
 	// Do any additional setup after loading the view.
+}
+
+- (void)setupUI {
+    [self.view setBackgroundColor:[UIColor blackColor]];
+    [self setupTableView];
+    
+    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [navbar setTintColor:[ChipmunkUtils chipmunkColor]];
+    [navbar setBackgroundColor:[UIColor blackColor]];
+    [ChipmunkUtils roundView:navbar withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10.0];
+    [self.view addSubview:navbar];
+    
+    UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(10, 3, 38, 38)];
+    back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
+    [self.view addSubview:back];
+    [back addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
 }
 
 
 - (void)setupTableView {
-    CGRect frame = CGRectMake(0, 0, 320, 568);
+    self.tableView.hidden = YES;
+    self.tableView.separatorColor = [UIColor clearColor];
+    CGRect frame = CGRectMake(0, 44, 320, 524);
     self.tableView = [[UITableView alloc] initWithFrame:frame];
     self.tableView.transform = CGAffineTransformMakeRotation(-M_PI_2);
     self.tableView.frame = frame;
@@ -68,10 +89,7 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator   = NO;
     
-    UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 38, 38)];
-    back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
-    [self.view addSubview:back];
-    [back addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -148,7 +166,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    self.tableView.hidden = (self.dataSource.count == 0);
     return self.dataSource.count;
 }
 
@@ -160,7 +177,7 @@
     // should create a custom cellview
     ActivityTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"activityCell"];
     if(cell == nil) {
-        cell = [ActivityTableViewCell activityCell:nil];
+        cell = [ActivityTableViewCell activityCell];
     }
     UIImage* image;
     if(![self.imgDataSource[indexPath.row] isMemberOfClass:[NSNull class]]) {
@@ -171,6 +188,7 @@
         image = [UIImage imageNamed:@"leopard.jpeg"];
     }
     cell.imageview.image = image;
+    [cell addTextToCell:self.dataSource[indexPath.row][@"name"]];
     
     
     return cell;
@@ -213,14 +231,6 @@
     }
     return _dbManager;
 }
-
-
-
-
-
-
-
-
 
 
 

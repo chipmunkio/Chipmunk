@@ -52,6 +52,7 @@
     // the image is always put behind it so the webview can slide on top of it
     [self addSlidingWebView];
     [self addSwipeImageView];
+    self.webView.scrollView.showsVerticalScrollIndicator = NO;
     [self.view insertSubview:self.bottomBar aboveSubview:self.webView];
     [self.view insertSubview:self.progressBarBlue aboveSubview:self.webView];
     [self.view insertSubview:self.progressBarGrey aboveSubview:self.webView];
