@@ -146,6 +146,9 @@
     // DELME - this is hardcoded for the iPhone 5, MAKE DYNAMIC
     // also change the height when it is not full
     
+    CGPoint offset = self.webView.scrollView.contentOffset;
+    [self.webView.scrollView setContentOffset:offset animated:NO];
+    
     CGFloat viewHeight = 504;
     CGRect newFrame;
     CGRect newProgressGreyFrame;
