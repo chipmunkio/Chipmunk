@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "ChipmunkUtils.h"
 #import "ActivityTableViewController.h"
-#import "ActivityViewController.h"
 #import "ActivitySelectionController.h"
 #import <QuartzCore/QuartzCore.h>
 
