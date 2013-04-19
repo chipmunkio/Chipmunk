@@ -33,7 +33,6 @@
 		2345962916DA08580088312D /* bottombarwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345962816DA08580088312D /* bottombarwhite.png */; };
 		2345962B16DA085D0088312D /* toporangebar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345962A16DA085D0088312D /* toporangebar.png */; };
 		2345963C16DA1FB00088312D /* whitelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345963B16DA1FB00088312D /* whitelogo.png */; };
-		2345963E16DA20B40088312D /* orangelogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345963D16DA20B40088312D /* orangelogo.png */; };
 		2345964016DA21F30088312D /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345963F16DA21F30088312D /* arrow.png */; };
 		2345964216DA25270088312D /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345964116DA25270088312D /* Icon.png */; };
 		2345964816DA2A4C0088312D /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345964716DA2A4B0088312D /* book.png */; };
@@ -41,7 +40,6 @@
 		23541C9B16EBD267006FB980 /* sliderbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 23541C9A16EBD267006FB980 /* sliderbar.png */; };
 		23558B9C16EBD05300EC41FC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23FF258A16D72AB200900166 /* Default-568h@2x.png */; };
 		235E41D716DDC59F0051B3BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E41D616DDC59F0051B3BB /* AudioToolbox.framework */; };
-		235E41DB16DDC7CE0051B3BB /* tick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 235E41DA16DDC7CE0051B3BB /* tick.wav */; };
 		23906CC116F03B2C00668F4B /* howmuchfreetime?v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */; };
 		23A12EAA16EA498A00D5CA5B /* sliderbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A12EA916EA498A00D5CA5B /* sliderbackground.png */; };
 		23D43FC01707658400E9E76D /* refresh boston.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FBF1707658400E9E76D /* refresh boston.png */; };
@@ -77,8 +75,9 @@
 		8E3E5FC51721D7DE00237025 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E5FC11721D7DE00237025 /* README.md */; };
 		8E3E5FC61721D7DE00237025 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E5FC21721D7DE00237025 /* release_notes.md */; };
 		8E3E5FC81721D86800237025 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3E5FC71721D86800237025 /* libz.dylib */; };
+		8E3E5FCA1721E57100237025 /* spareIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E5FC91721E57100237025 /* spareIcon.png */; };
+		8E3E5FCC1721E57400237025 /* spareIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E5FCB1721E57400237025 /* spareIcon@2x.png */; };
 		8E571C0116D9CA2800F946A3 /* ChipmunkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */; };
-		8E571C0516D9CBAA00F946A3 /* ringcitybitch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */; };
 		8E7026CB1707BB9D0084C33F /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7026CA1707BB9D0084C33F /* circle.png */; };
 		8E7026CD1707BBFB0084C33F /* newWheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E7026CC1707BBFB0084C33F /* newWheel.png */; };
 		8E7BDE7E16DA15D000B67749 /* FSN_categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7916DA15D000B67749 /* FSN_categories.m */; };
@@ -131,14 +130,12 @@
 		2345962816DA08580088312D /* bottombarwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottombarwhite.png; sourceTree = "<group>"; };
 		2345962A16DA085D0088312D /* toporangebar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toporangebar.png; sourceTree = "<group>"; };
 		2345963B16DA1FB00088312D /* whitelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitelogo.png; sourceTree = "<group>"; };
-		2345963D16DA20B40088312D /* orangelogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangelogo.png; sourceTree = "<group>"; };
 		2345963F16DA21F30088312D /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		2345964116DA25270088312D /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		2345964716DA2A4B0088312D /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		2345964916DA2A550088312D /* venue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = venue.png; sourceTree = "<group>"; };
 		23541C9A16EBD267006FB980 /* sliderbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderbar.png; sourceTree = "<group>"; };
 		235E41D616DDC59F0051B3BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		235E41DA16DDC7CE0051B3BB /* tick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tick.wav; sourceTree = "<group>"; };
 		23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "howmuchfreetime?v1.png"; sourceTree = "<group>"; };
 		23A12EA916EA498A00D5CA5B /* sliderbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderbackground.png; sourceTree = "<group>"; };
 		23D43FBF1707658400E9E76D /* refresh boston.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh boston.png"; sourceTree = "<group>"; };
@@ -182,9 +179,10 @@
 		8E3E5FC21721D7DE00237025 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		8E3E5FC31721D7DE00237025 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		8E3E5FC71721D86800237025 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		8E3E5FC91721E57100237025 /* spareIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spareIcon.png; sourceTree = "<group>"; };
+		8E3E5FCB1721E57400237025 /* spareIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spareIcon@2x.png"; sourceTree = "<group>"; };
 		8E571BFF16D9CA2800F946A3 /* ChipmunkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipmunkUtils.h; sourceTree = "<group>"; };
 		8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipmunkUtils.m; sourceTree = "<group>"; };
-		8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ringcitybitch.png; sourceTree = "<group>"; };
 		8E7026CA1707BB9D0084C33F /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 		8E7026CC1707BBFB0084C33F /* newWheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newWheel.png; sourceTree = "<group>"; };
 		8E7BDE7816DA15D000B67749 /* FSN_categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSN_categories.h; sourceTree = "<group>"; };
@@ -260,6 +258,8 @@
 		23FF256816D72AB200900166 = {
 			isa = PBXGroup;
 			children = (
+				8E3E5FCB1721E57400237025 /* spareIcon@2x.png */,
+				8E3E5FC91721E57100237025 /* spareIcon.png */,
 				8E3E5FC71721D86800237025 /* libz.dylib */,
 				23FF257A16D72AB200900166 /* Chipmunk */,
 				23FF259E16D72AB200900166 /* ChipmunkTests */,
@@ -333,7 +333,6 @@
 				23E28F2416FBA30700CE97C9 /* 2ndpagebottombarup.png */,
 				2318A76916EE9CD600EEBCBB /* sparebackgroundv1.png */,
 				23A12EA916EA498A00D5CA5B /* sliderbackground.png */,
-				235E41DA16DDC7CE0051B3BB /* tick.wav */,
 				2345963B16DA1FB00088312D /* whitelogo.png */,
 				231258FD16FC3AF200DA6A68 /* timer1.png */,
 				231258FE16FC3AF200DA6A68 /* timer2.png */,
@@ -350,7 +349,6 @@
 				2345964916DA2A550088312D /* venue.png */,
 				23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */,
 				23E28F2216FBA0D500CE97C9 /* topbar.png */,
-				8E571C0416D9CBAA00F946A3 /* ringcitybitch.png */,
 				23541C9A16EBD267006FB980 /* sliderbar.png */,
 				23FF257C16D72AB200900166 /* Chipmunk-Info.plist */,
 				23286F9D16D99D25005E16FA /* Circle2.png */,
@@ -360,7 +358,6 @@
 				2318A76D16EEA14D00EEBCBB /* BottomBar.png */,
 				2345962816DA08580088312D /* bottombarwhite.png */,
 				2345964716DA2A4B0088312D /* book.png */,
-				2345963D16DA20B40088312D /* orangelogo.png */,
 				2345963F16DA21F30088312D /* arrow.png */,
 				2345962416DA08450088312D /* leopard.jpeg */,
 				2345962616DA084F0088312D /* videoicon.png */,
@@ -503,18 +500,15 @@
 				23FF258716D72AB200900166 /* Default.png in Resources */,
 				23FF258E16D72AB200900166 /* MainStoryboard.storyboard in Resources */,
 				23286F9E16D99D25005E16FA /* Circle2.png in Resources */,
-				8E571C0516D9CBAA00F946A3 /* ringcitybitch.png in Resources */,
 				2345962516DA08450088312D /* leopard.jpeg in Resources */,
 				2345962716DA084F0088312D /* videoicon.png in Resources */,
 				2345962916DA08580088312D /* bottombarwhite.png in Resources */,
 				2345962B16DA085D0088312D /* toporangebar.png in Resources */,
 				2345963C16DA1FB00088312D /* whitelogo.png in Resources */,
-				2345963E16DA20B40088312D /* orangelogo.png in Resources */,
 				2345964016DA21F30088312D /* arrow.png in Resources */,
 				2345964216DA25270088312D /* Icon.png in Resources */,
 				2345964816DA2A4C0088312D /* book.png in Resources */,
 				2345964A16DA2A550088312D /* venue.png in Resources */,
-				235E41DB16DDC7CE0051B3BB /* tick.wav in Resources */,
 				23A12EAA16EA498A00D5CA5B /* sliderbackground.png in Resources */,
 				23558B9C16EBD05300EC41FC /* Default-568h@2x.png in Resources */,
 				23541C9B16EBD267006FB980 /* sliderbar.png in Resources */,
@@ -552,6 +546,8 @@
 				8E7026CD1707BBFB0084C33F /* newWheel.png in Resources */,
 				8E3E5FC51721D7DE00237025 /* README.md in Resources */,
 				8E3E5FC61721D7DE00237025 /* release_notes.md in Resources */,
+				8E3E5FCA1721E57100237025 /* spareIcon.png in Resources */,
+				8E3E5FCC1721E57400237025 /* spareIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,8 +714,8 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
@@ -729,8 +725,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -739,8 +735,8 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
@@ -750,8 +746,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74399B08-FCDA-481B-A6CD-2512AC24ACC1";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
