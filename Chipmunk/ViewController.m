@@ -14,6 +14,13 @@
 
 #define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
 
+typedef enum SliderLocation {
+    SliderLocationInside = 0,
+    SliderLocationBoth,
+    SliderLocationOutside
+} SliderLocation;
+
+
 @interface ViewController ()
 
 @property float currentAngle;
@@ -21,9 +28,6 @@
 @end
 
 @implementation ViewController
-
-//@synthesize tickURLRef;
-//@synthesize tickObject;
 
 
 - (void)viewDidLoad
@@ -64,27 +68,8 @@
     [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateNormal];
     [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateHighlighted];
 
-
-/*
-  
- 
-    // SOUND STUFF
-	CFBundleRef mainBundle = CFBundleGetMainBundle ();
-    tickURLRef  =	CFBundleCopyResourceURL (
-												 mainBundle,
-												 CFSTR ("tick"),
-												 CFSTR ("wav"),
-												 NULL
-												 );
-	
-	AudioServicesCreateSystemSoundID (
-									  tickURLRef,
-									  &tickObject
-									  );
-*/
-
     self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-        self.rotatingTimeSelect.delegate = self;
+    self.rotatingTimeSelect.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -120,8 +105,6 @@
 
 - (void)moveHourLabel:(int)hour Minute:(int)minute;
 {
-    //NSLog(@"here");
-    
 
     if(hour == 0 && self.hourIsShowing == 1)
     {
@@ -205,39 +188,6 @@
 }
 
 
-/*
-- (IBAction)getActivitiesTable:(id)sender
-{
-    unsigned int minutes = [self getTotalMinutes];
-    if(minutes > 0) {
-        ActivityTableViewController* atvc = [self.storyboard instantiateViewControllerWithIdentifier:@"activityTable"];
-        
-        atvc.minutes = minutes;
-        atvc.online = 1;
-        atvc.outside = 1;
-        
-        //ActivityViewController* avc = [self.storyboard instantiateViewControllerWithIdentifier:@"activityView"];
-        
-        //avc.minutes = minutes;
-        //avc.online = 1;
-        //avc.outside = 1;
-        if(self.slider.value == 1)
-        {
-            atvc.outside = 0;
-        }
-        else if(self.slider.value == 3){
-            atvc.online = 0;
-        }
-        [self.navigationController pushViewController:atvc animated:YES];
-    } else {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-    self.glowing = 0;
-
-}
-*/
-
 - (IBAction)getActivitiesController:(id)sender {
     unsigned int totalMins = [self getTotalMinutes];
 
@@ -252,14 +202,8 @@
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
-    
-    
 }
 
-//-(void)setTickURLRef:(CFURLRef)tickURLRef
-//{
-  //  _tickURLRef = tickURLRef;
-//}
 
 - (IBAction)sliderTouch:(id)sender {
     
@@ -322,57 +266,61 @@
 // slideTo* functions are al exactly the same
 // create one function that all of these call with args
 
--(void)slideToOnline{
+-(void)slideToOnline {
+    [self slideToLocation:self.insideLabel
+              secondLabel:self.outsideLabel
+               thirdLabel:self.bothLabel];
     
-    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
-    NSString *proxReg = [fontArr objectAtIndex:0];
-    NSString *proxBold = [fontArr objectAtIndex:1];
-
-    [self.slider setValue:floorf(self.slider.minimumValue) animated:YES];
-    
-    [self.insideLabel setFont:[UIFont fontWithName:proxBold size:23]];
-    [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-    [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
-    
-    [self.view sendSubviewToBack:self.onlineButton];
-    [self.view bringSubviewToFront:self.bothButton];
-    [self.view bringSubviewToFront:self.outsideButton];
-
 }
 
 -(void)slideToBoth{
-    
-    NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
-    NSString *proxReg = [fontArr objectAtIndex:0];
-    NSString *proxBold = [fontArr objectAtIndex:1];
-    
-    [self.slider setValue:floorf(2) animated:YES];
-    [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-    [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-    [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
-    
-    [self.view bringSubviewToFront:self.onlineButton];
-    [self.view sendSubviewToBack:self.bothButton];
-    [self.view bringSubviewToFront:self.outsideButton];
+    [self slideToLocation:self.bothLabel
+              secondLabel:self.outsideLabel
+               thirdLabel:self.insideLabel];
 }
 
 -(void)slideToOutside{
+    [self slideToLocation:self.outsideLabel
+              secondLabel:self.bothLabel
+               thirdLabel:self.insideLabel];
+}
+
+
+- (void)slideToLocation:(UILabel*)selected secondLabel:(UILabel*)second thirdLabel:(UILabel*)third {
     
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
     NSString *proxReg = [fontArr objectAtIndex:0];
     NSString *proxBold = [fontArr objectAtIndex:1];
+    float sliderValue;
+    SliderLocation loc = SliderLocationBoth;
+    if(selected == self.bothLabel) {
+        sliderValue = 2.0;
+    } else if(selected == self.insideLabel) {
+        loc = SliderLocationInside;
+        sliderValue = self.slider.minimumValue;
+    } else {
+        loc = SliderLocationOutside;
+        sliderValue = self.slider.maximumValue;
+    }
     
-    [self.slider setValue:floorf(self.slider.maximumValue) animated:YES];
-    [self.insideLabel setFont:[UIFont fontWithName:proxReg size:17]];
-    [self.outsideLabel setFont:[UIFont fontWithName:proxBold size:23]];
-    [self.bothLabel setFont:[UIFont fontWithName:proxReg size:17]];
-    
-    [self.view bringSubviewToFront:self.onlineButton];
-    [self.view bringSubviewToFront:self.bothButton];
-    [self.view sendSubviewToBack:self.outsideButton];
+    // bring the buttons forward or move them back
+    NSArray* buttons = [NSArray arrayWithObjects:self.onlineButton, self.bothButton, self.outsideButton, nil];
+    for(int i = 0; i < buttons.count; i++) {
+        if(loc == i) {
+            [self.view sendSubviewToBack:buttons[i]];
+        } else {
+            [self.view bringSubviewToFront:buttons[i]];
+        }
+    }
+    NSLog(@"SliderValue: %f", sliderValue);
+    [self.slider setValue:floorf(sliderValue) animated:YES];
+    [selected    setFont:[UIFont fontWithName:proxBold size:23]];
+    [second      setFont:[UIFont fontWithName:proxReg size:17]];
+    [third       setFont:[UIFont fontWithName:proxReg size:17]];
 }
 
--(void) glowTime{
+
+-(void)glowTime{
     
     CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     pulseAnimation.duration = .5;
