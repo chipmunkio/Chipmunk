@@ -33,10 +33,25 @@
     // check the item type. if involves geo add a map instead of an image
     int deltaX = 20;
     int deltaY = 80;
-    atvc.imageview = [[UIImageView alloc] initWithFrame:CGRectMake(deltaX, (3*deltaY)/4, screenWidth - (2 * deltaX), screenHeight - (2 * deltaY) - 20)];//remove 20 for the status bar
-    [atvc addSubview:atvc.imageview];
+    int imgX = deltaX;
+    int imgY = (3*deltaY)/4;
+    int imgWidth = screenWidth - (2 * deltaX);
+    int imgHeight = screenHeight - (2 * deltaY) - 20;
+    int shadowDrop = 3;
+    UIView* shadow = [[UIView alloc] initWithFrame:CGRectMake(imgX - shadowDrop, imgY - shadowDrop, imgWidth + (2*shadowDrop), imgHeight + (2*shadowDrop))];
+    shadow.layer.masksToBounds = NO;
+    shadow.layer.shadowColor = [UIColor blackColor].CGColor;
+    shadow.layer.shadowOffset = CGSizeMake(20.0f, 20.0f);
+    shadow.layer.shadowRadius = 40.0f;
+    shadow.layer.shadowOpacity = 0.4f;
+    shadow.layer.shadowPath = [UIBezierPath bezierPathWithRect:shadow.bounds].CGPath;
+    [ChipmunkUtils roundView:shadow withCorners:UIRectCornerAllCorners andRadius:20.0];
+    
+    [atvc addSubview:shadow];
+    atvc.imageview = [[UIImageView alloc] initWithFrame:CGRectMake(shadowDrop, shadowDrop, imgWidth, imgHeight)];
     atvc.transform = CGAffineTransformMakeRotation(M_PI_2);
     atvc.frame = frame;
+    [shadow addSubview:atvc.imageview];
     
     atvc.imageview.backgroundColor = [UIColor blackColor];
     
@@ -54,6 +69,7 @@
     atvc.label.textColor = [UIColor whiteColor];
     atvc.label.textAlignment = NSTextAlignmentLeft;
     
+   
     [atvc.imageview addSubview:atvc.label];
 
     [ChipmunkUtils roundView:atvc.imageview withCorners:UIRectCornerAllCorners andRadius:20.0];

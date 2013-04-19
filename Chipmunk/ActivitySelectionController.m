@@ -224,8 +224,6 @@
 }
 
 
-
-    // take whatever is at the front and display it
 - (void)updateUI {
     if(self.item) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -233,7 +231,7 @@
                 self.imageView.image = [[UIImage imageWithData:self.item[@"imageData"]] stackBlur:7.0];
         });
         [self.webView stopLoading];
-        if([self.item[@"item_type"] isEqualToString:@"Link"]) {
+        if([self.item[@"item_type"] isEqualToString:@"Link"] && self.item[@"url"]) {
             [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.item[@"url"]] cachePolicy:NSURLCacheStorageAllowed timeoutInterval:300]];
         } else {
             // do stuff for the venue

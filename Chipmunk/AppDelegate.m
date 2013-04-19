@@ -14,6 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // testflight integration
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]]; //remove this one out of beta -> Apple wont allow it in the full app
+    [TestFlight takeOff:@"04c914dd-7506-4f2f-90c6-1b1291085c3e"];
+    
     // Override point for customization after application launch.
     [self.locationManager startUpdatingLocation];
     
