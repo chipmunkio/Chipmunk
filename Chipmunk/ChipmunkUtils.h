@@ -15,5 +15,9 @@
 + (UIColor*)tableColor;
 + (CLLocation*)getCurrentLocation;
 + (void)roundView:(UIView*)view withCorners:(UIRectCorner)corners andRadius:(CGFloat)radius;
++ (CGFloat)screenWidth;
++ (CGFloat)screenHeight;
++ (CGSize)screenSize;
++ (void)addShadowToView:(UIView*)view;
     
 @end

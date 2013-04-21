@@ -48,7 +48,6 @@
 // should add the image and webview to the view
 // later on also add the navigation bar stuff here as well
 - (void)setupUI {
-    // must add webview first
     // the image is always put behind it so the webview can slide on top of it
     [self addSlidingWebView];
     [self addSwipeImageView];
@@ -64,10 +63,8 @@
 
 // added sliding to name because addWebView is already a function
 - (void)addSlidingWebView {
-    
-    // the numbers for the frame are the same number as when we used the storyboard
-    // DELME -- for 3.5 inch screen should change this
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 220, 320, 504)];
+    // 64 is the size of the status bar and the navigation bar
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 220, 320, [ChipmunkUtils screenHeight] - 64)];
     [self.view addSubview:self.webView];
     [self addIndicatorToWebView];
     self.webView.delegate = self;
@@ -149,7 +146,7 @@
     CGPoint offset = self.webView.scrollView.contentOffset;
     [self.webView.scrollView setContentOffset:offset animated:NO];
     
-    CGFloat viewHeight = 504;
+    CGFloat viewHeight = [ChipmunkUtils screenHeight] - 64;
     CGRect newFrame;
     CGRect newProgressGreyFrame;
     CGRect newProgressBlueFrame;
@@ -168,9 +165,8 @@
         newFrame = CGRectMake(0, 44, 320, viewHeight);
         newProgressGreyFrame = CGRectMake(0, 44, 320, 6);
         newProgressBlueFrame = CGRectMake(0, 44, (self.progressBarBlue.bounds.size.width), 6);
-
-
     }
+    
     self.contentIsShown = !self.contentIsShown;
     
     [UIView animateWithDuration:0.4 animations:^{

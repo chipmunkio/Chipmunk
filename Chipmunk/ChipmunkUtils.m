@@ -23,6 +23,18 @@
     return del.locationManager.location;
 }
 
++ (CGFloat)screenWidth {
+    return [ChipmunkUtils screenSize].width;
+}
+
++ (CGFloat)screenHeight {
+    return [ChipmunkUtils screenSize].height;
+}
+
++ (CGSize)screenSize {
+    return [[UIScreen mainScreen] bounds].size;
+}
+
 
 + (void)roundView:(UIView*)view withCorners:(UIRectCorner)corners andRadius:(CGFloat)radius {
     
@@ -42,5 +54,14 @@
     capa.mask = maskLayer;
 }
 
++ (void)addShadowToView:(UIView*)view {
+    CALayer *layer = view.layer;
+    layer.shadowOffset = CGSizeMake(1, 1);
+    layer.shadowColor = [[UIColor blackColor] CGColor];
+    layer.shadowRadius = 4.0f;
+    layer.shadowOpacity = 0.80f;
+    layer.shadowPath = [[UIBezierPath bezierPathWithRect:layer.bounds] CGPath];
+    
+}
 
 @end
