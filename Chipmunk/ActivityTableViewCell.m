@@ -52,11 +52,16 @@
     // the label so it sits at the bottom
     atvc.label = [[UILabel alloc] initWithFrame:atvc.imageview.frame];
     [atvc.label setBackgroundColor:[UIColor clearColor]];
-    atvc.label.center = CGPointMake(atvc.imageview.frame.size.width/2, atvc.imageview.frame.size.height - atvc.label.frame.size.height/2);
+    atvc.label.center = CGPointMake(atvc.imageview.frame.size.width/2, (atvc.label.frame.size.height)/2);
     atvc.label.numberOfLines = 0;
     
-    atvc.label.font = [UIFont fontWithName:@"Arial" size:28];
+    atvc.label.font = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:30];
     atvc.label.textColor = [UIColor whiteColor];
+    atvc.label.shadowColor = [UIColor blackColor];
+   atvc.label.shadowOffset = CGSizeMake(0.0, 1.0);
+    atvc.label.layer.shouldRasterize = YES;
+    
+
     atvc.label.textAlignment = NSTextAlignmentLeft;
     
    
@@ -69,8 +74,8 @@
 }
 
 - (void)addTextToCell:(NSString*)text {
-    //self.label.text = text;
-    // whenever the text changes change the location so it sits on the bottom of the view
+    self.label.text = text;
+
 }
 
     
