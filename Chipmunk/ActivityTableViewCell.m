@@ -37,9 +37,10 @@
     int imgY = (3*deltaY)/4;
     int imgWidth = screenWidth - (2 * deltaX);
     int imgHeight = screenHeight - (2 * deltaY) - 20;
-    atvc.imageview = [[UIImageView alloc] initWithFrame:CGRectMake(imgX, imgY, imgWidth, imgHeight)];
+    UIView* shadowView = [[UIView alloc] initWithFrame:CGRectMake(imgX, imgY, imgWidth, imgHeight)];
+    [ChipmunkUtils addShadowToView:shadowView];
+    atvc.imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, imgWidth, imgHeight)];
     
-    [atvc addSubview:atvc.imageview];
     atvc.transform = CGAffineTransformMakeRotation(M_PI_2);
     atvc.frame = frame;
     
@@ -58,14 +59,16 @@
     atvc.label.font = [UIFont fontWithName:@"TimesNewRomanPS-BoldMT" size:30];
     atvc.label.textColor = [UIColor whiteColor];
     atvc.label.shadowColor = [UIColor blackColor];
-   atvc.label.shadowOffset = CGSizeMake(0.0, 1.0);
+    atvc.label.shadowOffset = CGSizeMake(0.0, 1.0);
     atvc.label.layer.shouldRasterize = YES;
     
 
     atvc.label.textAlignment = NSTextAlignmentLeft;
     
-   
+    [shadowView addSubview:atvc.imageview];
     [atvc.imageview addSubview:atvc.label];
+    [atvc addSubview:shadowView];
+
 
     [ChipmunkUtils roundView:atvc.imageview withCorners:UIRectCornerAllCorners andRadius:20.0];
 //    [ChipmunkUtils addShadowToView:atvc.imageview];
