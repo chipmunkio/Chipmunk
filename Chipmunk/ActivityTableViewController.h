@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray* dataSource;
 @property (nonatomic, strong) NSMutableArray* imgDataSource;
 @property (nonatomic, strong) DatabaseManager* dbManager;
+@property (nonatomic) unsigned long imagesDownloaded;
 
 
 + (ActivityTableViewController*)activityTableWithMinutes:(unsigned int)mins

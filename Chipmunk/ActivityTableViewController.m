@@ -22,6 +22,7 @@
 @synthesize dataSource    = _dataSource;
 @synthesize dbManager     = _dbManager;
 @synthesize imgDataSource = _imgDataSource;
+@synthesize imagesDownloaded = _imagesDownloaded;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +39,7 @@
                                              wantOutside:(unsigned int)outside {
     
     ActivityTableViewController* atvc = [[ActivityTableViewController alloc] init];
+    atvc.imagesDownloaded = 0;
     // as soon as the table is created begin loading the data
     [atvc.dbManager getActivities:mins currentLocation:geo wantOnline:online wantOutside:outside];
     return atvc;    
@@ -106,7 +108,6 @@
 - (void)receivedActivities:(NSArray *)activities {
     // should notify the user that there are new objects to look at if they are not already at the end?
     NSLog(@"GOT THAT DATAAAAAAAAAAAAAAAA!!!!!!!!!!!!!!!");
-    NSLog(@"%@", activities[0]);
     unsigned int offset = self.dataSource.count;
     [self.dataSource addObjectsFromArray:activities];
     [self downloadContentFromOffset:offset];
@@ -141,6 +142,7 @@
                     [self.tableView reloadData];
                 });
             }
+            self.imagesDownloaded++;
         }
     });
 }
@@ -180,12 +182,20 @@
         cell = [ActivityTableViewCell activityCell];
     }
     UIImage* image;
+    if(self.imagesDownloaded < indexPath.row + 1) {
+        UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc] initWithFrame:cell.imageview.frame];
+        indicator.tag = 9;
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        [cell.imageview addSubview:indicator];
+        [indicator startAnimating];
+    } else {
+        UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[cell viewWithTag:9];
+        [indicator stopAnimating];
+    }
     if(![self.imgDataSource[indexPath.row] isMemberOfClass:[NSNull class]]) {
         image = [UIImage imageWithData:self.imgDataSource[indexPath.row]];
     } else {
-        // add an activity indicator on top of where the image should be
-        // or a default image saying that there is not image
-        image = [UIImage imageNamed:@"leopard.jpeg"];
+        image = nil;
     }
     cell.imageview.image = image;
     [cell addTextToCell:self.dataSource[indexPath.row][@"name"]];
