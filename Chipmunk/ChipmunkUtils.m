@@ -55,13 +55,17 @@
 }
 
 + (void)addShadowToView:(UIView*)view {
+    
     CALayer *layer = view.layer;
     layer.shadowOffset = CGSizeMake(1, 1);
     layer.shadowColor = [[UIColor blackColor] CGColor];
     layer.shadowRadius = 4.0f;
     layer.shadowOpacity = 0.80f;
-    layer.shadowPath = [[UIBezierPath bezierPathWithRect:layer.bounds] CGPath];
     
+    CGSize size = view.frame.size;
+    CGRect ovalRect = CGRectMake(0.0f, size.height + 5, size.width - 10, 15);
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:ovalRect];
+    layer.shadowPath = path.CGPath;
 }
 
 @end
