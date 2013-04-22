@@ -90,6 +90,7 @@
     
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator   = NO;
+    self.tableView.separatorColor = [UIColor clearColor];
     
     
 }
