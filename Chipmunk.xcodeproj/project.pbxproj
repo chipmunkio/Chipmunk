@@ -42,6 +42,7 @@
 		235E41D716DDC59F0051B3BB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 235E41D616DDC59F0051B3BB /* AudioToolbox.framework */; };
 		23906CC116F03B2C00668F4B /* howmuchfreetime?v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */; };
 		23A12EAA16EA498A00D5CA5B /* sliderbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 23A12EA916EA498A00D5CA5B /* sliderbackground.png */; };
+		23ADC4271726DA6D00FDD77E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23ADC4261726DA6D00FDD77E /* Crashlytics.framework */; };
 		23D43FC01707658400E9E76D /* refresh boston.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FBF1707658400E9E76D /* refresh boston.png */; };
 		23D43FC717076DD200E9E76D /* buttonslider.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC217076DD200E9E76D /* buttonslider.png */; };
 		23D43FC917076DD200E9E76D /* howmuchfreetime.png in Resources */ = {isa = PBXBuildFile; fileRef = 23D43FC417076DD200E9E76D /* howmuchfreetime.png */; };
@@ -138,6 +139,7 @@
 		235E41D616DDC59F0051B3BB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		23906CC016F03B2C00668F4B /* howmuchfreetime?v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "howmuchfreetime?v1.png"; sourceTree = "<group>"; };
 		23A12EA916EA498A00D5CA5B /* sliderbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderbackground.png; sourceTree = "<group>"; };
+		23ADC4261726DA6D00FDD77E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		23D43FBF1707658400E9E76D /* refresh boston.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh boston.png"; sourceTree = "<group>"; };
 		23D43FC217076DD200E9E76D /* buttonslider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonslider.png; sourceTree = "<group>"; };
 		23D43FC417076DD200E9E76D /* howmuchfreetime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = howmuchfreetime.png; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				23FF257716D72AB200900166 /* Foundation.framework in Frameworks */,
 				23FF257916D72AB200900166 /* CoreGraphics.framework in Frameworks */,
 				8E3E5FC41721D7DE00237025 /* libTestFlight.a in Frameworks */,
+				23ADC4271726DA6D00FDD77E /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +283,7 @@
 		23FF257316D72AB200900166 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				23ADC4261726DA6D00FDD77E /* Crashlytics.framework */,
 				8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */,
 				23267CE616F69A45005B5BDA /* MessageUI.framework */,
 				235E41D616DDC59F0051B3BB /* AudioToolbox.framework */,
@@ -435,6 +439,7 @@
 				23FF256D16D72AB200900166 /* Sources */,
 				23FF256E16D72AB200900166 /* Frameworks */,
 				23FF256F16D72AB200900166 /* Resources */,
+				23ADC4251726DA4600FDD77E /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -564,6 +569,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		23ADC4251726DA4600FDD77E /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 091a4baa8905651db15d358449cc69ef24a9d492";
+		};
 		23FF259516D72AB200900166 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -716,6 +735,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";
@@ -737,6 +760,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
 				INFOPLIST_FILE = "Chipmunk/Chipmunk-Info.plist";

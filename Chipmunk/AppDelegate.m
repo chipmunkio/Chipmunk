@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -17,6 +18,8 @@
     // testflight integration
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]]; //remove this one out of beta -> Apple wont allow it in the full app
     [TestFlight takeOff:@"04c914dd-7506-4f2f-90c6-1b1291085c3e"];
+    [Crashlytics startWithAPIKey:@"091a4baa8905651db15d358449cc69ef24a9d492"];
+    NSLog(@"hi");
     
     // Override point for customization after application launch.
     [self.locationManager startUpdatingLocation];
@@ -26,7 +29,8 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     result = CGSizeMake(result.width * scale, result.height * scale);
     [[NSUserDefaults standardUserDefaults] setBool:(result.height > 480) forKey:@"isRetina"];
-    
+    [Crashlytics startWithAPIKey:@"091a4baa8905651db15d358449cc69ef24a9d492"];
+
     return YES;
 }
 							
