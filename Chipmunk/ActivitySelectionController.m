@@ -9,7 +9,7 @@
 #import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIImage+Gaussian.h"
 
 @interface ActivitySelectionController () <UIAlertViewDelegate>
 
@@ -224,7 +224,14 @@
     if(self.item) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if(self.item && ![self.item[@"imageData"] isMemberOfClass:[NSNull class]])
-                self.imageView.image = [[UIImage imageWithData:self.item[@"imageData"]] stackBlur:7.0];
+            {
+            
+                UIImage *unBlurred = [UIImage imageWithData:self.item[@"imageData"]];
+                [unBlurred normalize];
+                UIImage *blurred = [unBlurred stackBlur:7.0];
+                self.imageView.image = blurred;
+            }
+
         });
         [self.webView stopLoading];
         if([self.item[@"item_type"] isEqualToString:@"Link"] && self.item[@"url"]) {

@@ -28,6 +28,8 @@
 		23286F9E16D99D25005E16FA /* Circle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23286F9D16D99D25005E16FA /* Circle2.png */; };
 		23286FB316D9FC5B005E16FA /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */; };
 		23286FB416D9FC5B005E16FA /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */; };
+		2336F655173969F40077C892 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2336F654173969F40077C892 /* Accelerate.framework */; };
+		2336F65E17396D3F0077C892 /* UIImage+Gaussian.m in Sources */ = {isa = PBXBuildFile; fileRef = 2336F65D17396D3F0077C892 /* UIImage+Gaussian.m */; };
 		2345962516DA08450088312D /* leopard.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2345962416DA08450088312D /* leopard.jpeg */; };
 		2345962716DA084F0088312D /* videoicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345962616DA084F0088312D /* videoicon.png */; };
 		2345962916DA08580088312D /* bottombarwhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345962816DA08580088312D /* bottombarwhite.png */; };
@@ -126,6 +128,9 @@
 		23286F9D16D99D25005E16FA /* Circle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle2.png; sourceTree = "<group>"; };
 		23286FB116D9FC5B005E16FA /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
 		23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
+		2336F654173969F40077C892 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Accelerate.framework; sourceTree = "<group>"; };
+		2336F65C17396D3F0077C892 /* UIImage+Gaussian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Gaussian.h"; sourceTree = "<group>"; };
+		2336F65D17396D3F0077C892 /* UIImage+Gaussian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Gaussian.m"; sourceTree = "<group>"; };
 		2345962416DA08450088312D /* leopard.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leopard.jpeg; sourceTree = "<group>"; };
 		2345962616DA084F0088312D /* videoicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videoicon.png; sourceTree = "<group>"; };
 		2345962816DA08580088312D /* bottombarwhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottombarwhite.png; sourceTree = "<group>"; };
@@ -220,6 +225,7 @@
 				23FF257916D72AB200900166 /* CoreGraphics.framework in Frameworks */,
 				8E3E5FC41721D7DE00237025 /* libTestFlight.a in Frameworks */,
 				23ADC4271726DA6D00FDD77E /* Crashlytics.framework in Frameworks */,
+				2336F655173969F40077C892 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +289,7 @@
 		23FF257316D72AB200900166 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2336F654173969F40077C892 /* Accelerate.framework */,
 				23ADC4261726DA6D00FDD77E /* Crashlytics.framework */,
 				8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */,
 				23267CE616F69A45005B5BDA /* MessageUI.framework */,
@@ -422,6 +429,8 @@
 		8E7BDE8116DA15E200B67749 /* 3rdPartyCode */ = {
 			isa = PBXGroup;
 			children = (
+				2336F65C17396D3F0077C892 /* UIImage+Gaussian.h */,
+				2336F65D17396D3F0077C892 /* UIImage+Gaussian.m */,
 				23E5FEDC1718B22900E3F9A8 /* Blur Library */,
 				8E3E5FBF1721D7DE00237025 /* TestFlightSDK1.2.4 */,
 				8E7BDE7716DA15D000B67749 /* FSNetworking */,
@@ -616,6 +625,7 @@
 				8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */,
 				8EFA15DA16FA22C300D065F4 /* ActivitySelectionController.m in Sources */,
 				23E5FEDF1718B22900E3F9A8 /* UIImage+StackBlur.m in Sources */,
+				2336F65E17396D3F0077C892 /* UIImage+Gaussian.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,8 +743,8 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -748,8 +758,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -758,8 +768,8 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -773,8 +783,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
