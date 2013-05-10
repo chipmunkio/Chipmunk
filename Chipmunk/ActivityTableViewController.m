@@ -11,6 +11,7 @@
 #import "DatabaseManager.h"
 #import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ActivityTableViewController () 
 
@@ -82,8 +83,16 @@
     self.tableView.frame = frame;
     [self.view addSubview:self.tableView];
     self.tableView.pagingEnabled = YES;
-    
-    self.tableView.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    [ChipmunkUtils roundView:self.view withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10];
+    UIView* gradientView = [[UIView alloc] initWithFrame:self.tableView.frame];
+    CAGradientLayer* gradient = [CAGradientLayer layer];
+    gradient.frame = gradientView.frame;
+    UIColor* clearBlack = [UIColor colorWithWhite:0 alpha:0.4];
+    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)clearBlack.CGColor];
+    [gradientView.layer insertSublayer:gradient atIndex:0];
+    [self.view insertSubview:gradientView belowSubview:self.tableView];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -91,8 +100,6 @@
     self.tableView.showsHorizontalScrollIndicator = NO;
     self.tableView.showsVerticalScrollIndicator   = NO;
     self.tableView.separatorColor = [UIColor clearColor];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
