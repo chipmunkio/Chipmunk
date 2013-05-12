@@ -85,9 +85,7 @@ typedef enum SliderLocation {
     [self.freeTime setHidden:YES];
     self.minuteSymbol.hidden = false;
     self.minLabel.hidden = false;
-    if(![self.minLabel.text isEqualToString:[NSString stringWithFormat:@"%d",minute]])
-    {
-           
+    if(![self.minLabel.text isEqualToString:[NSString stringWithFormat:@"%d",minute]]) {
         self.hourLabel.text = [NSString stringWithFormat:@"%d",hour];
         self.minLabel.text = [NSString stringWithFormat:@"%d",minute];
         [self moveHourLabel:hour Minute:minute];

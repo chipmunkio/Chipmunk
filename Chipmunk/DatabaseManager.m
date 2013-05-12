@@ -30,6 +30,7 @@
             NSArray* items = [response valueForKey:@"item"];
             [self.delegate receivedActivities:items];
         } else {
+            [self.delegate receivedActivities:[NSArray array]];
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"check your internet connection" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }

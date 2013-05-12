@@ -13,7 +13,14 @@
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface ActivityTableViewController () 
+@interface ActivityTableViewController ()
+
+@property (nonatomic) unsigned int minutes;
+@property (nonatomic) unsigned int online;
+@property (nonatomic) unsigned int outside;
+@property (nonatomic, strong) NSDate* initialLoad;
+@property (nonatomic) BOOL canGetMore;
+@property (nonatomic) BOOL isLoading;
 
 @end
 
@@ -24,6 +31,13 @@
 @synthesize dbManager     = _dbManager;
 @synthesize imgDataSource = _imgDataSource;
 @synthesize imagesDownloaded = _imagesDownloaded;
+@synthesize downloadedItems  = _downloadedItems;
+@synthesize minutes = _minutes;
+@synthesize online  = _online;
+@synthesize outside = _outside;
+@synthesize initialLoad = _initialLoad;
+@synthesize canGetMore = _canGetMore;
+@synthesize isLoading = _isLoading;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +54,13 @@
                                              wantOutside:(unsigned int)outside {
     
     ActivityTableViewController* atvc = [[ActivityTableViewController alloc] init];
+    atvc.minutes = mins;
+    atvc.outside = outside;
+    atvc.online  = online;
+    atvc.initialLoad = [NSDate date];
     atvc.imagesDownloaded = 0;
+    atvc.canGetMore = YES;
+    NSLog(@"minutes: %i", mins);
     // as soon as the table is created begin loading the data
     [atvc.dbManager getActivities:mins currentLocation:geo wantOnline:online wantOutside:outside];
     return atvc;    
@@ -61,6 +81,11 @@
     UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [navbar setTintColor:[ChipmunkUtils chipmunkColor]];
     [navbar setBackgroundColor:[UIColor blackColor]];
+    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc] initWithFrame:navbar.frame];
+    indicator.tag = 7;
+    [navbar addSubview:indicator];
+    [indicator startAnimating];
+    
     [ChipmunkUtils roundView:navbar withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10.0];
     [self.view addSubview:navbar];
     
@@ -114,12 +139,29 @@
 //*********************************************************
 
 - (void)receivedActivities:(NSArray *)activities {
+    self.canGetMore = (activities.count > 0);
     // should notify the user that there are new objects to look at if they are not already at the end?
-    NSLog(@"GOT THAT DATAAAAAAAAAAAAAAAA!!!!!!!!!!!!!!!");
     unsigned int offset = self.dataSource.count;
-    [self.dataSource addObjectsFromArray:activities];
+    for(NSDictionary* item in activities) {
+        NSLog(@"Item ID: %@", item[@"id"]);
+        if(![self.downloadedItems containsObject:item[@"id"]]) {
+            [self.dataSource addObject:item];
+            [self.downloadedItems addObject:item[@"id"]];
+        }
+    }
     [self downloadContentFromOffset:offset];
+    UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[self.view viewWithTag:7];
+    [indicator stopAnimating];
     [self.tableView reloadData];
+}
+
+- (void)loadData {
+    UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[self.view viewWithTag:7];
+    [indicator startAnimating];
+    [self.dbManager getActivities:(self.minutes + [self.initialLoad timeIntervalSinceNow]) //time interval returns a negative time (Seconds)
+                      currentLocation:[ChipmunkUtils getCurrentLocation]
+                           wantOnline:self.online
+                      wantOutside:self.outside];
 }
 
 // downloads the other content needed for the cell such as image text etc....
@@ -207,7 +249,16 @@
     }
     cell.imageview.image = image;
     [cell addTextToCell:self.dataSource[indexPath.row][@"name"]];
-    
+   
+    // If they have gone through 75 percent of the items get more
+    if(indexPath.row == self.dataSource.count - 1 && self.canGetMore) {
+        NSLog(@"getting more stuff-----------------------------------------------------------");
+        NSLog(@"TIME: %f", (self.minutes + [self.initialLoad timeIntervalSinceNow]/60));
+        [self.dbManager getActivities:(self.minutes + [self.initialLoad timeIntervalSinceNow]) //time interval returns a negative time (Seconds)
+                      currentLocation:[ChipmunkUtils getCurrentLocation]
+                           wantOnline:self.online
+                          wantOutside:self.outside];
+    }
     
     return cell;
 }
@@ -249,6 +300,25 @@
     }
     return _dbManager;
 }
+
+- (NSMutableSet*)downloadedItems {
+    if(!_downloadedItems) {
+        _downloadedItems = [NSMutableSet set];
+    }
+    return _downloadedItems;
+}
+
+- (void)setIsLoading:(BOOL)isLoading {
+    
+    
+    
+    
+    
+}
+
+
+
+
 
 
 
