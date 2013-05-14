@@ -59,6 +59,16 @@
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
     [self.view addSubview:back];
     [back addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton* share = [[UIButton alloc] initWithFrame:CGRectMake([ChipmunkUtils screenWidth] - 45, 5, 40, 40)];
+    share.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"share"]];
+    [self.view addSubview:share];
+    [share addTarget:self action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
+}
+
+// right now just save to Pocket,
+- (void)share {
+    [ChipmunkUtils saveURLToPocket:self.item[@"url"]];
 }
 
 // added sliding to name because addWebView is already a function

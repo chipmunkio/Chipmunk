@@ -91,6 +91,8 @@
             [alert show];
         } else {
             NSLog(@"Saved the url to pocket");
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Saved URL to Pocket" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
         }
     }];
 }

@@ -31,7 +31,6 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     result = CGSizeMake(result.width * scale, result.height * scale);
     [[NSUserDefaults standardUserDefaults] setBool:(result.height > 480) forKey:@"isRetina"];
-    [Crashlytics startWithAPIKey:@"091a4baa8905651db15d358449cc69ef24a9d492"];
 
     return YES;
 }
