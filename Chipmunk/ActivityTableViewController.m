@@ -84,7 +84,7 @@
     [navbar addSubview:indicator];
     [indicator startAnimating];
     
-    [ChipmunkUtils roundView:navbar withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10.0];
+    //[ChipmunkUtils roundView:navbar withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10.0];
     [self.view addSubview:navbar];
     
     UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(10, 3, 38, 38)];
@@ -108,7 +108,7 @@
     self.tableView.pagingEnabled = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    [ChipmunkUtils roundView:self.view withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10];
+    //[ChipmunkUtils roundView:self.view withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10];
     UIView* gradientView = [[UIView alloc] initWithFrame:self.tableView.frame];
     CAGradientLayer* gradient = [CAGradientLayer layer];
     gradient.frame = gradientView.frame;

@@ -70,6 +70,20 @@
 }
 
 + (void)saveURLToPocket:(NSString*)url {
+    // force them to login before trying to save anything to pocket
+    if(![PocketAPI sharedAPI].loggedIn) {
+        [[PocketAPI sharedAPI] loginWithHandler:^(PocketAPI *api, NSError *error) {
+            if(!error && api.loggedIn) {
+                [self saveURLToPocket:url];
+            } else {
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not login to Pocket" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }];
+        return;
+    }
+    
+    
     [[PocketAPI sharedAPI] saveURL:[NSURL URLWithString:url] handler:^(PocketAPI *api, NSURL *url, NSError *error) {
         if(error) {
             NSLog(@"Pocket Error: %@", error);
