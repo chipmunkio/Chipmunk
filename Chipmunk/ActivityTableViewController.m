@@ -60,7 +60,6 @@
     atvc.initialLoad = [NSDate date];
     atvc.imagesDownloaded = 0;
     atvc.canGetMore = YES;
-    NSLog(@"minutes: %i", mins);
     // as soon as the table is created begin loading the data
     [atvc.dbManager getActivities:mins currentLocation:geo wantOnline:online wantOutside:outside];
     return atvc;    
@@ -69,7 +68,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor lightGrayColor];
     [self setupUI];
 	// Do any additional setup after loading the view.
 }
@@ -108,7 +106,7 @@
     self.tableView.frame = frame;
     [self.view addSubview:self.tableView];
     self.tableView.pagingEnabled = YES;
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     [ChipmunkUtils roundView:self.view withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10];
     UIView* gradientView = [[UIView alloc] initWithFrame:self.tableView.frame];
@@ -159,8 +157,8 @@
     UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[self.view viewWithTag:7];
     [indicator startAnimating];
     [self.dbManager getActivities:(self.minutes + [self.initialLoad timeIntervalSinceNow]) //time interval returns a negative time (Seconds)
-                      currentLocation:[ChipmunkUtils getCurrentLocation]
-                           wantOnline:self.online
+                  currentLocation:[ChipmunkUtils getCurrentLocation]
+                       wantOnline:self.online
                       wantOutside:self.outside];
 }
 
@@ -253,11 +251,7 @@
     // If they have gone through 75 percent of the items get more
     if(indexPath.row == self.dataSource.count - 1 && self.canGetMore) {
         NSLog(@"getting more stuff-----------------------------------------------------------");
-        NSLog(@"TIME: %f", (self.minutes + [self.initialLoad timeIntervalSinceNow]/60));
-        [self.dbManager getActivities:(self.minutes + [self.initialLoad timeIntervalSinceNow]) //time interval returns a negative time (Seconds)
-                      currentLocation:[ChipmunkUtils getCurrentLocation]
-                           wantOnline:self.online
-                          wantOutside:self.outside];
+        [self loadData];
     }
     
     return cell;
@@ -266,7 +260,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [[UIScreen mainScreen] bounds].size.width;
 }
-
 
 
 
@@ -307,20 +300,6 @@
     }
     return _downloadedItems;
 }
-
-- (void)setIsLoading:(BOOL)isLoading {
-    
-    
-    
-    
-    
-}
-
-
-
-
-
-
 
 
 @end

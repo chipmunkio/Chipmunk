@@ -7,6 +7,7 @@
 //
 
 #import "ChipmunkUtils.h"
+#import "PocketAPI.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ChipmunkUtils
@@ -67,5 +68,24 @@
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:ovalRect];
     layer.shadowPath = path.CGPath;
 }
+
++ (void)saveURLToPocket:(NSString*)url {
+    [[PocketAPI sharedAPI] saveURL:[NSURL URLWithString:url] handler:^(PocketAPI *api, NSURL *url, NSError *error) {
+        if(error) {
+            NSLog(@"Pocket Error: %@", error);
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not save to Pocket" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        } else {
+            NSLog(@"Saved the url to pocket");
+        }
+    }];
+}
+
++ (void)logoutPocket {
+    [[PocketAPI sharedAPI] logout];
+}
+
+
+
 
 @end
