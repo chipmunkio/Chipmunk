@@ -13,13 +13,15 @@
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
 
+const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop from trying to get more
+
 @interface ActivityTableViewController ()
 
 @property (nonatomic) unsigned int minutes;
 @property (nonatomic) unsigned int online;
 @property (nonatomic) unsigned int outside;
 @property (nonatomic, strong) NSDate* initialLoad;
-@property (nonatomic) BOOL canGetMore;
+@property (nonatomic) unsigned int loadAttempts; //the times trying to load more data from the server
 @property (nonatomic) BOOL isLoading;
 
 @end
@@ -36,8 +38,8 @@
 @synthesize online  = _online;
 @synthesize outside = _outside;
 @synthesize initialLoad = _initialLoad;
-@synthesize canGetMore = _canGetMore;
 @synthesize isLoading = _isLoading;
+@synthesize loadAttempts = _loadAttempts;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,7 +61,7 @@
     atvc.online  = online;
     atvc.initialLoad = [NSDate date];
     atvc.imagesDownloaded = 0;
-    atvc.canGetMore = YES;
+    atvc.loadAttempts = 0;
     // as soon as the table is created begin loading the data
     [atvc.dbManager getActivities:mins currentLocation:geo wantOnline:online wantOutside:outside];
     return atvc;    
@@ -141,15 +143,26 @@
 //*********************************************************
 //*********************************************************
 
+// really shouldnt be called activities 
 - (void)receivedActivities:(NSArray *)activities {
-    self.canGetMore = (activities.count > 0);
+    unsigned int newActivities = 0;
     // should notify the user that there are new objects to look at if they are not already at the end?
     unsigned int offset = self.dataSource.count;
     for(NSDictionary* item in activities) {
         if(![self.downloadedItems containsObject:item[@"id"]]) {
             [self.dataSource addObject:item];
             [self.downloadedItems addObject:item[@"id"]];
+            newActivities += 1;
         }
+    }
+    if(newActivities == 0) {
+        self.loadAttempts += 1;
+        if(self.loadAttempts == MAX_LOAD_ATTEMPTS - 1 && self.minutes > 1) {
+            NSLog(@"changing minutes YOLO");
+            self.minutes -= 1;
+        }
+    } else {
+        self.loadAttempts = 0;
     }
     [self downloadContentFromOffset:offset];
     UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[self.view viewWithTag:7];
@@ -160,7 +173,10 @@
 - (void)loadData {
     UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[self.view viewWithTag:7];
     [indicator startAnimating];
-    [self.dbManager getActivities:(self.minutes + [self.initialLoad timeIntervalSinceNow]) //time interval returns a negative time (Seconds)
+    int mins = (int)(self.minutes + [self.initialLoad timeIntervalSinceNow]/60);//time interval returns a negative time (Seconds)
+    if(mins < 0) mins = 0;
+    NSLog(@"MINS: %i", mins);
+    [self.dbManager getActivities:mins
                   currentLocation:[ChipmunkUtils getCurrentLocation]
                        wantOnline:self.online
                       wantOutside:self.outside];
@@ -252,9 +268,8 @@
     cell.imageview.image = image;
     [cell addTextToCell:self.dataSource[indexPath.row][@"name"]];
    
-    // If they have gone through 75 percent of the items get more
-    if(indexPath.row == self.dataSource.count - 1 && self.canGetMore) {
-        NSLog(@"getting more stuff-----------------------------------------------------------");
+    if(indexPath.row == self.dataSource.count - 1 && self.loadAttempts <= MAX_LOAD_ATTEMPTS) {
+        NSLog(@"GETTING MORE------------------------");
         [self loadData];
     }
     
@@ -304,6 +319,7 @@
     }
     return _downloadedItems;
 }
+
 
 
 @end

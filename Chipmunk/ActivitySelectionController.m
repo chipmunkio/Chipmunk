@@ -90,21 +90,15 @@
 
 - (void)addImageView {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 220)];
-    UIImageView* nonBlurred = [[UIImageView alloc] initWithFrame:self.imageView.frame];
-    [self.view insertSubview:nonBlurred belowSubview:self.webView];
-    [nonBlurred addSubview:self.imageView];
+    [self.view insertSubview:self.imageView belowSubview:self.webView];
     self.imageView.userInteractionEnabled = YES;
     if(self.item) {
         if(self.item && ![self.item[@"imageData"] isMemberOfClass:[NSNull class]]) {
-            UIImage *unBlurred = [UIImage imageWithData:self.item[@"imageData"]];
-            [unBlurred normalize];
-            nonBlurred.image = unBlurred;
+            UIImage *unBlurred = [[UIImage imageWithData:self.item[@"imageData"]] normalize];
             UIImage *blurred = [unBlurred stackBlur:9.0];
             self.imageView.image = blurred;
-            self.imageView.alpha = 0;
         }
     }
-    
 }
 
 // add things here when there are more than just articles
@@ -160,17 +154,15 @@
     CGRect newFrame;
     CGRect newProgressGreyFrame;
     CGRect newProgressBlueFrame;
-    CGFloat imgAlpha = 0;
     CGFloat imgDeltaY = 80;
     
-    if(self.contentIsShown) {
+    if(self.contentIsShown) { 
         [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombarup.png"] forState:UIControlStateNormal];
         newFrame = CGRectMake(0, 220, 320, viewHeight);
         newProgressGreyFrame = CGRectMake(0, 220, 320, 6);
         newProgressBlueFrame = CGRectMake(0, 220, (self.progressBarBlue.bounds.size.width), 6);
 
     } else {
-        imgAlpha = 1;
         imgDeltaY = -imgDeltaY;
         [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombar.png"] forState:UIControlStateNormal];
         newFrame = CGRectMake(0, 44, 320, viewHeight);
@@ -179,13 +171,11 @@
     }
     
     self.contentIsShown = !self.contentIsShown;
-    UIView* clearImage = [self.imageView superview]; //the non blurry image behind imageview
     [UIView animateWithDuration:0.4 animations:^{
         self.webView.frame = newFrame;
         self.progressBarGrey.frame = newProgressGreyFrame;
         self.progressBarBlue.frame = newProgressBlueFrame;
-        self.imageView.alpha = imgAlpha;
-        clearImage.center = CGPointMake(clearImage.center.x, clearImage.center.y + imgDeltaY);
+        self.imageView.center = CGPointMake(self.imageView.center.x, self.imageView.center.y + imgDeltaY);
     }];
     
     self.webView.scrollView.scrollEnabled = self.contentIsShown;
