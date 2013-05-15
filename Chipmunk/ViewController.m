@@ -194,6 +194,7 @@ typedef enum SliderLocation {
                                                                                   currentLocation:[ChipmunkUtils getCurrentLocation]
                                                                                        wantOnline:0
                                                                                       wantOutside:0];
+        [ChipmunkUtils stopUpdatingLocation]; // stop updating
         [self.navigationController pushViewController:atvc animated:YES];
         
     } else {

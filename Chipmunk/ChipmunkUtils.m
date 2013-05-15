@@ -24,6 +24,16 @@
     return del.locationManager.location;
 }
 
++ (void)stopUpdatingLocation {
+    AppDelegate* del = [[UIApplication sharedApplication] delegate];
+    [del.locationManager stopUpdatingLocation];
+}
+
++ (void)startUpdatingLocation {
+    AppDelegate* del = [[UIApplication sharedApplication] delegate];
+    [del.locationManager startUpdatingLocation];
+}
+
 + (CGFloat)screenWidth {
     return [ChipmunkUtils screenSize].width;
 }

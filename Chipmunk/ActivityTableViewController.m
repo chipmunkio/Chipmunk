@@ -90,10 +90,15 @@
     UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(10, 3, 38, 38)];
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
     [self.view addSubview:back];
-    [back addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    [back addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+}
+
+- (void)goBack {
+    [ChipmunkUtils startUpdatingLocation];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
