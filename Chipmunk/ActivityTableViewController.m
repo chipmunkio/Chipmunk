@@ -146,7 +146,6 @@
     // should notify the user that there are new objects to look at if they are not already at the end?
     unsigned int offset = self.dataSource.count;
     for(NSDictionary* item in activities) {
-        NSLog(@"Item ID: %@", item[@"id"]);
         if(![self.downloadedItems containsObject:item[@"id"]]) {
             [self.dataSource addObject:item];
             [self.downloadedItems addObject:item[@"id"]];
