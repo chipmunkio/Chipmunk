@@ -233,8 +233,7 @@
 - (void)updateUI {
     if(self.item) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if(self.item && ![self.item[@"imageData"] isMemberOfClass:[NSNull class]])
-            {
+            if(self.item && ![self.item[@"imageData"] isMemberOfClass:[NSNull class]]) {
             
                 UIImage *unBlurred = [UIImage imageWithData:self.item[@"imageData"]];
                 [unBlurred normalize];
