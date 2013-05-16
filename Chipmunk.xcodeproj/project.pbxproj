@@ -96,6 +96,7 @@
 		8E7BDE8016DA15D000B67749 /* FSNData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7D16DA15D000B67749 /* FSNData.m */; };
 		8E7BDE8416DA15F600B67749 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE8316DA15F600B67749 /* DatabaseManager.m */; };
 		8E7BDE8516DA160300B67749 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE8316DA15F600B67749 /* DatabaseManager.m */; };
+		8E7D4720174593470048807F /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D471F174593470048807F /* MTStatusBarOverlay.m */; };
 		8EE5B0D01718C4BE00B311CA /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */; };
 		8EE5B0D11718C4C800B311CA /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */; };
 		8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3579916DD2F470069ADB0 /* RotatingImageView.m */; };
@@ -187,7 +188,7 @@
 		23FF25A216D72AB200900166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23FF25A416D72AB200900166 /* ChipmunkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChipmunkTests.h; sourceTree = "<group>"; };
 		23FF25A516D72AB200900166 /* ChipmunkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChipmunkTests.m; sourceTree = "<group>"; };
-		8E04282D17444C6300ED9C6A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		8E04282D17444C6300ED9C6A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8E3E36551742DBF4003D5284 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8E3E36B61742E080003D5284 /* PocketAPI+NSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PocketAPI+NSOperation.h"; sourceTree = "<group>"; };
@@ -221,6 +222,8 @@
 		8E7BDE7D16DA15D000B67749 /* FSNData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSNData.m; sourceTree = "<group>"; };
 		8E7BDE8216DA15F600B67749 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		8E7BDE8316DA15F600B67749 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		8E7D471E174593470048807F /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTStatusBarOverlay.h; sourceTree = "<group>"; };
+		8E7D471F174593470048807F /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
 		8EE5B0CF1718C4BE00B311CA /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		8EF3579816DD2F470069ADB0 /* RotatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingImageView.h; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 		8E7BDE8116DA15E200B67749 /* 3rdPartyCode */ = {
 			isa = PBXGroup;
 			children = (
+				8E7D471E174593470048807F /* MTStatusBarOverlay.h */,
+				8E7D471F174593470048807F /* MTStatusBarOverlay.m */,
 				2336F65C17396D3F0077C892 /* UIImage+Gaussian.h */,
 				2336F65D17396D3F0077C892 /* UIImage+Gaussian.m */,
 				8E3E36B51742E080003D5284 /* SDK */,
@@ -684,6 +689,7 @@
 				8E3E36C11742E080003D5284 /* PocketAPILogin.m in Sources */,
 				8E3E36C21742E080003D5284 /* PocketAPIOperation.m in Sources */,
 				8E3E36C31742E080003D5284 /* SFHFKeychainUtils.m in Sources */,
+				8E7D4720174593470048807F /* MTStatusBarOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

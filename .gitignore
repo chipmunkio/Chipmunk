@@ -1,0 +1,9 @@
+# stuff xcode changes all the time
+
+*.DS_Store
+*.mode1v3
+*.pbxuser
+*.pbxproj
+*.xcuserstate
+*.xcbkptlist
+
