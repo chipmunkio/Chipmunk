@@ -21,7 +21,6 @@ const int MINUTES_IN_FULL_ROTATION = 45;
 
 @property (nonatomic) CGPoint beganTouchLocation;
 @property (nonatomic) float deltaAngle;
-@property (nonatomic) CGAffineTransform startTransform;
 @property (nonatomic) int fullRotations;
 
 @end
@@ -42,6 +41,9 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     return self;
 }
 
+
+
+
 //*********************************************************
 //*********************************************************
 #pragma mark - Touch Events
@@ -58,7 +60,6 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     float dx = touchCoor.x - self.center.x;
     float dy = touchCoor.y - self.center.y;
     self.deltaAngle = atan2(dy, dx);
-    self.startTransform = self.transform;
 }
 
 
@@ -93,9 +94,9 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     
     [self timeBasedOnRotations];
     if( (currentAngle < 0 && currentAngle > -1) && newAngle > 0) {
-        self.fullRotations++;
+        return;
     } else if( (currentAngle > 0 && currentAngle < 1) && newAngle < 0) {
-        self.fullRotations--;
+        return;
     }
     
     self.transform = CGAffineTransformMakeRotation(newAngle);
@@ -156,6 +157,5 @@ const int MINUTES_IN_FULL_ROTATION = 45;
 - (void)setFullRotations:(int)fullRotations {
     _fullRotations = (fullRotations < -1) ? -1 : fullRotations;
 }
-
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RotatingImageView.h"
+#import "RotatingView.h"
 #import "DatabaseManager.h"
 #include <AudioToolbox/AudioToolbox.h>
 
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *onlineButton;
 @property (weak, nonatomic) IBOutlet UIButton *bothButton;
 @property (weak, nonatomic) IBOutlet UIButton *outsideButton;
+@property (weak, nonatomic) IBOutlet RotatingView *circle;
 
 // for sound
 //@property (nonatomic) CFURLRef tickURLRef;
