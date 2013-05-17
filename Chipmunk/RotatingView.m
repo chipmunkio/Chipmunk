@@ -25,6 +25,7 @@ const int MINUTES_IN_ROTATION = 46;
 @property (nonatomic) float deltaAngle;
 @property (nonatomic) CGAffineTransform startTransform;
 @property (nonatomic, strong) RotatingImageView* rotate;
+@property (nonatomic) BOOL canRotate;
 
 @end
 
@@ -160,12 +161,28 @@ const int MINUTES_IN_ROTATION = 46;
     // find knob center using current angle
     // decided how close they must be to the knob
     // make sure this touch is within that radius of the center of the knob same way deciding if the gesture is valid
+    float viewCenterX   = self.bounds.size.width/2;
+    float viewCenterY   = self.bounds.size.height/2;
+    float knobDist = self.bounds.size.width/2 - RADIUS_DELTA - DYNAMIC_WIDTH/2;
+    float knobX = viewCenterX + knobDist * cos(self.currentAngle - M_PI/2);
+    float knobY = viewCenterY + knobDist * sin(self.currentAngle - M_PI/2);
+    
+    CGPoint loc = [[touches anyObject] locationInView:self];
+    float distance = sqrt(pow((knobX - loc.x),2) + pow((knobY - loc.y), 2));
+    
+    self.canRotate = (distance < 40);
+    
     
     [self.rotate touchesBegan:touches withEvent:event];
 }
 
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if(!self.canRotate) {
+        NSLog(@"CANT ROTATE");
+        return;
+    }
+        
     [self.rotate touchesMoved:touches withEvent:event];
     CALayer* layer = [self.rotate.layer presentationLayer];
     float angle = [[layer valueForKeyPath:@"transform.rotation"] floatValue];
@@ -212,6 +229,8 @@ const int MINUTES_IN_ROTATION = 46;
     int mins  = MINUTES_IN_ROTATION * (angle/360);
     return mins;
 }
+
+
 
 //*********************************************************
 //*********************************************************
