@@ -17,7 +17,7 @@
 const int RADIUS_DELTA = 10;
 // the thickness of the part that moves
 const int DYNAMIC_WIDTH = 20;
-const int MINUTES_IN_ROTATION = 121;
+const int MINUTES_IN_ROTATION = 46;
 
 @interface RotatingView ()
 
@@ -65,7 +65,7 @@ const int MINUTES_IN_ROTATION = 121;
     // the distance of this point from the center
     float dist = sqrt(pow((viewCenterX - loc.x),2) + pow((viewCenterY - loc.y), 2));
     // minus 5 to give some extra space by the knob
-    if(dist <= self.bounds.size.width/2 - RADIUS_DELTA - DYNAMIC_WIDTH - 5) {
+    if(dist <= self.bounds.size.width/2 - RADIUS_DELTA - DYNAMIC_WIDTH - 10) {
         NSLog(@"SELECTED");
         [self sendTimeToDelegateBasedOnAngle];
     }
@@ -174,11 +174,16 @@ const int MINUTES_IN_ROTATION = 121;
         angle += 360;
     }
     self.currentAngle = degreesToRadians(angle);
-    [self sendTimeToDelegateBasedOnAngle];
+    [self updateTime];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
+}
+
+- (void)updateTime {
+    unsigned int mins = [self totalMinutes];
+    self.time.text = [NSString stringWithFormat:@"%i",mins];
 }
 
 
@@ -198,7 +203,7 @@ const int MINUTES_IN_ROTATION = 121;
 
 - (void)sendTimeToDelegateBasedOnAngle {
     unsigned int mins = [self totalMinutes];
-    [self.delegate selectedHours:mins/60 Minutes:mins%60];
+    [self.delegate selectedTime:mins];
 }
 
 - (unsigned int)totalMinutes {

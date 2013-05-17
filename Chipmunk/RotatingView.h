@@ -10,7 +10,7 @@
 
 @protocol RotatingViewDelegate <NSObject>
 
-- (void)selectedHours:(unsigned int)hours Minutes:(unsigned int)mins;
+- (void)selectedTime:(unsigned int)mins;
 
 @end
 
@@ -18,5 +18,6 @@
 
 @property (nonatomic, strong) id <RotatingViewDelegate> delegate;
 @property (nonatomic) float currentAngle;
+@property (nonatomic, weak) IBOutlet UILabel* time;
     
 @end

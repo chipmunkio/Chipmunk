@@ -69,7 +69,7 @@ typedef enum SliderLocation {
     [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateHighlighted];
 
     self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-    self.rotatingTimeSelect.delegate = self;
+    self.circle.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -91,6 +91,22 @@ typedef enum SliderLocation {
         [self moveHourLabel:hour Minute:minute];
         //AudioServicesPlaySystemSound (tickObject); // plays sound
     }
+}
+
+- (void)selectedTime:(unsigned int)mins {
+    if(mins > 0) {
+        ActivityTableViewController* atvc = [ActivityTableViewController activityTableWithMinutes:mins
+                                                                                  currentLocation:[ChipmunkUtils getCurrentLocation]
+                                                                                       wantOnline:0
+                                                                                      wantOutside:0];
+        [ChipmunkUtils stopUpdatingLocation]; // stop updating
+        [self.navigationController pushViewController:atvc animated:YES];
+        
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 

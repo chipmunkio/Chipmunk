@@ -75,7 +75,7 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     float currentAngle = [[currentLayer valueForKeyPath:@"transform.rotation"] floatValue];
     //NSLog(@"Current angle: %f", currentAngle);
     
-    if([self calculateDistanceFromCenter:pt] < 110) {
+    if([self calculateDistanceFromCenter:pt] < 80) {
         NSLog(@"TOO CLOSE HOMIE. GET OUTA DERRRR");
         return;
     }

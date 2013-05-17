@@ -34,10 +34,20 @@
                             <view contentMode="scaleToFill" id="x67-jG-jkJ" customClass="RotatingView">
                                 <rect key="frame" x="10" y="174" width="300" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8a7-3a-ojV">
+                                        <rect key="frame" x="100" y="100" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                        <color key="textColor" red="0.0" green="0.69019609689712524" blue="0.78431379795074463" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="oro-ep-pYx" appends="YES" id="SLn-u4-0HG"/>
+                                    <outlet property="time" destination="8a7-3a-ojV" id="2O2-xN-yeY"/>
+                                    <outletCollection property="gestureRecognizers" destination="Yn5-a3-Vf2" appends="YES" id="5ZR-ZL-F8Z"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -49,9 +59,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkG-1S-61x" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="oro-ep-pYx">
+                <tapGestureRecognizer id="Yn5-a3-Vf2">
                     <connections>
-                        <action selector="selectedTime:" destination="x67-jG-jkJ" id="Ye7-Ng-gCd"/>
+                        <action selector="selectedTime:" destination="x67-jG-jkJ" id="f8x-h4-TBW"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -121,9 +131,6 @@
         <class className="ActivitySelectionController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivitySelectionController.h"/>
             <relationships>
-                <relationship kind="action" name="back:"/>
-                <relationship kind="action" name="swipeWebView:"/>
-                <relationship kind="action" name="toggleFullActivity:"/>
                 <relationship kind="outlet" name="bottomBar" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="nextActivityButton" candidateClass="UIButton"/>
@@ -140,7 +147,7 @@
         <class className="RotatingView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingView.h"/>
             <relationships>
-                <relationship kind="action" name="selectedTime:"/>
+                <relationship kind="outlet" name="time" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
@@ -151,6 +158,7 @@
                 <relationship kind="action" name="goBoth:"/>
                 <relationship kind="action" name="goOnline:"/>
                 <relationship kind="action" name="goOutside:"/>
+                <relationship kind="action" name="sliderTouch:"/>
                 <relationship kind="outlet" name="bothButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="bothLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="circle" candidateClass="RotatingView"/>
