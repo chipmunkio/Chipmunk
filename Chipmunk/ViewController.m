@@ -71,7 +71,6 @@ typedef enum SliderLocation {
     self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     self.rotatingTimeSelect.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
-    self.circle.transform = CGAffineTransformMakeRotation(-M_PI/2);
 }
 
 - (void)didReceiveMemoryWarning

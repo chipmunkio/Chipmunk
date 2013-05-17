@@ -32,9 +32,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" id="x67-jG-jkJ" customClass="RotatingView">
-                                <rect key="frame" x="23" y="188" width="275" height="275"/>
+                                <rect key="frame" x="10" y="174" width="300" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="oro-ep-pYx" appends="YES" id="SLn-u4-0HG"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -45,6 +49,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkG-1S-61x" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="oro-ep-pYx">
+                    <connections>
+                        <action selector="selectedTime:" destination="x67-jG-jkJ" id="Ye7-Ng-gCd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-146" y="158"/>
         </scene>
@@ -112,6 +121,9 @@
         <class className="ActivitySelectionController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivitySelectionController.h"/>
             <relationships>
+                <relationship kind="action" name="back:"/>
+                <relationship kind="action" name="swipeWebView:"/>
+                <relationship kind="action" name="toggleFullActivity:"/>
                 <relationship kind="outlet" name="bottomBar" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="nextActivityButton" candidateClass="UIButton"/>
@@ -127,6 +139,9 @@
         </class>
         <class className="RotatingView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingView.h"/>
+            <relationships>
+                <relationship kind="action" name="selectedTime:"/>
+            </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
@@ -136,7 +151,6 @@
                 <relationship kind="action" name="goBoth:"/>
                 <relationship kind="action" name="goOnline:"/>
                 <relationship kind="action" name="goOutside:"/>
-                <relationship kind="action" name="sliderTouch:"/>
                 <relationship kind="outlet" name="bothButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="bothLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="circle" candidateClass="RotatingView"/>

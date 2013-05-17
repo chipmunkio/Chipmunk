@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol RotatingViewDelegate <NSObject>
+
+- (void)selectedHours:(unsigned int)hours Minutes:(unsigned int)mins;
+
+@end
+
 @interface RotatingView : UIView
 
+@property (nonatomic, strong) id <RotatingViewDelegate> delegate;
 @property (nonatomic) float currentAngle;
     
 @end

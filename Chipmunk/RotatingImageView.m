@@ -87,17 +87,13 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     float newAngle = currentAngle - angleDifference;
     
     if(newAngle < 0 && [self totalMinutes] == 0) {
-        [self timeBasedOnRotations];
-        NSLog(@"You do not have negative time you idiot. LOLZ");
-        return;
+        newAngle = 0;
+    } else if( (currentAngle < 0 && currentAngle > -1) && newAngle > 0) {
+        newAngle = -0.0001;
+    } else if( (currentAngle > 0 && currentAngle <  1) && newAngle < 0) {
+        newAngle = 0;
     }
     
-    [self timeBasedOnRotations];
-    if( (currentAngle < 0 && currentAngle > -1) && newAngle > 0) {
-        return;
-    } else if( (currentAngle > 0 && currentAngle < 1) && newAngle < 0) {
-        return;
-    }
     
     self.transform = CGAffineTransformMakeRotation(newAngle);
     [self.delegate stopGlowing];

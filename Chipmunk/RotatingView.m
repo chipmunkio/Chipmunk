@@ -17,6 +17,7 @@
 const int RADIUS_DELTA = 10;
 // the thickness of the part that moves
 const int DYNAMIC_WIDTH = 20;
+const int MINUTES_IN_ROTATION = 121;
 
 @interface RotatingView ()
 
@@ -42,6 +43,34 @@ const int DYNAMIC_WIDTH = 20;
         // Initialization code
     }
     return self;
+}
+
+// point represents the top left corner of the view as usual
+- (RotatingView*)rotatingView:(float)radius Point:(CGPoint)pnt Delegate:(id <RotatingViewDelegate>)del {
+    
+    RotatingView* rv = [[RotatingView alloc] initWithFrame:CGRectMake(pnt.x, pnt.y, radius*2, radius*2)];
+    rv.delegate = del;
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectedTime:)];
+    tap.numberOfTapsRequired = 1;
+    [rv addGestureRecognizer:tap];
+    return rv;
+}
+
+- (IBAction)selectedTime:(UITapGestureRecognizer*)tap {
+    CGPoint loc = [tap locationInView:self];
+    
+    float viewCenterX   = self.bounds.size.width/2;
+    float viewCenterY   = self.bounds.size.height/2;
+    
+    // the distance of this point from the center
+    float dist = sqrt(pow((viewCenterX - loc.x),2) + pow((viewCenterY - loc.y), 2));
+    // minus 5 to give some extra space by the knob
+    if(dist <= self.bounds.size.width/2 - RADIUS_DELTA - DYNAMIC_WIDTH - 5) {
+        NSLog(@"SELECTED");
+        [self sendTimeToDelegateBasedOnAngle];
+    }
+    
+    
 }
 
 
@@ -77,19 +106,31 @@ const int DYNAMIC_WIDTH = 20;
     float radiusDynamic = self.bounds.size.width/2 - RADIUS_DELTA;
     float viewCenterX   = self.bounds.size.width/2;
     float viewCenterY   = self.bounds.size.height/2;
+    float offset = -M_PI/2;
     
     // draw the time that has passed
     [[ChipmunkUtils chipmunkColor] set];
     CGContextMoveToPoint(context, viewCenterX, viewCenterY);
-    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, 0, self.currentAngle, 0);
+    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, 0 + offset, self.currentAngle + offset, 0);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFillStroke);
     
     // draw the remaining area
     [[UIColor colorWithRed:123.0/255.0 green:229.0/255.0 blue:255.0/255.0 alpha:1.0] set];
     CGContextMoveToPoint(context, viewCenterX, viewCenterY);
-    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, self.currentAngle, 2*M_PI, 0);
+    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, self.currentAngle + offset, 2*M_PI + offset, 0);
     CGContextClosePath(context);
+    CGContextDrawPath(context, kCGPathFillStroke);
+    
+    // calculate the center of the knob based on the angle and the radius
+    float knobDist = self.bounds.size.width/2 - RADIUS_DELTA - DYNAMIC_WIDTH/2;
+    float knobX = viewCenterX + knobDist * cos(self.currentAngle - M_PI/2);
+    float knobY = viewCenterY + knobDist * sin(self.currentAngle - M_PI/2);
+    float knobRadius = RADIUS_DELTA + DYNAMIC_WIDTH/2;
+    
+    // draw the white border around the knob
+    [[UIColor whiteColor] set];
+    CGContextAddArc(context, knobX, knobY, knobRadius - 3, 0, 2*M_PI, YES);
     CGContextDrawPath(context, kCGPathFillStroke);
     
     // draw the inner black circle
@@ -97,9 +138,11 @@ const int DYNAMIC_WIDTH = 20;
     CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic - DYNAMIC_WIDTH, 0, 2*M_PI, YES);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFillStroke);
+    CGContextDrawPath(context, kCGPathFillStroke);
     
-    // calculate the center of the knob based on the angle and the radius
-    
+    // draw the actual knob
+    [[ChipmunkUtils chipmunkColor] set];
+    CGContextAddArc(context, knobX, knobY, knobRadius - 4, 0, 2*M_PI, YES);
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 
@@ -112,10 +155,12 @@ const int DYNAMIC_WIDTH = 20;
 //*********************************************************
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch* touch = [touches anyObject];
+    // restrict this so they must click near the knob
     
-    CGPoint pt = [touch locationInView:self];
-    NSLog(@"BEGAN TOUCH POINT: %@", NSStringFromCGPoint(pt));
+    // find knob center using current angle
+    // decided how close they must be to the knob
+    // make sure this touch is within that radius of the center of the knob same way deciding if the gesture is valid
+    
     [self.rotate touchesBegan:touches withEvent:event];
 }
 
@@ -128,12 +173,11 @@ const int DYNAMIC_WIDTH = 20;
     if(angle < 0) {
         angle += 360;
     }
-    NSLog(@"ANGLE: %f", angle);
     self.currentAngle = degreesToRadians(angle);
+    [self sendTimeToDelegateBasedOnAngle];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
 }
 
@@ -152,15 +196,16 @@ const int DYNAMIC_WIDTH = 20;
     return sqrt(dx*dx + dy*dy);
 }
 
-- (void)timeBasedOnRotations {
-//    unsigned int totalMins = [self totalMinutes];
-//    [self.delegate rotatedToHour:totalMins/60 Minute:totalMins - ((totalMins/60)*60)];
+- (void)sendTimeToDelegateBasedOnAngle {
+    unsigned int mins = [self totalMinutes];
+    [self.delegate selectedHours:mins/60 Minutes:mins%60];
 }
 
 - (unsigned int)totalMinutes {
     // get the time based on the current angle
-    unsigned int totalMins = 10;
-    return totalMins;
+    float angle = radiansToDegrees(self.currentAngle);
+    int mins  = MINUTES_IN_ROTATION * (angle/360);
+    return mins;
 }
 
 //*********************************************************
