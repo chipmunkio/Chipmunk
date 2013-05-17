@@ -16,7 +16,7 @@
 // the distance from the outer most circle to the outer edge of the dynamic circle
 const int RADIUS_DELTA = 10;
 // the thickness of the part that moves
-const int DYNAMIC_WIDTH = 40;
+const int DYNAMIC_WIDTH = 20;
 
 @interface RotatingView ()
 
@@ -62,13 +62,13 @@ const int DYNAMIC_WIDTH = 40;
 
 // boring stuff that doesnt change
 - (void)drawStaticCircles:(CGContextRef)context {
-    [[UIColor blackColor] setStroke]; //draw this circle as white
-    [[UIColor redColor] setFill];
-    
+    [[ChipmunkUtils chipmunkColor] setStroke];
+    [[UIColor clearColor] setFill];
     //center of this view
     float viewCenterX = self.bounds.size.width/2;
     float viewCenterY = self.bounds.size.height/2;
-    CGContextAddArc(context, viewCenterX, viewCenterY, self.bounds.size.width/2, 0, 2*M_PI, YES);
+    CGContextSetLineWidth(context, 2.0);
+    CGContextAddArc(context, viewCenterX, viewCenterY, self.bounds.size.width/2-1.0, 0, 2*M_PI, YES);
     CGContextDrawPath(context, kCGPathFillStroke);
 }
 
@@ -79,14 +79,14 @@ const int DYNAMIC_WIDTH = 40;
     float viewCenterY   = self.bounds.size.height/2;
     
     // draw the time that has passed
-    [[UIColor purpleColor] set];
+    [[ChipmunkUtils chipmunkColor] set];
     CGContextMoveToPoint(context, viewCenterX, viewCenterY);
     CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, 0, self.currentAngle, 0);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFillStroke);
     
     // draw the remaining area
-    [[UIColor greenColor] set];
+    [[UIColor colorWithRed:123.0/255.0 green:229.0/255.0 blue:255.0/255.0 alpha:1.0] set];
     CGContextMoveToPoint(context, viewCenterX, viewCenterY);
     CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, self.currentAngle, 2*M_PI, 0);
     CGContextClosePath(context);
@@ -112,7 +112,10 @@ const int DYNAMIC_WIDTH = 40;
 //*********************************************************
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch* touch = [touches anyObject];
     
+    CGPoint pt = [touch locationInView:self];
+    NSLog(@"BEGAN TOUCH POINT: %@", NSStringFromCGPoint(pt));
     [self.rotate touchesBegan:touches withEvent:event];
 }
 
