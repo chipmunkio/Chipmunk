@@ -63,8 +63,9 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
     atvc.imagesDownloaded = 0;
     atvc.loadAttempts = 0;
     // as soon as the table is created begin loading the data
-    [atvc.dbManager getActivities:mins currentLocation:geo wantOnline:online wantOutside:outside];
-    return atvc;    
+    [atvc loadData];
+    
+    return atvc;
 }
 
 - (void)viewDidLoad
