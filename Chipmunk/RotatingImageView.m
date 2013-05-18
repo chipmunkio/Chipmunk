@@ -21,7 +21,6 @@ const int MINUTES_IN_FULL_ROTATION = 45;
 
 @property (nonatomic) CGPoint beganTouchLocation;
 @property (nonatomic) float deltaAngle;
-@property (nonatomic) CGAffineTransform startTransform;
 @property (nonatomic) int fullRotations;
 
 @end
@@ -42,6 +41,9 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     return self;
 }
 
+
+
+
 //*********************************************************
 //*********************************************************
 #pragma mark - Touch Events
@@ -58,7 +60,6 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     float dx = touchCoor.x - self.center.x;
     float dy = touchCoor.y - self.center.y;
     self.deltaAngle = atan2(dy, dx);
-    self.startTransform = self.transform;
 }
 
 
@@ -74,8 +75,8 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     float currentAngle = [[currentLayer valueForKeyPath:@"transform.rotation"] floatValue];
     //NSLog(@"Current angle: %f", currentAngle);
     
-    if([self calculateDistanceFromCenter:pt] < 50) {
-      //  NSLog(@"TOO CLOSE HOMIE. GET OUTA DERRRR");
+    if([self calculateDistanceFromCenter:pt] < 80) {
+        NSLog(@"TOO CLOSE HOMIE. GET OUTA DERRRR");
         return;
     }
  
@@ -86,17 +87,13 @@ const int MINUTES_IN_FULL_ROTATION = 45;
     float newAngle = currentAngle - angleDifference;
     
     if(newAngle < 0 && [self totalMinutes] == 0) {
-        [self timeBasedOnRotations];
-        NSLog(@"You do not have negative time you idiot. LOLZ");
-        return;
+        newAngle = 0;
+    } else if( (currentAngle < 0 && currentAngle > -1) && newAngle > 0) {
+        newAngle = -0.0001;
+    } else if( (currentAngle > 0 && currentAngle <  1) && newAngle < 0) {
+        newAngle = 0;
     }
     
-    [self timeBasedOnRotations];
-    if( (currentAngle < 0 && currentAngle > -1) && newAngle > 0) {
-        self.fullRotations++;
-    } else if( (currentAngle > 0 && currentAngle < 1) && newAngle < 0) {
-        self.fullRotations--;
-    }
     
     self.transform = CGAffineTransformMakeRotation(newAngle);
     [self.delegate stopGlowing];
@@ -156,6 +153,5 @@ const int MINUTES_IN_FULL_ROTATION = 45;
 - (void)setFullRotations:(int)fullRotations {
     _fullRotations = (fullRotations < -1) ? -1 : fullRotations;
 }
-
 
 @end

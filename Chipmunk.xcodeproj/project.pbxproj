@@ -72,7 +72,6 @@
 		23FF259B16D72AB200900166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF257616D72AB200900166 /* Foundation.framework */; };
 		23FF25A316D72AB200900166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23FF25A116D72AB200900166 /* InfoPlist.strings */; };
 		23FF25A616D72AB200900166 /* ChipmunkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 23FF25A516D72AB200900166 /* ChipmunkTests.m */; };
-		8E04282E17444C6300ED9C6A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E04282D17444C6300ED9C6A /* MainStoryboard.storyboard */; };
 		8E0EDE1216FC1EE7004FCDFA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */; };
 		8E3E36561742DBF4003D5284 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3E36551742DBF4003D5284 /* Security.framework */; };
 		8E3E36571742DD1C003D5284 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23FF259816D72AB200900166 /* SenTestingKit.framework */; };
@@ -86,6 +85,8 @@
 		8E3E5FC81721D86800237025 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E3E5FC71721D86800237025 /* libz.dylib */; };
 		8E3E5FCA1721E57100237025 /* spareIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E5FC91721E57100237025 /* spareIcon.png */; };
 		8E3E5FCC1721E57400237025 /* spareIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E5FCB1721E57400237025 /* spareIcon@2x.png */; };
+		8E4BD03B1745ECCD000BBF7F /* RotatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E4BD0391745ECCD000BBF7F /* RotatingView.m */; };
+		8E4BD03D1745EDBD000BBF7F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E4BD03C1745EDBD000BBF7F /* MainStoryboard.storyboard */; };
 		8E571C0116D9CA2800F946A3 /* ChipmunkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */; };
 		8E5833111742FC8A0037BCAE /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E58330F1742FC8A0037BCAE /* share.png */; };
 		8E5833121742FC8A0037BCAE /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5833101742FC8A0037BCAE /* share@2x.png */; };
@@ -188,7 +189,6 @@
 		23FF25A216D72AB200900166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23FF25A416D72AB200900166 /* ChipmunkTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChipmunkTests.h; sourceTree = "<group>"; };
 		23FF25A516D72AB200900166 /* ChipmunkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChipmunkTests.m; sourceTree = "<group>"; };
-		8E04282D17444C6300ED9C6A /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8E3E36551742DBF4003D5284 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8E3E36B61742E080003D5284 /* PocketAPI+NSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PocketAPI+NSOperation.h"; sourceTree = "<group>"; };
@@ -208,6 +208,9 @@
 		8E3E5FC71721D86800237025 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8E3E5FC91721E57100237025 /* spareIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spareIcon.png; sourceTree = "<group>"; };
 		8E3E5FCB1721E57400237025 /* spareIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spareIcon@2x.png"; sourceTree = "<group>"; };
+		8E4BD0391745ECCD000BBF7F /* RotatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingView.m; sourceTree = "<group>"; };
+		8E4BD03A1745ECCD000BBF7F /* RotatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingView.h; sourceTree = "<group>"; };
+		8E4BD03C1745EDBD000BBF7F /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
 		8E571BFF16D9CA2800F946A3 /* ChipmunkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipmunkUtils.h; sourceTree = "<group>"; };
 		8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipmunkUtils.m; sourceTree = "<group>"; };
 		8E58330F1742FC8A0037BCAE /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
@@ -334,10 +337,10 @@
 		23FF257A16D72AB200900166 /* Chipmunk */ = {
 			isa = PBXGroup;
 			children = (
-				8E04282D17444C6300ED9C6A /* MainStoryboard.storyboard */,
 				8E7BDE8116DA15E200B67749 /* 3rdPartyCode */,
 				23FF258316D72AB200900166 /* AppDelegate.h */,
 				23FF258416D72AB200900166 /* AppDelegate.m */,
+				8E4BD03C1745EDBD000BBF7F /* MainStoryboard.storyboard */,
 				8EFA15D816FA22C300D065F4 /* ActivitySelectionController.h */,
 				8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */,
 				23FF258F16D72AB200900166 /* ViewController.h */,
@@ -346,6 +349,8 @@
 				8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */,
 				8EF3579816DD2F470069ADB0 /* RotatingImageView.h */,
 				8EF3579916DD2F470069ADB0 /* RotatingImageView.m */,
+				8E4BD03A1745ECCD000BBF7F /* RotatingView.h */,
+				8E4BD0391745ECCD000BBF7F /* RotatingView.m */,
 				23286FB116D9FC5B005E16FA /* ActivityTableViewController.h */,
 				23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */,
 				8EE5B0CF1718C4BE00B311CA /* ActivityTableViewCell.h */,
@@ -620,7 +625,7 @@
 				8E3E5FCC1721E57400237025 /* spareIcon@2x.png in Resources */,
 				8E5833111742FC8A0037BCAE /* share.png in Resources */,
 				8E5833121742FC8A0037BCAE /* share@2x.png in Resources */,
-				8E04282E17444C6300ED9C6A /* MainStoryboard.storyboard in Resources */,
+				8E4BD03D1745EDBD000BBF7F /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +695,7 @@
 				8E3E36C21742E080003D5284 /* PocketAPIOperation.m in Sources */,
 				8E3E36C31742E080003D5284 /* SFHFKeychainUtils.m in Sources */,
 				8E7D4720174593470048807F /* MTStatusBarOverlay.m in Sources */,
+				8E4BD03B1745ECCD000BBF7F /* RotatingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,8 +801,8 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -811,6 +817,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -819,8 +827,8 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -835,6 +843,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
