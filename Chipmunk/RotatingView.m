@@ -117,7 +117,7 @@ const int MINUTES_IN_ROTATION = 46;
     CGContextDrawPath(context, kCGPathFillStroke);
     
     // draw the remaining area
-    [[UIColor colorWithRed:123.0/255.0 green:229.0/255.0 blue:255.0/255.0 alpha:1.0] set];
+    [[UIColor colorWithRed:123.0/255.0 green:229.0/255.0 blue:255.0/255.0 alpha:1.0] set]; //darker version of chipmunk color
     CGContextMoveToPoint(context, viewCenterX, viewCenterY);
     CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, self.currentAngle + offset, 2*M_PI + offset, 0);
     CGContextClosePath(context);
@@ -135,11 +135,16 @@ const int MINUTES_IN_ROTATION = 46;
     CGContextDrawPath(context, kCGPathFillStroke);
     
     // draw the inner black circle
-    [[UIColor blackColor] set];
+    [[UIColor whiteColor] set];
     CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic - DYNAMIC_WIDTH, 0, 2*M_PI, YES);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFillStroke);
     CGContextDrawPath(context, kCGPathFillStroke);
+    
+    [[ChipmunkUtils chipmunkColor] setStroke];
+    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic - DYNAMIC_WIDTH - 10, 0, 2*M_PI, YES);
+    CGContextClosePath(context);
+    CGContextStrokePath(context);
     
     // draw the actual knob
     [[ChipmunkUtils chipmunkColor] set];

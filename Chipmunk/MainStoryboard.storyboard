@@ -131,6 +131,9 @@
         <class className="ActivitySelectionController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivitySelectionController.h"/>
             <relationships>
+                <relationship kind="action" name="back:"/>
+                <relationship kind="action" name="swipeWebView:"/>
+                <relationship kind="action" name="toggleFullActivity:"/>
                 <relationship kind="outlet" name="bottomBar" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="nextActivityButton" candidateClass="UIButton"/>
@@ -147,15 +150,19 @@
         <class className="RotatingView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingView.h"/>
             <relationships>
+                <relationship kind="action" name="selectedTime:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="time" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="action" name="checkHalf:"/>
+                <relationship kind="action" name="getActivitiesController:"/>
                 <relationship kind="action" name="goBoth:"/>
                 <relationship kind="action" name="goOnline:"/>
                 <relationship kind="action" name="goOutside:"/>
+                <relationship kind="action" name="sliderTouch:"/>
                 <relationship kind="outlet" name="bothButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="bothLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="circle" candidateClass="RotatingView"/>

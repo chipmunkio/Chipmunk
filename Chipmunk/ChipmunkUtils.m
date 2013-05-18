@@ -102,10 +102,10 @@
             NSLog(@"Pocket Error: %@", error);
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not save to Pocket" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
-            [overlay postErrorMessage:@"Error SavingPocket" duration:3];
+            [overlay postErrorMessage:@"Error SavingPocket" duration:1.5];
         } else {
             NSLog(@"Saved the url to pocket");
-            [overlay postFinishMessage:@"Saved" duration:3 animated:YES];
+            [overlay postFinishMessage:@"Saved" duration:1.5 animated:YES];
         }
         overlay.progress = 1.0;
     }];
