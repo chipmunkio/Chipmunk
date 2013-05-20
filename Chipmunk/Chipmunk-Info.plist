@@ -14,8 +14,9 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>spareIcon@2x.png</string>
+				<string>spareLogo.png</string>
 				<string>spareIcon.png</string>
+				<string>spareIcon@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
