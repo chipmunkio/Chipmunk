@@ -53,6 +53,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>pocketapp14352</string>
+				<string>fb496325443756541</string>
 			</array>
 		</dict>
 	</array>
@@ -75,5 +76,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>FacebookDisplayName</key>
+	<string>Spare</string>
+	<key>FacebookAppID</key>
+	<string>496325443756541</string>
 </dict>
 </plist>

@@ -11,6 +11,7 @@
 #import "ActivityTableViewController.h"
 #import "ActivitySelectionController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 #define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
 
