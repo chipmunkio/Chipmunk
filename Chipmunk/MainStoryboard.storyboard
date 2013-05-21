@@ -151,53 +151,6 @@
         <image name="2ndpagebottombarup.png" width="2639" height="343"/>
         <image name="sparelogo.png" width="1563" height="780"/>
     </resources>
-    <classes>
-        <class className="ActivitySelectionController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActivitySelectionController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="bottomBar" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="nextActivityButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="progressBarBlue" candidateClass="UIView"/>
-                <relationship kind="outlet" name="progressBarGrey" candidateClass="UIView"/>
-                <relationship kind="outlet" name="timerImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="timerLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="RotatingImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingImageView.h"/>
-        </class>
-        <class className="RotatingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RotatingView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="time" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goBoth:"/>
-                <relationship kind="action" name="goOnline:"/>
-                <relationship kind="action" name="goOutside:"/>
-                <relationship kind="outlet" name="bothButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="bothLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="circle" candidateClass="RotatingView"/>
-                <relationship kind="outlet" name="circleImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="freeTime" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="hourLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hourSymbol" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="insideLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="minLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="minuteSymbol" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="onlineButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="outsideButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="outsideLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rotatingTimeSelect" candidateClass="RotatingImageView"/>
-                <relationship kind="outlet" name="slider" candidateClass="UISlider"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
