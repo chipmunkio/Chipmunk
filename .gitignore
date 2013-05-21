@@ -1,5 +1,6 @@
 # stuff xcode changes all the time
 
+Breakpoints.xcbkptlist
 .DS_Store
 *.mode1v3
 *.pbxuser

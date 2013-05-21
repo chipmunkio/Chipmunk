@@ -11,7 +11,7 @@
 @interface ScrollableWebView ()
 
 @property (nonatomic) CGPoint touchBegan;
-
+@property (nonatomic, strong) UIView* progressBar;
 @end
 
 
@@ -21,6 +21,7 @@
 @synthesize scrollOffset = _scrollOffset;
 @synthesize webViewStartY = _webViewStartY;
 @synthesize touchBegan = _touchBegan;
+@synthesize progressBar = _progressBar;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -45,12 +46,23 @@
     wv.webViewStartY = start;
     wv.scrollView.scrollEnabled = NO;
     wv.scrollView.userInteractionEnabled = NO;
+    UIView* greyBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], 6)];
+    greyBar.backgroundColor = [UIColor darkGrayColor];
+    wv.progressBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 6)];
+    wv.progressBar.backgroundColor = [ChipmunkUtils chipmunkColor];
+    [wv addSubview:greyBar];
+    [wv addSubview:wv.progressBar];
     
     return wv;
 }
 
+//*********************************************************
+//*********************************************************
+#pragma mark - Touch Event Handling
+//*********************************************************
+//*********************************************************
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"BEGAN");
     self.touchBegan = [[touches anyObject] locationInView:self];
     [self.scrollView touchesBegan:touches withEvent:event];
 }
@@ -83,6 +95,8 @@
         offset.y = (offset.y > self.scrollView.contentSize.height - self.frame.size.height) ? self.scrollView.contentSize.height - self.frame.size.height : offset.y;
         self.scrollView.contentOffset = offset;
         self.touchBegan = [[touches anyObject] locationInView:self];
+        CGFloat blueWidth = ((offset.y)/(self.scrollView.contentSize.height - self.frame.size.height))*[ChipmunkUtils screenWidth];
+        self.progressBar.frame = CGRectMake(0, 0, blueWidth, 6);
     } 
     
     
