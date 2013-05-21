@@ -72,6 +72,9 @@
 		8E571C0116D9CA2800F946A3 /* ChipmunkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */; };
 		8E5833111742FC8A0037BCAE /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E58330F1742FC8A0037BCAE /* share.png */; };
 		8E5833121742FC8A0037BCAE /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5833101742FC8A0037BCAE /* share@2x.png */; };
+		8E5B3607174C00F1000B0073 /* ScrollableWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B3606174C00F1000B0073 /* ScrollableWebView.m */; };
+		8E5B360A174C08EB000B0073 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B3609174C08EB000B0073 /* ItemViewController.m */; };
+		8E5B360D174C0996000B0073 /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B360C174C0996000B0073 /* ArticleViewController.m */; };
 		8E7BDE7E16DA15D000B67749 /* FSN_categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7916DA15D000B67749 /* FSN_categories.m */; };
 		8E7BDE7F16DA15D000B67749 /* FSNConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7B16DA15D000B67749 /* FSNConnection.m */; };
 		8E7BDE8016DA15D000B67749 /* FSNData.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BDE7D16DA15D000B67749 /* FSNData.m */; };
@@ -180,6 +183,12 @@
 		8E571C0016D9CA2800F946A3 /* ChipmunkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipmunkUtils.m; sourceTree = "<group>"; };
 		8E58330F1742FC8A0037BCAE /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		8E5833101742FC8A0037BCAE /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
+		8E5B3605174C00F1000B0073 /* ScrollableWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableWebView.h; sourceTree = "<group>"; };
+		8E5B3606174C00F1000B0073 /* ScrollableWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollableWebView.m; sourceTree = "<group>"; };
+		8E5B3608174C08EB000B0073 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		8E5B3609174C08EB000B0073 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		8E5B360B174C0996000B0073 /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		8E5B360C174C0996000B0073 /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
 		8E7BDE7816DA15D000B67749 /* FSN_categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSN_categories.h; sourceTree = "<group>"; };
 		8E7BDE7916DA15D000B67749 /* FSN_categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSN_categories.m; sourceTree = "<group>"; };
 		8E7BDE7A16DA15D000B67749 /* FSNConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSNConnection.h; sourceTree = "<group>"; };
@@ -319,8 +328,14 @@
 				23FF258316D72AB200900166 /* AppDelegate.h */,
 				23FF258416D72AB200900166 /* AppDelegate.m */,
 				8E4BD03C1745EDBD000BBF7F /* MainStoryboard.storyboard */,
+				8E5B3608174C08EB000B0073 /* ItemViewController.h */,
+				8E5B3609174C08EB000B0073 /* ItemViewController.m */,
+				8E5B360B174C0996000B0073 /* ArticleViewController.h */,
+				8E5B360C174C0996000B0073 /* ArticleViewController.m */,
 				8EFA15D816FA22C300D065F4 /* ActivitySelectionController.h */,
 				8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */,
+				8E5B3605174C00F1000B0073 /* ScrollableWebView.h */,
+				8E5B3606174C00F1000B0073 /* ScrollableWebView.m */,
 				23FF258F16D72AB200900166 /* ViewController.h */,
 				23FF259016D72AB200900166 /* ViewController.m */,
 				8E571BFF16D9CA2800F946A3 /* ChipmunkUtils.h */,
@@ -626,6 +641,9 @@
 				8E3E36C31742E080003D5284 /* SFHFKeychainUtils.m in Sources */,
 				8E7D4720174593470048807F /* MTStatusBarOverlay.m in Sources */,
 				8E4BD03B1745ECCD000BBF7F /* RotatingView.m in Sources */,
+				8E5B3607174C00F1000B0073 /* ScrollableWebView.m in Sources */,
+				8E5B360A174C08EB000B0073 /* ItemViewController.m in Sources */,
+				8E5B360D174C0996000B0073 /* ArticleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

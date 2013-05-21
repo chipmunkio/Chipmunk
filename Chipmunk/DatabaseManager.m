@@ -27,7 +27,6 @@
                              // make this a dictionary of tokens so they are all bundled together
                              @"fb_token" : [FBSession activeSession].accessTokenData.accessToken
                             };
-    NSLog(@"Params: %@", params);
     FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"]
                                                 method:FSNRequestMethodGET
                                                headers:[NSDictionary dictionary]

@@ -13,6 +13,7 @@
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "ItemViewController.h"
 
 const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop from trying to get more
 
@@ -228,13 +229,12 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
 // use this to reload any part of the UI
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ActivitySelectionController* selection = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"selectionController"];
     
     // give the view the item
     NSMutableDictionary* item = [self.dataSource[indexPath.row] mutableCopy];
     item[@"imageData"] = self.imgDataSource[indexPath.row];
-    selection.item = item;
-    [self.navigationController pushViewController:selection animated:YES];
+    ItemViewController* ivc = [ItemViewController item:item];
+    [self.navigationController pushViewController:ivc animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
