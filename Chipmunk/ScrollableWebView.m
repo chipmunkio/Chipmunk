@@ -8,10 +8,11 @@
 
 #import "ScrollableWebView.h"
 
-@interface ScrollableWebView ()
+@interface ScrollableWebView () <UIScrollViewDelegate>
 
 @property (nonatomic) CGPoint touchBegan;
 @property (nonatomic, strong) UIView* progressBar;
+
 @end
 
 
@@ -44,8 +45,11 @@
     wv.frame = frame;
     wv.scrollOffset = offset;
     wv.webViewStartY = start;
+    
     wv.scrollView.scrollEnabled = NO;
     wv.scrollView.userInteractionEnabled = NO;
+    wv.scrollView.delegate = wv;
+    
     UIView* greyBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], 6)];
     greyBar.backgroundColor = [UIColor darkGrayColor];
     wv.progressBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 6)];
@@ -107,9 +111,61 @@
     
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+//*********************************************************
+//*********************************************************
+#pragma mark - ScrollView Delegate
+//*********************************************************
+//*********************************************************
+
+
+// move to using the actual scrollview after the lift their finger and the webview has been moved a little bit
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if(scrollView.contentOffset.y < 0) {
+        scrollView.scrollEnabled = NO;
+        scrollView.userInteractionEnabled = NO;
+        scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
+        
+    }
+    
+    
+    
+    
+    
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

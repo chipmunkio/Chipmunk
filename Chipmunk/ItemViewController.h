@@ -14,5 +14,7 @@
 
 
 + (ItemViewController*)item:(NSDictionary*)item;
+- (void)share;
+- (void)loadData;
 
 @end

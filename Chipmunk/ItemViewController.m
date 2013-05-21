@@ -44,7 +44,7 @@
     [share addTarget:ivc action:@selector(share) forControlEvents:UIControlEventTouchUpInside];
     
     [ivc.view addSubview:back];
-    //[ivc.view addSubview:share]; // maybe add this button to every class so they can share their data correctly
+    [ivc.view addSubview:share]; // maybe add this button to every class so they can share their data correctly
     
     return ivc;
 }
@@ -61,5 +61,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//*********************************************************
+//*********************************************************
+#pragma mark - Subclass Responsibility
+//*********************************************************
+//*********************************************************
+
+// show options for sharing this item
+- (void)share {
+    assert(false);
+}
+
+// loads the data -> may be called before the view has been loaded
+// if needs the view call [self loadView] in this function
+- (void)loadData {
+    assert(false);
+}
+
+
+
+
+
+
+
 
 @end

@@ -49,6 +49,10 @@
     
 }
 
+- (void)share {
+    [ChipmunkUtils saveURLToPocket:self.item[@"original_url"]];
+}
+
 - (void)setupUI {
     [self addImageView];
     //define 64 somewhere
