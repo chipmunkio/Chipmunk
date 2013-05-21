@@ -12,7 +12,12 @@
 #import "UIImage+Gaussian.h"
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface ActivitySelectionController () <UIAlertViewDelegate>
+
+// the width is that of the screen
+const int IMG_HEIGHT = 220;
+
+
+@interface ActivitySelectionController () <UIAlertViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic) BOOL contentIsShown;
 
@@ -26,6 +31,7 @@
 @synthesize dbManager = _dbManager;
 @synthesize dataSource = _dataSource;
 @synthesize item = _item;
+@synthesize scrollView = _scrollView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,12 +54,15 @@
 - (void)setupUI {
     self.view.backgroundColor = [UIColor blackColor];
     // the image is always put behind it so the webview can slide on top of it
-    [self addSlidingWebView];
+//    [self addSlidingWebView];
     [self addImageView];
+    [self addScrollView];
     self.webView.scrollView.showsVerticalScrollIndicator = NO;
-    [self.view insertSubview:self.bottomBar aboveSubview:self.webView];
-    [self.view insertSubview:self.progressBarBlue aboveSubview:self.webView];
-    [self.view insertSubview:self.progressBarGrey aboveSubview:self.webView];
+    self.progressBarGrey.frame = CGRectMake(0, 0, [ChipmunkUtils screenWidth], 6);
+    self.progressBarBlue.frame = CGRectMake(0, 0, 0, 6);
+    [self.webView addSubview:self.progressBarGrey];
+    [self.webView addSubview:self.progressBarBlue];
+    
     UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 38, 38)];
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
     [self.view addSubview:back];
@@ -74,13 +83,14 @@
 // added sliding to name because addWebView is already a function
 - (void)addSlidingWebView {
     // 64 is the size of the status bar and the navigation bar
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 220, 320, [ChipmunkUtils screenHeight] - 64)];
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 220, [ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight] - 64)];
     [self.view addSubview:self.webView];
     [self addIndicatorToWebView];
     self.webView.delegate = self;
     self.webView.scrollView.delegate = self;
     self.webView.scalesPageToFit = YES;
     self.webView.scrollView.scrollEnabled = NO;
+    self.webView.scrollView.delegate = self;
     
     UISwipeGestureRecognizer* gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeWebView:)];
     gesture.numberOfTouchesRequired = 1;
@@ -89,9 +99,30 @@
     
 }
 
+- (void)addScrollView {
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, IMG_HEIGHT, [ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight] - 64)];
+    self.webView.delegate = self;
+    self.webView.userInteractionEnabled = NO;
+    self.webView.scalesPageToFit = YES;
+    self.webView.scrollView.scrollEnabled =NO;
+    self.webView.scrollView.delegate = self;
+    self.webView.scrollView.bounces = NO;
+    
+    // create the progress indicator here
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight])];
+    self.scrollView.delegate = self;
+    self.scrollView.contentSize = CGSizeMake([ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight] - 44 + IMG_HEIGHT);
+    [self.scrollView addSubview:self.webView];
+    self.scrollView.bounces = NO;
+    
+    [self.view addSubview:self.scrollView];
+}
+
 - (void)addImageView {
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 220)];
-    [self.view insertSubview:self.imageView belowSubview:self.webView];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], IMG_HEIGHT)];
+    [self.view addSubview:self.imageView];
     self.imageView.userInteractionEnabled = YES;
     if(self.item) {
         if(self.item && ![self.item[@"imageData"] isMemberOfClass:[NSNull class]]) {
@@ -110,9 +141,6 @@
         // do stuff for the venue
     }
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning
@@ -151,30 +179,11 @@
     CGPoint offset = self.webView.scrollView.contentOffset;
     [self.webView.scrollView setContentOffset:offset animated:NO];
     
-    CGFloat viewHeight = [ChipmunkUtils screenHeight] - 64;
-    CGRect newFrame;
-    CGRect newProgressGreyFrame;
-    CGRect newProgressBlueFrame;
+    CGRect newProgressBlueFrame = CGRectMake(0, 0, (self.progressBarBlue.bounds.size.width), 6);
     CGFloat imgDeltaY = 80;
-    
-    if(self.contentIsShown) { 
-        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombarup.png"] forState:UIControlStateNormal];
-        newFrame = CGRectMake(0, 220, 320, viewHeight);
-        newProgressGreyFrame = CGRectMake(0, 220, 320, 6);
-        newProgressBlueFrame = CGRectMake(0, 220, (self.progressBarBlue.bounds.size.width), 6);
-
-    } else {
-        imgDeltaY = -imgDeltaY;
-        [self.bottomBar setImage:[UIImage imageNamed:@"2ndpagebottombar.png"] forState:UIControlStateNormal];
-        newFrame = CGRectMake(0, 44, 320, viewHeight);
-        newProgressGreyFrame = CGRectMake(0, 44, 320, 6);
-        newProgressBlueFrame = CGRectMake(0, 44, (self.progressBarBlue.bounds.size.width), 6);
-    }
     
     self.contentIsShown = !self.contentIsShown;
     [UIView animateWithDuration:0.4 animations:^{
-        self.webView.frame = newFrame;
-        self.progressBarGrey.frame = newProgressGreyFrame;
         self.progressBarBlue.frame = newProgressBlueFrame;
         self.imageView.center = CGPointMake(self.imageView.center.x, self.imageView.center.y + imgDeltaY);
     }];
@@ -281,13 +290,44 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+//*********************************************************
+//*********************************************************
+#pragma mark - ScrollView Delegate
+//*********************************************************
+//*********************************************************
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // Get some details about the view
-    CGSize size = [scrollView frame].size;
-    CGPoint offset = [scrollView contentOffset];
-    CGSize contentSize = [scrollView contentSize];
-    CGFloat blueWidth = ((offset.y + size.height)/(contentSize.height))*320;
-    self.progressBarBlue.frame = CGRectMake(0, 44, blueWidth, 6);
+    
+    if(scrollView == self.webView.scrollView) {
+        // Get some details about the view
+        CGSize size = [scrollView frame].size;
+        CGPoint offset = [scrollView contentOffset];
+        CGSize contentSize = [scrollView contentSize];
+        CGFloat blueWidth = ((offset.y)/(contentSize.height - size.height))*320;
+        self.progressBarBlue.frame = CGRectMake(0, 0, blueWidth, 6);
+        NSLog(@"OFFSET: %f", scrollView.contentOffset.y);
+        if(self.webView.scrollView.contentOffset.y <= 0) {
+            NSLog(@"ScrollView is at the bottom");
+            
+        }
+    } else {
+        NSLog(@"Main OFFSET: %f", scrollView.contentOffset.y);
+        NSLog(@"HEIGHT: %f", scrollView.frame.size.height);
+        // at the bottom
+        BOOL webScrollEnabled = (scrollView.contentOffset.y == scrollView.contentSize.height - scrollView.frame.size.height);
+        self.webView.scrollView.scrollEnabled = webScrollEnabled;
+        self.webView.userInteractionEnabled   = webScrollEnabled;
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if(scrollView == self.scrollView && !decelerate) {
+        
+    }
+    
+    
 }
 
 @end

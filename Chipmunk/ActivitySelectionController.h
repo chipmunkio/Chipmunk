@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UIImageView *imageView;
 // this will have to change once venues are an option as venues will not always have webcontent
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) UIScrollView* scrollView;
 
 @property (strong, nonatomic) DatabaseManager* dbManager;
 @property (strong, nonatomic) NSMutableArray* dataSource;
