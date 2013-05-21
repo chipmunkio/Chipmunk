@@ -10,6 +10,7 @@
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+Gaussian.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface ActivitySelectionController () <UIAlertViewDelegate>
 

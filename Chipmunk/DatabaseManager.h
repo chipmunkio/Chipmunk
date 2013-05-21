@@ -21,5 +21,6 @@
 
 // the activities are passed back through a delegate call
 - (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo wantOnline:(unsigned int)online wantOutside:(unsigned int)outside;
-
++ (NSDictionary*)getTokens;
+    
 @end

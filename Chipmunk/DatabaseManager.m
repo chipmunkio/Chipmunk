@@ -8,7 +8,7 @@
 
 #import "DatabaseManager.h"
 #import "FSNConnection.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface DatabaseManager ()
 
@@ -19,7 +19,19 @@
 // start a connection and return the data to the delegate
 - (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo wantOnline:(unsigned int)online wantOutside:(unsigned int)outside
 {
-    FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"] method:FSNRequestMethodGET headers:[NSDictionary dictionary] parameters:[NSDictionary dictionaryWithObjectsAndKeys:@(time),@"minutes",@"-79.32,103.81",@"geo",@(online),@"online",@(outside),@"outside", nil]
+    NSDictionary* params = @{
+                             @"minutes"  : @(time),
+                             @"geo"      : @"-79.32,103.81",
+                             @"online"   : @(online),
+                             @"outside"  : @(outside),
+                             // make this a dictionary of tokens so they are all bundled together
+                             @"fb_token" : [FBSession activeSession].accessTokenData.accessToken
+                            };
+    NSLog(@"Params: %@", params);
+    FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"]
+                                                method:FSNRequestMethodGET
+                                               headers:[NSDictionary dictionary]
+                                            parameters:params
                                             parseBlock:^id(FSNConnection *c, NSError *__autoreleasing *error) {
         return [c.responseData dictionaryFromJSONWithError:error];
     } completionBlock:^(FSNConnection *c) {
@@ -40,6 +52,14 @@
     
     [connection start];
 }
+                                           
+
++ (NSDictionary*)getTokens {
+    return @{@"fb" : @"accessToken"};
+}
+
+
+
 
 
 @end

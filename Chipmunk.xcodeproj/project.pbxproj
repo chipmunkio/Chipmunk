@@ -80,6 +80,8 @@
 		8E7D4720174593470048807F /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D471F174593470048807F /* MTStatusBarOverlay.m */; };
 		8E9EB830174AAF9D0051BEF7 /* spareIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E9EB82F174AAF9D0051BEF7 /* spareIcon.png */; };
 		8E9EB832174AAFA00051BEF7 /* spareIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E9EB831174AAFA00051BEF7 /* spareIcon@2x.png */; };
+		8EB17766174B0F44007C3BC3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E1CD681174AC04D00D2F626 /* FacebookSDK.framework */; };
+		8EB17768174B10A1007C3BC3 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB17767174B10A1007C3BC3 /* libsqlite3.0.dylib */; };
 		8EE5B0D01718C4BE00B311CA /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */; };
 		8EE5B0D11718C4C800B311CA /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */; };
 		8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3579916DD2F470069ADB0 /* RotatingImageView.m */; };
@@ -190,6 +192,7 @@
 		8E7D471F174593470048807F /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		8E9EB82F174AAF9D0051BEF7 /* spareIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spareIcon.png; sourceTree = "<group>"; };
 		8E9EB831174AAFA00051BEF7 /* spareIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spareIcon@2x.png"; sourceTree = "<group>"; };
+		8EB17767174B10A1007C3BC3 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
 		8EE5B0CF1718C4BE00B311CA /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		8EF3579816DD2F470069ADB0 /* RotatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingImageView.h; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB17768174B10A1007C3BC3 /* libsqlite3.0.dylib in Frameworks */,
+				8E1CD682174AC04D00D2F626 /* FacebookSDK.framework in Frameworks */,
 				8E1CD68A174AC0B600D2F626 /* Social.framework in Frameworks */,
 				8E1CD688174AC08500D2F626 /* AdSupport.framework in Frameworks */,
 				8E1CD686174AC07F00D2F626 /* Accounts.framework in Frameworks */,
@@ -220,7 +225,6 @@
 				8E3E5FC41721D7DE00237025 /* libTestFlight.a in Frameworks */,
 				23ADC4271726DA6D00FDD77E /* Crashlytics.framework in Frameworks */,
 				2336F655173969F40077C892 /* Accelerate.framework in Frameworks */,
-				8E1CD682174AC04D00D2F626 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB17766174B0F44007C3BC3 /* FacebookSDK.framework in Frameworks */,
 				23FF259916D72AB200900166 /* SenTestingKit.framework in Frameworks */,
 				23FF259A16D72AB200900166 /* UIKit.framework in Frameworks */,
 				23FF259B16D72AB200900166 /* Foundation.framework in Frameworks */,
@@ -264,6 +269,7 @@
 		23FF256816D72AB200900166 = {
 			isa = PBXGroup;
 			children = (
+				8EB17767174B10A1007C3BC3 /* libsqlite3.0.dylib */,
 				8E9EB831174AAFA00051BEF7 /* spareIcon@2x.png */,
 				8E9EB82F174AAF9D0051BEF7 /* spareIcon.png */,
 				8E3E5FC71721D86800237025 /* libz.dylib */,
@@ -781,6 +787,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";
@@ -798,6 +805,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Chipmunk/Chipmunk-Prefix.pch";

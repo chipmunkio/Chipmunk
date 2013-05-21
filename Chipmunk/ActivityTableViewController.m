@@ -12,6 +12,7 @@
 #import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop from trying to get more
 
