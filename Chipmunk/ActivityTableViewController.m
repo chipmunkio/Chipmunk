@@ -98,7 +98,6 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
     [back addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
     
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
 }
 
 - (void)goBack {

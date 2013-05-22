@@ -55,7 +55,7 @@
 - (void)setupUI {
     [self addImageView];
     //define 64 somewhere
-    self.webView = [ScrollableWebView webViewOffset:64 webStart:IMG_HEIGHT superSize:self.view.frame.size];
+    self.webView = [ScrollableWebView webViewOffset:60 webStart:IMG_HEIGHT superSize:self.view.frame.size];
     [self.view addSubview:self.webView];
 }
 

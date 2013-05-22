@@ -31,7 +31,8 @@
     CGFloat scale = [UIScreen mainScreen].scale;
     result = CGSizeMake(result.width * scale, result.height * scale);
     [[NSUserDefaults standardUserDefaults] setBool:(result.height > 480) forKey:@"isRetina"];
-
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
     return YES;
 }
 

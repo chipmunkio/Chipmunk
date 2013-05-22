@@ -114,9 +114,14 @@
     if(self.frame.origin.y <= self.scrollOffset) {
         self.scrollView.scrollEnabled = YES;
         self.scrollView.userInteractionEnabled = YES;
-    } else {
-        self.scrollView.scrollEnabled = NO;
-        self.scrollView.userInteractionEnabled = NO;
+    } else if (self.frame.origin.y < self.webViewStartY) {
+        float moveableDistance = self.webViewStartY - self.scrollOffset;
+        float newY = (self.frame.origin.y - self.scrollOffset < moveableDistance/2) ? self.scrollOffset : self.webViewStartY;
+        [UIView animateWithDuration:0.25 animations:^{
+            CGRect newFrame = self.frame;
+            newFrame.origin.y = newY;
+            self.frame = newFrame;
+        }];
     }
     
 }
