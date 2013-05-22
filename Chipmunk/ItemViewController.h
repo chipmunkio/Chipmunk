@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ItemViewController : UIViewController
+@interface ItemViewController : SpareViewController
 
 @property (nonatomic, strong) NSDictionary* item;
 

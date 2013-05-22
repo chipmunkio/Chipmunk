@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "ItemViewController.h"
+#import "FlatNavigationBar.h"
 
 const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop from trying to get more
 
@@ -81,9 +82,8 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self setupTableView];
     
-    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [navbar setTintColor:[ChipmunkUtils chipmunkColor]];
-    [navbar setBackgroundColor:[UIColor blackColor]];
+    FlatNavigationBar* navbar = [[FlatNavigationBar alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], 44)];
+    navbar.color = [ChipmunkUtils chipmunkColor];
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc] initWithFrame:navbar.frame];
     indicator.tag = 7;
     [navbar addSubview:indicator];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DatabaseManager.h"
 
-@interface ActivityTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, DatabaseManagerDelegate>
+@interface ActivityTableViewController : SpareViewController <UITableViewDelegate, UITableViewDataSource, DatabaseManagerDelegate>
 
 @property (nonatomic, strong) UITableView* tableView;
 // is mutable so that new items can be added if the user scrolls to the end

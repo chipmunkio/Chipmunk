@@ -12,7 +12,7 @@
 #import "DatabaseManager.h"
 #include <AudioToolbox/AudioToolbox.h>
 
-@interface ViewController : UIViewController <RotatingViewDelegate>
+@interface ViewController : SpareViewController <RotatingViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *circleImage;
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minLabel;

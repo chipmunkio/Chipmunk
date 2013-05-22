@@ -34,6 +34,7 @@ typedef enum SliderLocation {
 - (void)viewDidLoad
 {
     
+    [super viewDidLoad];
     
     //SET UP LABELS
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
@@ -47,7 +48,6 @@ typedef enum SliderLocation {
     [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:self.outsideLabel.font.pointSize]];
      [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
     
-    [super viewDidLoad];
     self.hourLabel.hidden = true;
     self.hourSymbol.hidden = true;
     self.minuteSymbol.hidden = true;

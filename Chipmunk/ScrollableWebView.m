@@ -99,7 +99,10 @@
         offset.y = (offset.y > self.scrollView.contentSize.height - self.frame.size.height) ? self.scrollView.contentSize.height - self.frame.size.height : offset.y;
         self.scrollView.contentOffset = offset;
         self.touchBegan = [[touches anyObject] locationInView:self];
-        CGFloat blueWidth = ((offset.y)/(self.scrollView.contentSize.height - self.frame.size.height))*[ChipmunkUtils screenWidth];
+        CGFloat denominator = self.scrollView.contentSize.height - self.frame.size.height;
+        denominator = (denominator == 0) ? 1 : denominator;
+        CGFloat blueWidth = (offset.y/denominator) * self.frame.size.width;
+        NSLog(@"Offset: %f\nContentHeight: %f\nFrameHeight: %f", offset.y, self.scrollView.contentSize.height, self.frame.size.height);
         self.progressBar.frame = CGRectMake(0, 0, blueWidth, 6);
     } 
     
@@ -108,6 +111,13 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     // add some feature to snap the view to where it should be
+    if(self.frame.origin.y <= self.scrollOffset) {
+        self.scrollView.scrollEnabled = YES;
+        self.scrollView.userInteractionEnabled = YES;
+    } else {
+        self.scrollView.scrollEnabled = NO;
+        self.scrollView.userInteractionEnabled = NO;
+    }
     
 }
 
@@ -121,51 +131,17 @@
 // move to using the actual scrollview after the lift their finger and the webview has been moved a little bit
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if(scrollView.contentOffset.y < 0) {
+    if(scrollView.contentOffset.y <= 0) {
         scrollView.scrollEnabled = NO;
         scrollView.userInteractionEnabled = NO;
         scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
-        
     }
-    
-    
-    
-    
-    
-    
+    CGFloat denominator = scrollView.contentSize.height - scrollView.frame.size.height;
+    denominator = (denominator == 0) ? 1 : denominator;
+    CGFloat blueWidth = (scrollView.contentOffset.y / denominator) * self.frame.size.width;
+    self.progressBar.frame = CGRectMake(0, 0, blueWidth, 6);
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

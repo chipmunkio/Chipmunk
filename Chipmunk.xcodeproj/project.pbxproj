@@ -85,6 +85,8 @@
 		8E9EB832174AAFA00051BEF7 /* spareIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E9EB831174AAFA00051BEF7 /* spareIcon@2x.png */; };
 		8EB17766174B0F44007C3BC3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E1CD681174AC04D00D2F626 /* FacebookSDK.framework */; };
 		8EB17768174B10A1007C3BC3 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB17767174B10A1007C3BC3 /* libsqlite3.0.dylib */; };
+		8ED55CA9174C3862003F0FD8 /* FlatNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED55CA8174C3862003F0FD8 /* FlatNavigationBar.m */; };
+		8ED55CAC174C39AE003F0FD8 /* SpareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED55CAB174C39AE003F0FD8 /* SpareViewController.m */; };
 		8EE5B0D01718C4BE00B311CA /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */; };
 		8EE5B0D11718C4C800B311CA /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */; };
 		8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3579916DD2F470069ADB0 /* RotatingImageView.m */; };
@@ -202,6 +204,10 @@
 		8E9EB82F174AAF9D0051BEF7 /* spareIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spareIcon.png; sourceTree = "<group>"; };
 		8E9EB831174AAFA00051BEF7 /* spareIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spareIcon@2x.png"; sourceTree = "<group>"; };
 		8EB17767174B10A1007C3BC3 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		8ED55CA7174C3862003F0FD8 /* FlatNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatNavigationBar.h; sourceTree = "<group>"; };
+		8ED55CA8174C3862003F0FD8 /* FlatNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlatNavigationBar.m; sourceTree = "<group>"; };
+		8ED55CAA174C39AE003F0FD8 /* SpareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpareViewController.h; sourceTree = "<group>"; };
+		8ED55CAB174C39AE003F0FD8 /* SpareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpareViewController.m; sourceTree = "<group>"; };
 		8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
 		8EE5B0CF1718C4BE00B311CA /* ActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewCell.h; sourceTree = "<group>"; };
 		8EF3579816DD2F470069ADB0 /* RotatingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingImageView.h; sourceTree = "<group>"; };
@@ -328,6 +334,8 @@
 				23FF258316D72AB200900166 /* AppDelegate.h */,
 				23FF258416D72AB200900166 /* AppDelegate.m */,
 				8E4BD03C1745EDBD000BBF7F /* MainStoryboard.storyboard */,
+				8ED55CA7174C3862003F0FD8 /* FlatNavigationBar.h */,
+				8ED55CA8174C3862003F0FD8 /* FlatNavigationBar.m */,
 				8E5B3608174C08EB000B0073 /* ItemViewController.h */,
 				8E5B3609174C08EB000B0073 /* ItemViewController.m */,
 				8E5B360B174C0996000B0073 /* ArticleViewController.h */,
@@ -346,6 +354,8 @@
 				8E4BD0391745ECCD000BBF7F /* RotatingView.m */,
 				23286FB116D9FC5B005E16FA /* ActivityTableViewController.h */,
 				23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */,
+				8ED55CAA174C39AE003F0FD8 /* SpareViewController.h */,
+				8ED55CAB174C39AE003F0FD8 /* SpareViewController.m */,
 				8EE5B0CF1718C4BE00B311CA /* ActivityTableViewCell.h */,
 				8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */,
 				8E7BDE8216DA15F600B67749 /* DatabaseManager.h */,
@@ -644,6 +654,8 @@
 				8E5B3607174C00F1000B0073 /* ScrollableWebView.m in Sources */,
 				8E5B360A174C08EB000B0073 /* ItemViewController.m in Sources */,
 				8E5B360D174C0996000B0073 /* ArticleViewController.m in Sources */,
+				8ED55CA9174C3862003F0FD8 /* FlatNavigationBar.m in Sources */,
+				8ED55CAC174C39AE003F0FD8 /* SpareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

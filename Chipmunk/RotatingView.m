@@ -85,22 +85,10 @@ const int MINUTES_IN_ROTATION = 46;
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextBeginPath(context);
-    [self drawStaticCircles:context];
     [self drawDynamicCircles:context];
     
 }
 
-// boring stuff that doesnt change
-- (void)drawStaticCircles:(CGContextRef)context {
-    [[ChipmunkUtils chipmunkColor] setStroke];
-    [[UIColor clearColor] setFill];
-    //center of this view
-    float viewCenterX = self.bounds.size.width/2;
-    float viewCenterY = self.bounds.size.height/2;
-    CGContextSetLineWidth(context, 2.0);
-    CGContextAddArc(context, viewCenterX, viewCenterY, self.bounds.size.width/2-1.0, 0, 2*M_PI, YES);
-    CGContextDrawPath(context, kCGPathFillStroke);
-}
 
 
 - (void)drawDynamicCircles:(CGContextRef)context {
@@ -134,17 +122,16 @@ const int MINUTES_IN_ROTATION = 46;
     CGContextAddArc(context, knobX, knobY, knobRadius - 3, 0, 2*M_PI, YES);
     CGContextDrawPath(context, kCGPathFillStroke);
     
+    [[UIColor colorWithWhite:1 alpha:0.4] set];
+    CGContextAddArc(context, knobX, knobY, knobRadius, 0, 2*M_PI, YES);
+    CGContextDrawPath(context, kCGPathFillStroke);
+    
     // draw the inner black circle
     [[UIColor whiteColor] set];
     CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic - DYNAMIC_WIDTH, 0, 2*M_PI, YES);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFillStroke);
     CGContextDrawPath(context, kCGPathFillStroke);
-    
-    [[ChipmunkUtils chipmunkColor] setStroke];
-    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic - DYNAMIC_WIDTH - 10, 0, 2*M_PI, YES);
-    CGContextClosePath(context);
-    CGContextStrokePath(context);
     
     // draw the actual knob
     [[ChipmunkUtils chipmunkColor] set];
