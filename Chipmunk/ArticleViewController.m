@@ -39,8 +39,6 @@
     return vc;
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
@@ -77,8 +75,6 @@
                                                cachePolicy:NSURLCacheStorageAllowed
                                            timeoutInterval:300]];
 }
-
-
 
 - (void)didReceiveMemoryWarning
 {

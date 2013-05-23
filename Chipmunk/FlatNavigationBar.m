@@ -15,7 +15,6 @@
 - (void)drawRect:(CGRect)rect {
     if (!self.color)
         self.color = [UIColor blackColor];
-    NSLog(@"FLAT DRAWING");
     CGContextRef context = UIGraphicsGetCurrentContext();
     [self.color set];
     CGContextFillRect(context, rect);

@@ -34,10 +34,9 @@
         ivc = [ArticleViewController controllerItem:item];
     } // then add an if statement for every new type of item we need
     
-    
     UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 38, 38)];
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
-    [back addTarget:ivc.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    [back addTarget:ivc action:@selector(popViewController) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton* share = [[UIButton alloc] initWithFrame:CGRectMake([ChipmunkUtils screenWidth] - 45, 5, 40, 40)];
     share.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"share"]];
@@ -47,6 +46,10 @@
     [ivc.view addSubview:share]; // maybe add this button to every class so they can share their data correctly
     
     return ivc;
+}
+
+- (void)popViewController {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -67,6 +70,7 @@
 #pragma mark - Subclass Responsibility
 //*********************************************************
 //*********************************************************
+// any subclass of this should override these functions
 
 // show options for sharing this item
 - (void)share {

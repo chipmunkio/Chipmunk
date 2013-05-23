@@ -8,6 +8,8 @@
 
 #import "ScrollableWebView.h"
 
+const int PROGRESS_BAR_HEIGHT = 6;
+
 @interface ScrollableWebView () <UIScrollViewDelegate>
 
 @property (nonatomic) CGPoint touchBegan;
@@ -49,10 +51,11 @@
     wv.scrollView.scrollEnabled = NO;
     wv.scrollView.userInteractionEnabled = NO;
     wv.scrollView.delegate = wv;
+    wv.scrollView.showsVerticalScrollIndicator = NO; //this is shown by the progress bar
     
-    UIView* greyBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], 6)];
+    UIView* greyBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], PROGRESS_BAR_HEIGHT)];
     greyBar.backgroundColor = [UIColor darkGrayColor];
-    wv.progressBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 6)];
+    wv.progressBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, PROGRESS_BAR_HEIGHT)];
     wv.progressBar.backgroundColor = [ChipmunkUtils chipmunkColor];
     [wv addSubview:greyBar];
     [wv addSubview:wv.progressBar];
@@ -85,10 +88,8 @@
     if (newFrame.origin.y > self.scrollOffset && self.scrollView.contentOffset.y <= 0) {
         if (newFrame.origin.y <= self.webViewStartY)
             self.frame = newFrame;
-        NSLog(@"continue moving the view around");
     } else {
         if(self.frame.origin.y > self.scrollOffset) {
-            NSLog(@"it just switched!!!!!");
             newFrame.origin.y = self.scrollOffset;
             self.frame = newFrame;
             distance = 0;
@@ -102,22 +103,20 @@
         CGFloat denominator = self.scrollView.contentSize.height - self.frame.size.height;
         denominator = (denominator == 0) ? 1 : denominator;
         CGFloat blueWidth = (offset.y/denominator) * self.frame.size.width;
-        NSLog(@"Offset: %f\nContentHeight: %f\nFrameHeight: %f", offset.y, self.scrollView.contentSize.height, self.frame.size.height);
-        self.progressBar.frame = CGRectMake(0, 0, blueWidth, 6);
+        self.progressBar.frame = CGRectMake(0, 0, blueWidth, PROGRESS_BAR_HEIGHT);
     } 
     
     
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    // add some feature to snap the view to where it should be
     if(self.frame.origin.y <= self.scrollOffset) {
         self.scrollView.scrollEnabled = YES;
         self.scrollView.userInteractionEnabled = YES;
     } else if (self.frame.origin.y < self.webViewStartY) {
         float moveableDistance = self.webViewStartY - self.scrollOffset;
         float newY = (self.frame.origin.y - self.scrollOffset < moveableDistance/2) ? self.scrollOffset : self.webViewStartY;
-        [UIView animateWithDuration:0.25 animations:^{
+        [UIView animateWithDuration:0.35 animations:^{
             CGRect newFrame = self.frame;
             newFrame.origin.y = newY;
             self.frame = newFrame;
@@ -136,16 +135,44 @@
 // move to using the actual scrollview after the lift their finger and the webview has been moved a little bit
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if(scrollView.contentOffset.y <= 0) {
-        scrollView.scrollEnabled = NO;
-        scrollView.userInteractionEnabled = NO;
+    if(scrollView.contentOffset.y <= 0 || self.frame.origin.y > self.scrollOffset) {
+        CGRect frame = self.frame;
+        frame.origin.y -= scrollView.contentOffset.y;
+        if (frame.origin.y > self.webViewStartY)
+            frame.origin.y = self.webViewStartY;
+        else if (frame.origin.y < self.scrollOffset)
+            frame.origin.y = self.scrollOffset;
+        self.frame = frame;
         scrollView.contentOffset = CGPointMake(scrollView.contentOffset.x, 0);
     }
+    
     CGFloat denominator = scrollView.contentSize.height - scrollView.frame.size.height;
     denominator = (denominator == 0) ? 1 : denominator;
     CGFloat blueWidth = (scrollView.contentOffset.y / denominator) * self.frame.size.width;
-    self.progressBar.frame = CGRectMake(0, 0, blueWidth, 6);
+    self.progressBar.frame = CGRectMake(0, 0, blueWidth, PROGRESS_BAR_HEIGHT);
 
+}
+
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    self.scrollView.scrollEnabled = NO;
+    self.scrollView.userInteractionEnabled = NO;
+}
+
+// calling touches ended in the below two functions will force the view to scroll to the correct position
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if(!decelerate && self.scrollView.contentOffset.y <= 0) {
+        self.scrollView.scrollEnabled = NO;
+        self.scrollView.userInteractionEnabled = NO;
+        [self touchesEnded:nil withEvent:nil];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if(self.scrollView.contentOffset.y <= 0) {
+        self.scrollView.scrollEnabled = NO;
+        self.scrollView.userInteractionEnabled = NO;
+        [self touchesEnded:nil withEvent:nil];
+    }
 }
 
 
