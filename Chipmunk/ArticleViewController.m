@@ -54,6 +54,17 @@
     [self addImageView];
     //define 64 somewhere
     self.webView = [ScrollableWebView webViewOffset:60 webStart:IMG_HEIGHT superSize:self.view.frame.size];
+    self.webView.delegate = self;
+    
+    UIActivityIndicatorView* av = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [av setColor:[UIColor grayColor]];
+    av.frame = CGRectMake(145, 100, 40, 40);
+    av.tag = 1;
+    [self.webView addSubview:av];
+    
+    
+    
+    
     [self.view addSubview:self.webView];
 }
 
@@ -80,6 +91,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    // show activity indicator
+    UIActivityIndicatorView* av = (UIActivityIndicatorView*)[self.webView viewWithTag:1];
+    [av startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    UIActivityIndicatorView* av = (UIActivityIndicatorView*)[self.webView viewWithTag:1];
+    [av stopAnimating];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    UIActivityIndicatorView* av = (UIActivityIndicatorView*)[self.webView viewWithTag:1];
+    [av stopAnimating];
+    //UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"There was an error loading the website" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    //[alert show];
 }
 
 @end

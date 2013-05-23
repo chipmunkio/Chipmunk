@@ -9,7 +9,7 @@ const int IMG_HEIGHT = 220;
 
 #import "ItemViewController.h"
 
-@interface ArticleViewController : ItemViewController
+@interface ArticleViewController : ItemViewController <UIWebViewDelegate>
 
 
 + (ArticleViewController*)controllerItem:(NSDictionary*)item;
