@@ -14,9 +14,9 @@
 #define degreesToRadians(degrees) (M_PI * degrees / 180.0)
 
 // the distance from the outer most circle to the outer edge of the dynamic circle
-const int RADIUS_DELTA = 10;
+const int RADIUS_DELTA = 15;
 // the thickness of the part that moves
-const int DYNAMIC_WIDTH = 20;
+const int DYNAMIC_WIDTH = 15;
 const int MINUTES_IN_ROTATION = 46;
 
 @interface RotatingView ()
