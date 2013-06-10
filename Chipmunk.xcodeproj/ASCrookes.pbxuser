@@ -1,0 +1,91 @@
+// !$*UTF8*$!
+{
+	23FF256916D72AB200900166 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 8EA3D9ED17400ACC006255CA /* Chipmunk */;
+		activeTarget = 23FF257016D72AB200900166 /* Chipmunk */;
+		codeSenseManager = 8EA3DA1D17400ACF006255CA /* Code sense */;
+		executables = (
+			8EA3D9ED17400ACC006255CA /* Chipmunk */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					356,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 390073036;
+			PBXWorkspaceStateSaveDate = 390073036;
+		};
+		sourceControlManager = 8EA3DA1C17400ACF006255CA /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	23FF257016D72AB200900166 /* Chipmunk */ = {
+		activeExec = 0;
+		executables = (
+			8EA3D9ED17400ACC006255CA /* Chipmunk */,
+		);
+	};
+	23FF259616D72AB200900166 /* ChipmunkTests */ = {
+		activeExec = 0;
+	};
+	8EA3D9ED17400ACC006255CA /* Chipmunk */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Chipmunk;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	8EA3DA1C17400ACF006255CA /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	8EA3DA1D17400ACF006255CA /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}

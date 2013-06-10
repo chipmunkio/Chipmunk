@@ -15,6 +15,8 @@
 // is mutable so that new items can be added if the user scrolls to the end
 @property (nonatomic, strong) NSMutableArray* dataSource;
 @property (nonatomic, strong) NSMutableArray* imgDataSource;
+// a set of the item ids that have already been downloaded
+@property (nonatomic, strong) NSMutableSet* downloadedItems;
 @property (nonatomic, strong) DatabaseManager* dbManager;
 @property (nonatomic) unsigned long imagesDownloaded;
 

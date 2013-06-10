@@ -61,6 +61,11 @@
     [back addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+// right now just save to Pocket,
+- (void)share {
+    [ChipmunkUtils saveURLToPocket:self.item[@"url"]];
+}
+
 // added sliding to name because addWebView is already a function
 - (void)addSlidingWebView {
     // 64 is the size of the status bar and the navigation bar

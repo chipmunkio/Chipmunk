@@ -73,6 +73,14 @@
 
     [ChipmunkUtils roundView:atvc.imageview withCorners:UIRectCornerAllCorners andRadius:20.0];
 //    [ChipmunkUtils addShadowToView:atvc.imageview];
+    UIView* gradientView = [[UIView alloc] initWithFrame:atvc.imageview.frame];
+    CAGradientLayer* gradient = [CAGradientLayer layer];
+    gradient.frame = gradientView.frame;
+    UIColor* clearBlack = [UIColor colorWithWhite:0 alpha:0.65];
+    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)clearBlack.CGColor];
+    [gradientView.layer insertSublayer:gradient atIndex:0];
+    [atvc.imageview insertSubview:gradientView belowSubview:atvc.label];
+    
     
     return atvc;
 }

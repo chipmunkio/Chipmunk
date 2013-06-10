@@ -7,6 +7,7 @@
 //
 
 #import "ChipmunkUtils.h"
+#import "PocketAPI.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ChipmunkUtils
@@ -67,5 +68,40 @@
     UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:ovalRect];
     layer.shadowPath = path.CGPath;
 }
+
++ (void)saveURLToPocket:(NSString*)url {
+    // force them to login before trying to save anything to pocket
+    if(![PocketAPI sharedAPI].loggedIn) {
+        [[PocketAPI sharedAPI] loginWithHandler:^(PocketAPI *api, NSError *error) {
+            if(!error && api.loggedIn) {
+                [self saveURLToPocket:url];
+            } else {
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not login to Pocket" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }];
+        return;
+    }
+    
+    
+    [[PocketAPI sharedAPI] saveURL:[NSURL URLWithString:url] handler:^(PocketAPI *api, NSURL *url, NSError *error) {
+        if(error) {
+            NSLog(@"Pocket Error: %@", error);
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not save to Pocket" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        } else {
+            NSLog(@"Saved the url to pocket");
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Saved URL to Pocket" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
+}
+
++ (void)logoutPocket {
+    [[PocketAPI sharedAPI] logout];
+}
+
+
+
 
 @end
