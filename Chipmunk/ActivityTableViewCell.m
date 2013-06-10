@@ -61,6 +61,7 @@
     atvc.label.shadowColor = [UIColor blackColor];
     atvc.label.shadowOffset = CGSizeMake(0.0, 1.0);
     atvc.label.layer.shouldRasterize = YES;
+
     
 
     atvc.label.textAlignment = NSTextAlignmentLeft;
@@ -78,7 +79,7 @@
 
 - (void)addTextToCell:(NSString*)text {
     self.label.text = text;
-
+    
 }
 
     
