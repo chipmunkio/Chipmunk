@@ -96,7 +96,8 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
     [self.view addSubview:back];
     [back addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    
+    self.view.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
     
 }
 
@@ -115,17 +116,7 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
     self.tableView.frame = frame;
     [self.view addSubview:self.tableView];
     self.tableView.pagingEnabled = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
     //[ChipmunkUtils roundView:self.view withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10];
-    UIView* gradientView = [[UIView alloc] initWithFrame:self.tableView.frame];
-    CAGradientLayer* gradient = [CAGradientLayer layer];
-    gradient.frame = gradientView.frame;
-    UIColor* clearBlack = [UIColor colorWithWhite:0 alpha:0.4];
-    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)clearBlack.CGColor];
-    [gradientView.layer insertSublayer:gradient atIndex:0];
-    [self.view insertSubview:gradientView belowSubview:self.tableView];
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     

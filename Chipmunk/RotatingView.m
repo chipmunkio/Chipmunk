@@ -191,8 +191,10 @@ const int MINUTES_IN_ROTATION = 46;
 }
 
 - (void)updateTime {
-    unsigned int mins = [self totalMinutes];
-    self.time.text = [NSString stringWithFormat:@"%i",mins];
+    unsigned int mins  = [self totalMinutes];
+    unsigned int hours = mins/60;
+    mins %= 60;
+    [self.delegate rotatedToHour:hours Minutes:mins];
 }
 
 

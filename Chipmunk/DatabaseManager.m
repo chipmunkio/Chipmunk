@@ -19,13 +19,18 @@
 // start a connection and return the data to the delegate
 - (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo wantOnline:(unsigned int)online wantOutside:(unsigned int)outside
 {
+    NSString* fbToken = [FBSession activeSession].accessTokenData.accessToken;
+    fbToken = (fbToken == nil) ? @"" : fbToken;
+    NSLog(@"query fb token: %@", fbToken);
+    // they must be logged into facebook to be here
+    assert(![fbToken isEqualToString:@""]);
     NSDictionary* params = @{
                              @"minutes"  : @(time),
                              @"geo"      : @"-79.32,103.81",
                              @"online"   : @(online),
                              @"outside"  : @(outside),
                              // make this a dictionary of tokens so they are all bundled together
-                             @"fb_token" : [FBSession activeSession].accessTokenData.accessToken
+                             @"fb_token" : fbToken
                             };
     FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"]
                                                 method:FSNRequestMethodGET

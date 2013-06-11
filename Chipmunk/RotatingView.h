@@ -11,6 +11,7 @@
 @protocol RotatingViewDelegate <NSObject>
 
 - (void)selectedTime:(unsigned int)mins;
+- (void)rotatedToHour:(int)hour Minutes:(int)minute;
 
 @end
 

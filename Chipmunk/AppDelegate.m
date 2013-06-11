@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
 #import "PocketAPI.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @implementation AppDelegate
 
@@ -33,11 +34,15 @@
     [[NSUserDefaults standardUserDefaults] setBool:(result.height > 480) forKey:@"isRetina"];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     
+    self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tree2.png"]];
+    
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     // the pocket API is the only url we need to handle so only return true for that
+    if([[[url absoluteString] lowercaseString] rangeOfString:@"facebook"].length > 0)
+        return [FBSession.activeSession handleOpenURL:url];
     return [[PocketAPI sharedAPI] handleOpenURL:url];
 }
 							

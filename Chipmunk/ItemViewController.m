@@ -33,6 +33,10 @@
     if([type isEqualToString:@"Link"]) {
         ivc = [ArticleViewController controllerItem:item];
     } // then add an if statement for every new type of item we need
+    else {
+        // if it is not one of the above types something went wrong with the server
+        assert(false);
+    }
     
     UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 38, 38)];
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
@@ -44,6 +48,8 @@
     
     [ivc.view addSubview:back];
     [ivc.view addSubview:share]; // maybe add this button to every class so they can share their data correctly
+    
+    ivc.view.backgroundColor = [UIColor blackColor];
     
     return ivc;
 }
