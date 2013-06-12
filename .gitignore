@@ -1,5 +1,18 @@
+<<<<<<< HEAD
 .DS_Store
 *~
 *.swp
 *.swo
 *.pyc
+=======
+# stuff xcode changes all the time
+
+Breakpoints.xcbkptlist
+.DS_Store
+*.mode1v3
+*.pbxuser
+*.pbxproj
+*.xcuserstate
+*.xcbkptlist
+
+>>>>>>> 59cd9e73773fd68a72326b1d6b9c8131318afef7

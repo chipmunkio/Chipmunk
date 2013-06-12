@@ -9,6 +9,7 @@
 #import "ChipmunkUtils.h"
 #import "PocketAPI.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MTStatusBarOverlay.h"
 
 @implementation ChipmunkUtils
 
@@ -22,6 +23,16 @@
 + (CLLocation*)getCurrentLocation {
     AppDelegate* del = [[UIApplication sharedApplication] delegate];
     return del.locationManager.location;
+}
+
++ (void)stopUpdatingLocation {
+    AppDelegate* del = [[UIApplication sharedApplication] delegate];
+    [del.locationManager stopUpdatingLocation];
+}
+
++ (void)startUpdatingLocation {
+    AppDelegate* del = [[UIApplication sharedApplication] delegate];
+    [del.locationManager startUpdatingLocation];
 }
 
 + (CGFloat)screenWidth {
@@ -84,16 +95,19 @@
     }
     
     
+    MTStatusBarOverlay* overlay = [MTStatusBarOverlay sharedInstance];
+    [overlay postImmediateMessage:@"Saving To Pocket" animated:YES];
     [[PocketAPI sharedAPI] saveURL:[NSURL URLWithString:url] handler:^(PocketAPI *api, NSURL *url, NSError *error) {
         if(error) {
             NSLog(@"Pocket Error: %@", error);
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not save to Pocket" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
+            [overlay postErrorMessage:@"Error SavingPocket" duration:1.5];
         } else {
             NSLog(@"Saved the url to pocket");
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Saved URL to Pocket" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
+            [overlay postFinishMessage:@"Saved" duration:1.5 animated:YES];
         }
+        overlay.progress = 1.0;
     }];
 }
 

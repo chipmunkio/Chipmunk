@@ -20,5 +20,8 @@
 + (CGSize)screenSize;
 + (void)addShadowToView:(UIView*)view;
 + (void)saveURLToPocket:(NSString*)url;
-
++ (void)stopUpdatingLocation;
++ (void)startUpdatingLocation;
+    
+    
 @end

@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import "TestFlight.h"
     #import "ChipmunkUtils.h"
+    #import "SpareViewController.h"
 #endif

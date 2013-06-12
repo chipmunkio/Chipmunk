@@ -10,17 +10,17 @@
 #import "UIImage+StackBlur.h"
 #import <UIKit/UIKit.h>
 
-@interface ActivitySelectionController : UIViewController <UIWebViewDelegate, DatabaseManagerDelegate, UIScrollViewDelegate>
+@interface ActivitySelectionController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *nextActivityButton;
 @property (strong, nonatomic) UIImageView *imageView;
 // this will have to change once venues are an option as venues will not always have webcontent
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic, strong) UIScrollView* scrollView;
 
 @property (strong, nonatomic) DatabaseManager* dbManager;
 @property (strong, nonatomic) NSMutableArray* dataSource;
 @property (weak, nonatomic) IBOutlet UIButton *bottomBar;
 @property (strong, nonatomic) NSMutableArray* imgDataSource;
-@property (nonatomic) int barUp;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (nonatomic) NSTimer *timer;
 @property (nonatomic) int mins;

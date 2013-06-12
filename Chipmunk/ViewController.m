@@ -11,6 +11,8 @@
 #import "ActivityTableViewController.h"
 #import "ActivitySelectionController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import "LoginViewController.h"
 
 #define RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
 
@@ -33,6 +35,7 @@ typedef enum SliderLocation {
 - (void)viewDidLoad
 {
     
+    [super viewDidLoad];
     
     //SET UP LABELS
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
@@ -46,12 +49,11 @@ typedef enum SliderLocation {
     [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:self.outsideLabel.font.pointSize]];
      [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
     
-    [super viewDidLoad];
-    self.hourLabel.hidden = true;
-    self.hourSymbol.hidden = true;
-    self.minuteSymbol.hidden = true;
-    self.minLabel.hidden = true;
-
+    self.minLabel.hidden     = NO;
+    self.minuteSymbol.hidden = NO;
+    self.hourLabel.hidden    = YES;
+    self.hourLabel.hidden    = YES;
+    
     self.hourIsShowing = 0;
     
     
@@ -69,8 +71,13 @@ typedef enum SliderLocation {
     [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateHighlighted];
 
     self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-    self.rotatingTimeSelect.delegate = self;
+    self.circle.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
+    if(FBSession.activeSession.state != FBSessionStateCreatedTokenLoaded) {
+        [self presentViewController:[[LoginViewController alloc] init] animated:NO completion:^{}];
+    }
+    self.view.backgroundColor = [UIColor clearColor];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,18 +86,32 @@ typedef enum SliderLocation {
     // Dispose of any resources that can be recreated.
 }
 
-- (void)rotatedToHour:(int)hour Minute:(int)minute
+- (void)rotatedToHour:(int)hour Minutes:(int)minute
 {
 
     [self.freeTime setHidden:YES];
-    self.minuteSymbol.hidden = false;
-    self.minLabel.hidden = false;
     if(![self.minLabel.text isEqualToString:[NSString stringWithFormat:@"%d",minute]]) {
         self.hourLabel.text = [NSString stringWithFormat:@"%d",hour];
         self.minLabel.text = [NSString stringWithFormat:@"%d",minute];
         [self moveHourLabel:hour Minute:minute];
         //AudioServicesPlaySystemSound (tickObject); // plays sound
     }
+}
+
+- (void)selectedTime:(unsigned int)mins {
+    if(mins > 0) {
+        ActivityTableViewController* atvc = [ActivityTableViewController activityTableWithMinutes:mins
+                                                                                  currentLocation:[ChipmunkUtils getCurrentLocation]
+                                                                                       wantOnline:0
+                                                                                      wantOutside:0];
+        [ChipmunkUtils stopUpdatingLocation]; // stop updating
+        [self.navigationController pushViewController:atvc animated:YES];
+        
+    } else {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Time?" message:@"Please add time by spinning the circle" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 
@@ -143,8 +164,8 @@ typedef enum SliderLocation {
         [self.hourLabel.layer addAnimation:labelAnimation forKey:nil];
         [self.hourSymbol.layer addAnimation:symbolAnimation forKey:nil];
 
-        self.hourLabel.hidden = true;
-        self.hourSymbol.hidden = true;
+        self.hourLabel.hidden  = YES;
+        self.hourSymbol.hidden = YES;
         
         
         self.hourIsShowing = 0;
@@ -153,8 +174,8 @@ typedef enum SliderLocation {
     }
     if(hour > 0 && self.hourIsShowing == 0)
     {
-        self.hourLabel.hidden = false;
-        self.hourSymbol.hidden = false;
+        self.hourLabel.hidden  = YES;
+        self.hourSymbol.hidden = YES;
         
         CGRect hLabelFrame = self.hourLabel.frame;
         hLabelFrame.origin.x = hLabelFrame.origin.x-35; // new x coordinate
@@ -194,6 +215,7 @@ typedef enum SliderLocation {
                                                                                   currentLocation:[ChipmunkUtils getCurrentLocation]
                                                                                        wantOnline:0
                                                                                       wantOutside:0];
+        [ChipmunkUtils stopUpdatingLocation]; // stop updating
         [self.navigationController pushViewController:atvc animated:YES];
         
     } else {

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "RotatingImageView.h"
+#import "RotatingView.h"
 #import "DatabaseManager.h"
 #include <AudioToolbox/AudioToolbox.h>
 
-@interface ViewController : UIViewController <RotatingImageDelegate>
+@interface ViewController : SpareViewController <RotatingViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *circleImage;
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UILabel *minLabel;
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *onlineButton;
 @property (weak, nonatomic) IBOutlet UIButton *bothButton;
 @property (weak, nonatomic) IBOutlet UIButton *outsideButton;
+@property (weak, nonatomic) IBOutlet RotatingView *circle;
 
 // for sound
 //@property (nonatomic) CFURLRef tickURLRef;

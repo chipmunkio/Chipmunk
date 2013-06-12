@@ -12,6 +12,11 @@
 #import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import "ItemViewController.h"
+#import "FlatNavigationBar.h"
+
+const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop from trying to get more
 
 @interface ActivityTableViewController ()
 
@@ -19,7 +24,7 @@
 @property (nonatomic) unsigned int online;
 @property (nonatomic) unsigned int outside;
 @property (nonatomic, strong) NSDate* initialLoad;
-@property (nonatomic) BOOL canGetMore;
+@property (nonatomic) unsigned int loadAttempts; //the times trying to load more data from the server
 @property (nonatomic) BOOL isLoading;
 
 @end
@@ -36,8 +41,8 @@
 @synthesize online  = _online;
 @synthesize outside = _outside;
 @synthesize initialLoad = _initialLoad;
-@synthesize canGetMore = _canGetMore;
 @synthesize isLoading = _isLoading;
+@synthesize loadAttempts = _loadAttempts;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,10 +64,11 @@
     atvc.online  = online;
     atvc.initialLoad = [NSDate date];
     atvc.imagesDownloaded = 0;
-    atvc.canGetMore = YES;
+    atvc.loadAttempts = 0;
     // as soon as the table is created begin loading the data
-    [atvc.dbManager getActivities:mins currentLocation:geo wantOnline:online wantOutside:outside];
-    return atvc;    
+    [atvc loadData];
+    
+    return atvc;
 }
 
 - (void)viewDidLoad
@@ -76,9 +82,8 @@
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self setupTableView];
     
-    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [navbar setTintColor:[ChipmunkUtils chipmunkColor]];
-    [navbar setBackgroundColor:[UIColor blackColor]];
+    FlatNavigationBar* navbar = [[FlatNavigationBar alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], 44)];
+    navbar.color = [ChipmunkUtils chipmunkColor];
     UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc] initWithFrame:navbar.frame];
     indicator.tag = 7;
     [navbar addSubview:indicator];
@@ -90,10 +95,15 @@
     UIButton* back = [[UIButton alloc] initWithFrame:CGRectMake(10, 3, 38, 38)];
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
     [self.view addSubview:back];
-    [back addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    [back addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
     
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+}
+
+- (void)goBack {
+    [ChipmunkUtils startUpdatingLocation];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -106,17 +116,7 @@
     self.tableView.frame = frame;
     [self.view addSubview:self.tableView];
     self.tableView.pagingEnabled = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
     //[ChipmunkUtils roundView:self.view withCorners:(UIRectCornerTopLeft | UIRectCornerTopRight) andRadius:10];
-    UIView* gradientView = [[UIView alloc] initWithFrame:self.tableView.frame];
-    CAGradientLayer* gradient = [CAGradientLayer layer];
-    gradient.frame = gradientView.frame;
-    UIColor* clearBlack = [UIColor colorWithWhite:0 alpha:0.4];
-    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)clearBlack.CGColor];
-    [gradientView.layer insertSublayer:gradient atIndex:0];
-    [self.view insertSubview:gradientView belowSubview:self.tableView];
-    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -136,16 +136,26 @@
 //*********************************************************
 //*********************************************************
 
+// really shouldnt be called activities 
 - (void)receivedActivities:(NSArray *)activities {
-    self.canGetMore = (activities.count > 0);
+    unsigned int newActivities = 0;
     // should notify the user that there are new objects to look at if they are not already at the end?
     unsigned int offset = self.dataSource.count;
     for(NSDictionary* item in activities) {
-        NSLog(@"Item ID: %@", item[@"id"]);
         if(![self.downloadedItems containsObject:item[@"id"]]) {
             [self.dataSource addObject:item];
             [self.downloadedItems addObject:item[@"id"]];
+            newActivities += 1;
         }
+    }
+    if(newActivities == 0) {
+        self.loadAttempts += 1;
+        if(self.loadAttempts == MAX_LOAD_ATTEMPTS - 1 && self.minutes > 1) {
+            NSLog(@"changing minutes YOLO");
+            self.minutes -= 1;
+        }
+    } else {
+        self.loadAttempts = 0;
     }
     [self downloadContentFromOffset:offset];
     UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[self.view viewWithTag:7];
@@ -156,7 +166,10 @@
 - (void)loadData {
     UIActivityIndicatorView* indicator = (UIActivityIndicatorView*)[self.view viewWithTag:7];
     [indicator startAnimating];
-    [self.dbManager getActivities:(self.minutes + [self.initialLoad timeIntervalSinceNow]) //time interval returns a negative time (Seconds)
+    int mins = (int)(self.minutes + [self.initialLoad timeIntervalSinceNow]/60);//time interval returns a negative time (Seconds)
+    if(mins < 0) mins = 0;
+    NSLog(@"MINS: %i", mins);
+    [self.dbManager getActivities:mins
                   currentLocation:[ChipmunkUtils getCurrentLocation]
                        wantOnline:self.online
                       wantOutside:self.outside];
@@ -206,13 +219,12 @@
 // use this to reload any part of the UI
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ActivitySelectionController* selection = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"selectionController"];
     
     // give the view the item
     NSMutableDictionary* item = [self.dataSource[indexPath.row] mutableCopy];
     item[@"imageData"] = self.imgDataSource[indexPath.row];
-    selection.item = item;
-    [self.navigationController pushViewController:selection animated:YES];
+    ItemViewController* ivc = [ItemViewController item:item];
+    [self.navigationController pushViewController:ivc animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -248,9 +260,8 @@
     cell.imageview.image = image;
     [cell addTextToCell:self.dataSource[indexPath.row][@"name"]];
    
-    // If they have gone through 75 percent of the items get more
-    if(indexPath.row == self.dataSource.count - 1 && self.canGetMore) {
-        NSLog(@"getting more stuff-----------------------------------------------------------");
+    if(indexPath.row == self.dataSource.count - 1 && self.loadAttempts <= MAX_LOAD_ATTEMPTS) {
+        NSLog(@"GETTING MORE------------------------");
         [self loadData];
     }
     
@@ -300,6 +311,7 @@
     }
     return _downloadedItems;
 }
+
 
 
 @end

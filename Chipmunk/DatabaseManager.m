@@ -8,7 +8,7 @@
 
 #import "DatabaseManager.h"
 #import "FSNConnection.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface DatabaseManager ()
 
@@ -19,7 +19,23 @@
 // start a connection and return the data to the delegate
 - (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo wantOnline:(unsigned int)online wantOutside:(unsigned int)outside
 {
-    FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"] method:FSNRequestMethodGET headers:[NSDictionary dictionary] parameters:[NSDictionary dictionaryWithObjectsAndKeys:@(time),@"minutes",@"-79.32,103.81",@"geo",@(online),@"online",@(outside),@"outside", nil]
+    NSString* fbToken = [FBSession activeSession].accessTokenData.accessToken;
+    fbToken = (fbToken == nil) ? @"" : fbToken;
+    NSLog(@"query fb token: %@", fbToken);
+    // they must be logged into facebook to be here
+    assert(![fbToken isEqualToString:@""]);
+    NSDictionary* params = @{
+                             @"minutes"  : @(time),
+                             @"geo"      : @"-79.32,103.81",
+                             @"online"   : @(online),
+                             @"outside"  : @(outside),
+                             // make this a dictionary of tokens so they are all bundled together
+                             @"fb_token" : fbToken
+                            };
+    FSNConnection* connection = [FSNConnection withUrl:[NSURL URLWithString:@"http://chipmunk.io/api/items/query"]
+                                                method:FSNRequestMethodGET
+                                               headers:[NSDictionary dictionary]
+                                            parameters:params
                                             parseBlock:^id(FSNConnection *c, NSError *__autoreleasing *error) {
         return [c.responseData dictionaryFromJSONWithError:error];
     } completionBlock:^(FSNConnection *c) {
@@ -40,6 +56,14 @@
     
     [connection start];
 }
+                                           
+
++ (NSDictionary*)getTokens {
+    return @{@"fb" : @"accessToken"};
+}
+
+
+
 
 
 @end
