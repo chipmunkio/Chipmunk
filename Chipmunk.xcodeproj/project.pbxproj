@@ -28,7 +28,6 @@
 		23286F9E16D99D25005E16FA /* Circle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 23286F9D16D99D25005E16FA /* Circle2.png */; };
 		23286FB316D9FC5B005E16FA /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */; };
 		23286FB416D9FC5B005E16FA /* ActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */; };
-		2336F655173969F40077C892 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2336F654173969F40077C892 /* Accelerate.framework */; };
 		2336F65E17396D3F0077C892 /* UIImage+Gaussian.m in Sources */ = {isa = PBXBuildFile; fileRef = 2336F65D17396D3F0077C892 /* UIImage+Gaussian.m */; };
 		2345962516DA08450088312D /* leopard.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2345962416DA08450088312D /* leopard.jpeg */; };
 		2345962716DA084F0088312D /* videoicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2345962616DA084F0088312D /* videoicon.png */; };
@@ -136,7 +135,6 @@
 		23286F9D16D99D25005E16FA /* Circle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle2.png; sourceTree = "<group>"; };
 		23286FB116D9FC5B005E16FA /* ActivityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityTableViewController.h; sourceTree = "<group>"; };
 		23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewController.m; sourceTree = "<group>"; };
-		2336F654173969F40077C892 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Accelerate.framework; sourceTree = "<group>"; };
 		2336F65C17396D3F0077C892 /* UIImage+Gaussian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Gaussian.h"; sourceTree = "<group>"; };
 		2336F65D17396D3F0077C892 /* UIImage+Gaussian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Gaussian.m"; sourceTree = "<group>"; };
 		2345962416DA08450088312D /* leopard.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leopard.jpeg; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				23FF257916D72AB200900166 /* CoreGraphics.framework in Frameworks */,
 				8E3E5FC41721D7DE00237025 /* libTestFlight.a in Frameworks */,
 				23ADC4271726DA6D00FDD77E /* Crashlytics.framework in Frameworks */,
-				2336F655173969F40077C892 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				8E3E36551742DBF4003D5284 /* Security.framework */,
-				2336F654173969F40077C892 /* Accelerate.framework */,
 				23ADC4261726DA6D00FDD77E /* Crashlytics.framework */,
 				8E0EDE1116FC1EE7004FCDFA /* CoreLocation.framework */,
 				23267CE616F69A45005B5BDA /* MessageUI.framework */,
@@ -748,8 +744,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -764,6 +760,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A50626F-C08C-4E0F-89C5-33EE3FA79AEB";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -780,8 +778,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -789,6 +787,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -797,8 +797,8 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -813,8 +813,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -823,8 +823,8 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Gabe Jacobs";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Gabe Jacobs";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -839,8 +839,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A2956EBB-6065-4A05-ADAC-7532FBB1805C";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
