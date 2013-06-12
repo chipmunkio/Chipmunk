@@ -8,7 +8,6 @@
 
 #import "ActivityTableViewController.h"
 #import "ActivityTableViewCell.h"
-#import "DatabaseManager.h"
 #import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>

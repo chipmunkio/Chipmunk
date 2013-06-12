@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "ViewController.h"
+
 
 @interface LoginViewController ()
 
@@ -32,24 +34,35 @@ const int LOGIN_HEIGHT = 50;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self updateView];
+
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (!appDelegate.session.isOpen) {
+        // create a fresh session object
+        appDelegate.session = [[FBSession alloc] init];
+        
+        // if we don't have a cached token, a call to open here would cause UX for login to
+        // occur; we don't want that to happen unless the user clicks the login button, and so
+        // we check here to make sure we have a token before calling open
+        if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
+            // even though we had a cached token, we need to login to make the session usable
+            [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                             FBSessionState status,
+                                                             NSError *error) {
+                // we recurse here, in order to update buttons and labels
+                //[self updateView];
+
+            }];
+        }
+    }
+
+
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor purpleColor];
-    int frameX = ([ChipmunkUtils screenWidth] - LOGO_WIDTH)/2;
-    UIImageView* logo = [[UIImageView alloc] initWithFrame:CGRectMake(frameX, 60, LOGO_WIDTH, LOGO_HEIGHT)];
-    logo.backgroundColor = [UIColor whiteColor];
-    logo.image = nil;
-    [self.view addSubview:logo];
-    
-    int frameY = [ChipmunkUtils screenHeight] - LOGIN_HEIGHT - 60;
+   // self.view.backgroundColor = [UIColor purpleColor];
+    int frameX = ([ChipmunkUtils screenWidth] - LOGO_WIDTH)/2;    
     frameX = ([ChipmunkUtils screenWidth] - LOGIN_WIDTH)/2;
-    UIButton* fbLogin = [[UIButton alloc] initWithFrame:CGRectMake(frameX, frameY, LOGIN_WIDTH, LOGIN_HEIGHT)];
-    [fbLogin addTarget:self action:@selector(loginWithFacebook) forControlEvents:UIControlEventTouchUpInside];
-    fbLogin.titleLabel.text = @"Facebook Login";
-    fbLogin.titleLabel.textColor = [UIColor whiteColor];
-    fbLogin.backgroundColor = [UIColor blueColor];
-    fbLogin.tintColor = [UIColor blueColor];
-    [self.view addSubview:fbLogin];
     NSLog(@"Sessoin toekn: %@", [FBSession activeSession].accessTokenData.accessToken);
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,21 +70,49 @@ const int LOGIN_HEIGHT = 50;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)loginWithFacebook {
-    [FBSession openActiveSessionWithAllowLoginUI:YES];
-    NSLog(@"after open session");
-    [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-        if (!session.accessTokenData.accessToken) {
-            NSLog(@"error: %@", error);
-            NSLog(@"session should be null: %@", [FBSession activeSession].accessTokenData.accessToken);
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"couldnt login in to facebook" message:@"try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        } else {
-            [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)loginWithFacebook:(id)sender {
+    // get the app delegate so that we can access the session property
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    
+    // this button's job is to flip-flop the session from open to closed
+    if (appDelegate.session.isOpen) {
+        // if a user logs out explicitly, we delete any cached token information, and next
+        // time they run the applicaiton they will be presented with log in UX again; most
+        // users will simply close the app or switch away, without logging out; this will
+        // cause the implicit cached-token login to occur on next launch of the application
+        [appDelegate.session closeAndClearTokenInformation];
+        
+    } else {
+        if (appDelegate.session.state != FBSessionStateCreated) {
+            // Create a new, logged out session.
+            appDelegate.session = [[FBSession alloc] init];
         }
-    }];
+        
+        // if the session isn't open, let's open it now and present the login UX to the user
+        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
+                                                         FBSessionState status,
+                                                         NSError *error) {
+            // and here we make sure to update our UX according to the new session state
+            [self updateView];
+        }];
+    }
 }
+
+- (void)updateView {
+    // get the app delegate, so that we can reference the session property
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    if (appDelegate.session.isOpen) {
+        NSLog(@"WE GET HERE");
+        
+        // THIS PART BELOW ISNT WORKING. IT SHOULD BE GETTING CALLED WHEN THE FACEBOOK VIEW IS DONE, BUT I AM NOT 100% SURE.
+        
+        ViewController *vc = [[ViewController alloc] initWithNibName:@"viewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+
+    }
+}
+
 
 
 

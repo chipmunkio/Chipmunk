@@ -8,6 +8,8 @@
 
 #import "DatabaseManager.h"
 #import "UIImage+StackBlur.h"
+#import "UIImage+Gaussian.h"
+
 #import <UIKit/UIKit.h>
 
 @interface ActivitySelectionController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>

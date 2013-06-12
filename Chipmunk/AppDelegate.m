@@ -9,16 +9,15 @@
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
 #import "PocketAPI.h"
-#import <FacebookSDK/FacebookSDK.h>
 
 @implementation AppDelegate
 
 @synthesize locationManager = _locationManager;
+@synthesize session = _session;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // testflight integration
-    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]]; //remove this one out of beta -> Apple wont allow it in the full app
     [TestFlight takeOff:@"04c914dd-7506-4f2f-90c6-1b1291085c3e"];
     [[PocketAPI sharedAPI] setConsumerKey:@"14352-f8f00b94a11818a11812cb6d"];
     [Crashlytics startWithAPIKey:@"091a4baa8905651db15d358449cc69ef24a9d492"];
@@ -37,6 +36,18 @@
     self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tree2.png"]];
     
     return YES;
+    
+    
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:self.session];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
@@ -66,11 +77,15 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBAppCall handleDidBecomeActiveWithSession:self.session];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self.session close];
+
 }
 
 - (CLLocationManager*)locationManager {

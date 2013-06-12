@@ -9,7 +9,6 @@
 #import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
-#import "UIImage+Gaussian.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "ScrollableWebView.h"
 

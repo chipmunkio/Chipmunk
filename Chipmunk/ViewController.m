@@ -73,9 +73,11 @@ typedef enum SliderLocation {
     self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     self.circle.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
+    /*
     if(FBSession.activeSession.state != FBSessionStateCreatedTokenLoaded) {
         [self presentViewController:[[LoginViewController alloc] init] animated:NO completion:^{}];
     }
+     */
     self.view.backgroundColor = [UIColor clearColor];
     
 }
