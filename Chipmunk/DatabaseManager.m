@@ -20,8 +20,7 @@
 - (void)getActivities:(unsigned int)time currentLocation:(CLLocation*)geo wantOnline:(unsigned int)online wantOutside:(unsigned int)outside
 {
     NSString* fbToken = [FBSession activeSession].accessTokenData.accessToken;
-    fbToken = (fbToken == nil) ? @"" : fbToken;
-    NSLog(@"query fb token: %@", fbToken);
+    NSLog(@"query fb token: [%@]", fbToken);
     // they must be logged into facebook to be here
     assert(![fbToken isEqualToString:@""]);
     NSDictionary* params = @{

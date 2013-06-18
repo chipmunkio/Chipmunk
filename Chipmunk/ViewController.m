@@ -70,15 +70,14 @@ typedef enum SliderLocation {
     [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateNormal];
     [self.slider setThumbImage:[UIImage imageNamed:@"buttonslider.png"] forState:UIControlStateHighlighted];
 
-    self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor clearColor];
     self.circle.delegate = self;
 	// Do any additional setup after loading the view, typically from a nib.
-    /*
+    
     if(FBSession.activeSession.state != FBSessionStateCreatedTokenLoaded) {
-        [self presentViewController:[[LoginViewController alloc] init] animated:NO completion:^{}];
+        [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"] animated:NO completion:nil];
     }
-     */
-    self.view.backgroundColor = [UIColor clearColor];
+
     
 }
 

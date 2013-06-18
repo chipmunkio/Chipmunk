@@ -54,6 +54,8 @@ const int LOGIN_HEIGHT = 50;
 
             }];
         }
+    } else {
+        [self updateView];
     }
 
 
@@ -93,7 +95,13 @@ const int LOGIN_HEIGHT = 50;
                                                          FBSessionState status,
                                                          NSError *error) {
             // and here we make sure to update our UX according to the new session state
-            [self updateView];
+            if (session.isOpen && !error) {
+                [self updateView];
+            } else {
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error authorizing with Facebook" message:@"Please try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+                NSLog(@"Error: %@", error);
+            }
         }];
     }
 }
@@ -106,10 +114,10 @@ const int LOGIN_HEIGHT = 50;
         
         // THIS PART BELOW ISNT WORKING. IT SHOULD BE GETTING CALLED WHEN THE FACEBOOK VIEW IS DONE, BUT I AM NOT 100% SURE.
         
-        ViewController *vc = [[ViewController alloc] initWithNibName:@"viewController" bundle:nil];
+        ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
         [self.navigationController pushViewController:vc animated:YES];
     } else {
-
+        NSLog(@"fuck!");
     }
 }
 

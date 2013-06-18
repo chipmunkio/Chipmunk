@@ -11,6 +11,8 @@
 #import "UIImage+Gaussian.h"
 #import "UIImage+StackBlur.h"
 
+const int AVC_IMG_HEIGHT = 220;
+
 @interface ArticleViewController ()
 
 @property (nonatomic, strong) ScrollableWebView* webView;
@@ -53,7 +55,7 @@
 - (void)setupUI {
     [self addImageView];
     //define 64 somewhere
-    self.webView = [ScrollableWebView webViewOffset:60 webStart:IMG_HEIGHT superSize:self.view.frame.size];
+    self.webView = [ScrollableWebView webViewOffset:60 webStart:AVC_IMG_HEIGHT superSize:self.view.frame.size];
     self.webView.delegate = self;
     
     UIActivityIndicatorView* av = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -69,7 +71,7 @@
 }
 
 - (void)addImageView {
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], IMG_HEIGHT)];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], AVC_IMG_HEIGHT)];
     [self.view addSubview:self.imageView];
     self.imageView.userInteractionEnabled = YES;
     if(self.item) {

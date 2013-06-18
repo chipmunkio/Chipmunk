@@ -14,7 +14,7 @@
 
 
 // the width is that of the screen
-const int IMG_HEIGHT = 220;
+const int ASC_IMG_HEIGHT = 220;
 
 
 @interface ActivitySelectionController () <UIAlertViewDelegate, UIScrollViewDelegate>
@@ -95,7 +95,7 @@ const int IMG_HEIGHT = 220;
 }
 
 - (void)addScrollView {
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, IMG_HEIGHT, [ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight] - 64)];
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, ASC_IMG_HEIGHT, [ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight] - 64)];
     self.webView.delegate = self;
     self.webView.userInteractionEnabled = NO;
     self.webView.scalesPageToFit = YES;
@@ -108,7 +108,7 @@ const int IMG_HEIGHT = 220;
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight])];
     self.scrollView.delegate = self;
-    self.scrollView.contentSize = CGSizeMake([ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight] - 44 + IMG_HEIGHT);
+    self.scrollView.contentSize = CGSizeMake([ChipmunkUtils screenWidth], [ChipmunkUtils screenHeight] - 44 + ASC_IMG_HEIGHT);
     [self.scrollView addSubview:self.webView];
     self.scrollView.bounces = NO;
     
@@ -116,7 +116,7 @@ const int IMG_HEIGHT = 220;
 }
 
 - (void)addImageView {
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], IMG_HEIGHT)];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], ASC_IMG_HEIGHT)];
     [self.view addSubview:self.imageView];
     self.imageView.userInteractionEnabled = YES;
     if(self.item) {
