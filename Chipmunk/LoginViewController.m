@@ -35,34 +35,6 @@ const int LOGIN_HEIGHT = 50;
 {
     [super viewDidLoad];
     [self updateView];
-
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    if (!appDelegate.session.isOpen) {
-        // create a fresh session object
-        appDelegate.session = [[FBSession alloc] init];
-        
-        // if we don't have a cached token, a call to open here would cause UX for login to
-        // occur; we don't want that to happen unless the user clicks the login button, and so
-        // we check here to make sure we have a token before calling open
-        if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
-            // even though we had a cached token, we need to login to make the session usable
-            [appDelegate.session openWithCompletionHandler:^(FBSession *session,
-                                                             FBSessionState status,
-                                                             NSError *error) {
-                // we recurse here, in order to update buttons and labels
-                //[self updateView];
-
-            }];
-        }
-    } else {
-        [self updateView];
-    }
-
-
-	// Do any additional setup after loading the view.
-   // self.view.backgroundColor = [UIColor purpleColor];
-    int frameX = ([ChipmunkUtils screenWidth] - LOGO_WIDTH)/2;    
-    frameX = ([ChipmunkUtils screenWidth] - LOGIN_WIDTH)/2;
     NSLog(@"Sessoin toekn: %@", [FBSession activeSession].accessTokenData.accessToken);
 
 }
@@ -73,6 +45,7 @@ const int LOGIN_HEIGHT = 50;
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)loginWithFacebook:(id)sender {
+    /*
     // get the app delegate so that we can access the session property
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     
@@ -104,20 +77,40 @@ const int LOGIN_HEIGHT = 50;
             }
         }];
     }
+     */
+    FBSession* session = [FBSession activeSession];
+    if (session.isOpen) {
+        [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            switch (status) {
+                case FBSessionStateOpen:
+                    [self updateView];
+                    break;
+                case FBSessionStateClosed:
+                case FBSessionStateClosedLoginFailed:
+                    [FBSession.activeSession closeAndClearTokenInformation];
+                    break;
+                default:
+                    break;
+            }
+            
+            if (error) {
+                UIAlertView *alertView = [[UIAlertView alloc]
+                                          initWithTitle:@"Error"
+                                          message:error.localizedDescription
+                                          delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                [alertView show];
+            }
+        }];
+    }
 }
 
 - (void)updateView {
     // get the app delegate, so that we can reference the session property
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    if (appDelegate.session.isOpen) {
-        NSLog(@"WE GET HERE");
-        
-        // THIS PART BELOW ISNT WORKING. IT SHOULD BE GETTING CALLED WHEN THE FACEBOOK VIEW IS DONE, BUT I AM NOT 100% SURE.
-        
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
         [self.navigationController pushViewController:vc animated:YES];
-    } else {
-        NSLog(@"fuck!");
     }
 }
 

@@ -61,9 +61,6 @@
     atvc.label.shadowColor = [UIColor blackColor];
     atvc.label.shadowOffset = CGSizeMake(0.0, 1.0);
     atvc.label.layer.shouldRasterize = YES;
-
-    
-
     atvc.label.textAlignment = NSTextAlignmentLeft;
     
     [shadowView addSubview:atvc.imageview];
@@ -81,15 +78,14 @@
     [gradientView.layer insertSublayer:gradient atIndex:0];
     [atvc.imageview insertSubview:gradientView belowSubview:atvc.label];
     
+    atvc.backgroundColor = [UIColor clearColor];
     
     return atvc;
 }
 
 - (void)addTextToCell:(NSString*)text {
     self.label.text = text;
-    
 }
-
     
 + (void)roundImageViewCorners:(UIImageView*)imageView {
     
@@ -109,10 +105,8 @@
     capa.mask = maskLayer;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

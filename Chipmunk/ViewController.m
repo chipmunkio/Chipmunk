@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "ChipmunkUtils.h"
 #import "ActivityTableViewController.h"
-#import "ActivitySelectionController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "LoginViewController.h"
@@ -75,7 +74,7 @@ typedef enum SliderLocation {
 	// Do any additional setup after loading the view, typically from a nib.
     
     if(FBSession.activeSession.state != FBSessionStateCreatedTokenLoaded) {
-        [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"loginViewController"] animated:NO completion:nil];
+        [self.navigationController popToRootViewControllerAnimated:NO];
     }
 
     

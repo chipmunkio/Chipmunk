@@ -64,9 +64,6 @@ const int AVC_IMG_HEIGHT = 220;
     av.tag = 1;
     [self.webView addSubview:av];
     
-    
-    
-    
     [self.view addSubview:self.webView];
 }
 

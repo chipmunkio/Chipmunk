@@ -8,7 +8,6 @@
 
 #import "ActivityTableViewController.h"
 #import "ActivityTableViewCell.h"
-#import "ActivitySelectionController.h"
 #import "ChipmunkUtils.h"
 #import <QuartzCore/QuartzCore.h>
 #import <FacebookSDK/FacebookSDK.h>
@@ -78,7 +77,6 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
 }
 
 - (void)setupUI {
-    [self.view setBackgroundColor:[UIColor blackColor]];
     [self setupTableView];
     
     FlatNavigationBar* navbar = [[FlatNavigationBar alloc] initWithFrame:CGRectMake(0, 0, [ChipmunkUtils screenWidth], 44)];
@@ -95,16 +93,15 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
     back.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backbutton.png"]];
     [self.view addSubview:back];
     [back addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    self.view.backgroundColor = [UIColor clearColor];
-    self.tableView.backgroundColor = [UIColor clearColor];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tree2.png"]];
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)goBack {
     [ChipmunkUtils startUpdatingLocation];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (void)setupTableView {
     self.tableView.hidden = YES;
@@ -263,6 +260,7 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
         NSLog(@"GETTING MORE------------------------");
         [self loadData];
     }
+    NSLog(@"CELL's color: %@", cell.backgroundColor);
     
     return cell;
 }

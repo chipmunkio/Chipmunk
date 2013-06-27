@@ -95,7 +95,6 @@
 		8EF799661766C933006FB777 /* spare_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF799651766C933006FB777 /* spare_logo_white.png */; };
 		8EF799681766D378006FB777 /* tree2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF799671766D378006FB777 /* tree2.png */; };
 		8EFA15D516FA20CA00D065F4 /* 2ndpagebottombar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */; };
-		8EFA15DA16FA22C300D065F4 /* ActivitySelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,8 +222,6 @@
 		8EF799651766C933006FB777 /* spare_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spare_logo_white.png; sourceTree = "<group>"; };
 		8EF799671766D378006FB777 /* tree2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree2.png; sourceTree = "<group>"; };
 		8EFA15D416FA20CA00D065F4 /* 2ndpagebottombar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2ndpagebottombar.png; path = ../2ndpagebottombar.png; sourceTree = "<group>"; };
-		8EFA15D816FA22C300D065F4 /* ActivitySelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitySelectionController.h; sourceTree = "<group>"; };
-		8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitySelectionController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,8 +344,6 @@
 				8E5B3609174C08EB000B0073 /* ItemViewController.m */,
 				8E5B360B174C0996000B0073 /* ArticleViewController.h */,
 				8E5B360C174C0996000B0073 /* ArticleViewController.m */,
-				8EFA15D816FA22C300D065F4 /* ActivitySelectionController.h */,
-				8EFA15D916FA22C300D065F4 /* ActivitySelectionController.m */,
 				8E5B3605174C00F1000B0073 /* ScrollableWebView.h */,
 				8E5B3606174C00F1000B0073 /* ScrollableWebView.m */,
 				23FF258F16D72AB200900166 /* ViewController.h */,
@@ -359,10 +354,10 @@
 				8EF3579916DD2F470069ADB0 /* RotatingImageView.m */,
 				8E4BD03A1745ECCD000BBF7F /* RotatingView.h */,
 				8E4BD0391745ECCD000BBF7F /* RotatingView.m */,
-				23286FB116D9FC5B005E16FA /* ActivityTableViewController.h */,
-				23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */,
 				8ED55CAA174C39AE003F0FD8 /* SpareViewController.h */,
 				8ED55CAB174C39AE003F0FD8 /* SpareViewController.m */,
+				23286FB116D9FC5B005E16FA /* ActivityTableViewController.h */,
+				23286FB216D9FC5B005E16FA /* ActivityTableViewController.m */,
 				8EE5B0CF1718C4BE00B311CA /* ActivityTableViewCell.h */,
 				8EE5B0CE1718C4BE00B311CA /* ActivityTableViewCell.m */,
 				8E7BDE8216DA15F600B67749 /* DatabaseManager.h */,
@@ -661,7 +656,6 @@
 				8E7BDE7F16DA15D000B67749 /* FSNConnection.m in Sources */,
 				8E7BDE8016DA15D000B67749 /* FSNData.m in Sources */,
 				8EF3579A16DD2F470069ADB0 /* RotatingImageView.m in Sources */,
-				8EFA15DA16FA22C300D065F4 /* ActivitySelectionController.m in Sources */,
 				23E5FEDF1718B22900E3F9A8 /* UIImage+StackBlur.m in Sources */,
 				2336F65E17396D3F0077C892 /* UIImage+Gaussian.m in Sources */,
 				8E3E36C01742E080003D5284 /* PocketAPI.m in Sources */,
@@ -801,8 +795,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -812,7 +806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -827,8 +821,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A52A4685-DEAD-4FC2-9563-6781D6EC9F53";
+				PROVISIONING_PROFILE = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

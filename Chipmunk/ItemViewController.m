@@ -49,7 +49,7 @@
     [ivc.view addSubview:back];
     [ivc.view addSubview:share]; // maybe add this button to every class so they can share their data correctly
     
-    ivc.view.backgroundColor = [UIColor blackColor];
+    ivc.view.backgroundColor = [UIColor clearColor];
     
     return ivc;
 }
