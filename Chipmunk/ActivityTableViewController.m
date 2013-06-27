@@ -260,7 +260,6 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
         NSLog(@"GETTING MORE------------------------");
         [self loadData];
     }
-    NSLog(@"CELL's color: %@", cell.backgroundColor);
     
     return cell;
 }

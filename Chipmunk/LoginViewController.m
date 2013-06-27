@@ -78,39 +78,45 @@ const int LOGIN_HEIGHT = 50;
         }];
     }
      */
-    FBSession* session = [FBSession activeSession];
-    if (session.isOpen) {
-        [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-            switch (status) {
-                case FBSessionStateOpen:
-                    [self updateView];
-                    break;
-                case FBSessionStateClosed:
-                case FBSessionStateClosedLoginFailed:
-                    [FBSession.activeSession closeAndClearTokenInformation];
-                    break;
-                default:
-                    break;
-            }
-            
-            if (error) {
-                UIAlertView *alertView = [[UIAlertView alloc]
-                                          initWithTitle:@"Error"
-                                          message:error.localizedDescription
-                                          delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-                [alertView show];
-            }
-        }];
-    }
+    NSLog(@"ylyl");
+    [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        switch (status) {
+            case FBSessionStateOpen:
+                NSLog(@"state open");
+                [self updateView];
+                break;
+            case FBSessionStateClosed:
+                NSLog(@"state closed");
+                break;
+            case FBSessionStateClosedLoginFailed:
+                [FBSession.activeSession closeAndClearTokenInformation];
+                NSLog(@"close and clear token");
+                break;
+            default:
+                break;
+        }
+        
+        if (error) {
+            UIAlertView *alertView = [[UIAlertView alloc]
+                                      initWithTitle:@"Error"
+                                      message:error.localizedDescription
+                                      delegate:nil
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil];
+            [alertView show];
+        }
+    }];
 }
 
 - (void)updateView {
-    // get the app delegate, so that we can reference the session property
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
-        [self.navigationController pushViewController:vc animated:YES];
+    FBSession* session = [FBSession activeSession];
+    if (session.state == FBSessionStateOpen || session.state == FBSessionStateCreatedTokenLoaded) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    } else {
+        NSLog(@"couldnt push to main view");
     }
 }
 
