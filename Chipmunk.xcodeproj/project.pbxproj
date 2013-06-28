@@ -779,8 +779,8 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -795,8 +795,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
+				PROVISIONING_PROFILE = "3CF7D0DC-76EE-409B-90AD-3C51D9584929";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3CF7D0DC-76EE-409B-90AD-3C51D9584929";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -805,8 +805,8 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amadou Crookes (V23VPS752M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amadou Crookes (V23VPS752M)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -821,8 +821,8 @@
 					"\"$(SRCROOT)/TestFlightSDK1.2.4\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4FCF28D9-6021-44A3-B0B8-A2ECA149A4BA";
+				PROVISIONING_PROFILE = "3CF7D0DC-76EE-409B-90AD-3C51D9584929";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3CF7D0DC-76EE-409B-90AD-3C51D9584929";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

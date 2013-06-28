@@ -3,36 +3,36 @@
 <plist version="1.0">
 <dict>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>8C73EF72-5547-4377-9F28-F17118CC4CE9</string>
+	<string>16E85DDB-AB57-4012-AC52-A9267961E0FD</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Chipmunk</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7C3ABD41-B06D-47DC-A181-A35B262EB6FF</key>
-		<string>https://github.com/chipmunkio/Chipmunk</string>
+		<key>0C2BF7B2-8611-4DFB-8ADA-5537CB574F4E</key>
+		<string>ssh://github.com/chipmunkio/Chipmunk.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Chipmunk.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7C3ABD41-B06D-47DC-A181-A35B262EB6FF</key>
+		<key>0C2BF7B2-8611-4DFB-8ADA-5537CB574F4E</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/chipmunkio/Chipmunk</string>
+	<string>ssh://github.com/chipmunkio/Chipmunk.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7C3ABD41-B06D-47DC-A181-A35B262EB6FF</string>
+	<string>0C2BF7B2-8611-4DFB-8ADA-5537CB574F4E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7C3ABD41-B06D-47DC-A181-A35B262EB6FF</string>
+			<string>0C2BF7B2-8611-4DFB-8ADA-5537CB574F4E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Chipmunk</string>
+			<string>ios</string>
 		</dict>
 	</array>
 </dict>

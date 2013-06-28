@@ -34,7 +34,7 @@ const int LOGIN_HEIGHT = 50;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self updateView];
+    [self updateView:NO];
     NSLog(@"Sessoin toekn: %@", [FBSession activeSession].accessTokenData.accessToken);
 
 }
@@ -83,7 +83,7 @@ const int LOGIN_HEIGHT = 50;
         switch (status) {
             case FBSessionStateOpen:
                 NSLog(@"state open");
-                [self updateView];
+                [self updateView:YES];
                 break;
             case FBSessionStateClosed:
                 NSLog(@"state closed");
@@ -108,12 +108,12 @@ const int LOGIN_HEIGHT = 50;
     }];
 }
 
-- (void)updateView {
+- (void)updateView:(BOOL)animated {
     FBSession* session = [FBSession activeSession];
     if (session.state == FBSessionStateOpen || session.state == FBSessionStateCreatedTokenLoaded) {
         dispatch_async(dispatch_get_main_queue(), ^{
             ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
-            [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:vc animated:animated];
         });
     } else {
         NSLog(@"couldnt push to main view");
