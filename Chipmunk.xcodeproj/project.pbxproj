@@ -779,8 +779,13 @@
 		23FF25AA16D72AB200900166 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabe Jacobs (W558Z7435G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gabe Jacobs (W558Z7435G)";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+>>>>>>> e7b7e39349526dd30535a890b60a749fd2abc3d2
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -805,8 +810,13 @@
 		23FF25AB16D72AB200900166 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD
 				CODE_SIGN_IDENTITY = "iPhone Developer: Gabe Jacobs (W558Z7435G)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+=======
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Amadou Crookes";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Amadou Crookes";
+>>>>>>> e7b7e39349526dd30535a890b60a749fd2abc3d2
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
