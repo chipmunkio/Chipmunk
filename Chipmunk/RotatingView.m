@@ -95,21 +95,23 @@ const int MINUTES_IN_ROTATION = 46;
     float radiusDynamic = self.bounds.size.width/2 - RADIUS_DELTA;
     float viewCenterX   = self.bounds.size.width/2;
     float viewCenterY   = self.bounds.size.height/2;
+    CGPoint viewCenter = CGPointMake(viewCenterX, viewCenterY);
     float offset = -M_PI/2;
     
     // draw the time that has passed
     [[ChipmunkUtils chipmunkColor] set];
-    CGContextMoveToPoint(context, viewCenterX, viewCenterY);
-    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, 0 + offset, self.currentAngle + offset, 0);
-    CGContextClosePath(context);
-    CGContextDrawPath(context, kCGPathFillStroke);
+    CGContextSaveGState(context);
+    UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:viewCenter radius:radiusDynamic startAngle:offset endAngle:self.currentAngle + offset clockwise:YES];
+    CGContextTranslateCTM(context, 0, 0);
+    path.lineWidth = DYNAMIC_WIDTH;
+    [path stroke];
     
-    // draw the remaining area
     [[UIColor colorWithRed:123.0/255.0 green:229.0/255.0 blue:255.0/255.0 alpha:1.0] set]; //darker version of chipmunk color
-    CGContextMoveToPoint(context, viewCenterX, viewCenterY);
-    CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic, self.currentAngle + offset, 2*M_PI + offset, 0);
-    CGContextClosePath(context);
-    CGContextDrawPath(context, kCGPathFillStroke);
+    path = [UIBezierPath bezierPathWithArcCenter:viewCenter radius:radiusDynamic startAngle:self.currentAngle + offset endAngle:M_PI * 2 + offset clockwise:YES];
+    path.lineWidth = DYNAMIC_WIDTH;
+    [path stroke];
+    
+    CGContextRestoreGState(context);
     
     // calculate the center of the knob based on the angle and the radius
     float knobDist = self.bounds.size.width/2 - RADIUS_DELTA - DYNAMIC_WIDTH/2;
@@ -126,12 +128,14 @@ const int MINUTES_IN_ROTATION = 46;
     CGContextAddArc(context, knobX, knobY, knobRadius, 0, 2*M_PI, YES);
     CGContextDrawPath(context, kCGPathFillStroke);
     
+    /*
     // draw the inner black circle
     [[UIColor whiteColor] set];
     CGContextAddArc(context, viewCenterX, viewCenterY, radiusDynamic - DYNAMIC_WIDTH, 0, 2*M_PI, YES);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFillStroke);
     CGContextDrawPath(context, kCGPathFillStroke);
+     */
     
     // draw the actual knob
     [[ChipmunkUtils chipmunkColor] set];
