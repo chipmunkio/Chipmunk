@@ -100,6 +100,7 @@ const unsigned int MAX_LOAD_ATTEMPTS = 6; // if they try to load x times stop fr
 
 - (void)goBack {
     [ChipmunkUtils startUpdatingLocation];
+    NSLog(@"nav contr %@", self.navigationController);
     [self.navigationController popViewControllerAnimated:YES];
 }
 

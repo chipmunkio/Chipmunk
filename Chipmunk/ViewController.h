@@ -32,6 +32,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *bothButton;
 @property (weak, nonatomic) IBOutlet UIButton *outsideButton;
 @property (weak, nonatomic) IBOutlet RotatingView *circle;
+@property (weak, nonatomic) IBOutlet UILabel *heyLabel;
+@property (weak, nonatomic) IBOutlet UILabel *heyLabelDetails;
+@property (weak, nonatomic) IBOutlet UIImageView *profPic;
+@property (strong, nonatomic) FBProfilePictureView *profilePictureView;
 
 // for sound
 //@property (nonatomic) CFURLRef tickURLRef;

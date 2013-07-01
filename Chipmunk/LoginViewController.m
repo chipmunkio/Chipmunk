@@ -7,7 +7,8 @@
 //
 
 #import "LoginViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
+#import "AppDelegate.h"
+
 #import "ViewController.h"
 
 
@@ -34,9 +35,36 @@ const int LOGIN_HEIGHT = 50;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self updateView:NO];
-    NSLog(@"Sessoin toekn: %@", [FBSession activeSession].accessTokenData.accessToken);
+    
+    FBLoginView *loginview = [[FBLoginView alloc] initWithPermissions:
+                              [NSArray arrayWithObject:@"status_update"]];
+    loginview.frame = CGRectMake(160, 408, 300, 58);
 
+    for (id obj in loginview.subviews)
+    {
+        if ([obj isKindOfClass:[UIButton class]])
+        {
+            UIButton * loginButton =  obj;
+            UIImage *loginImage = [UIImage imageNamed:@"fb_bar.png"];
+            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
+            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
+            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
+            [loginButton sizeToFit];
+        }
+        if ([obj isKindOfClass:[UILabel class]])
+        {
+            UILabel * loginLabel =  obj;
+            loginLabel.text = @"Log in to facebook";
+            loginLabel.textAlignment = UITextAlignmentCenter;
+            loginLabel.frame = CGRectMake(160, 408, 300, 58);
+        }
+    }
+
+    loginview.delegate = self;
+
+    [self.view addSubview:loginview];
+
+	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,74 +72,71 @@ const int LOGIN_HEIGHT = 50;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)loginWithFacebook:(id)sender {
-    /*
-    // get the app delegate so that we can access the session property
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+
+#pragma mark - FBLoginView delegate
+
+
+- (void)loginView:(FBLoginView *)loginView
+      handleError:(NSError *)error{
+    NSString *alertMessage, *alertTitle;
     
-    // this button's job is to flip-flop the session from open to closed
-    if (appDelegate.session.isOpen) {
-        // if a user logs out explicitly, we delete any cached token information, and next
-        // time they run the applicaiton they will be presented with log in UX again; most
-        // users will simply close the app or switch away, without logging out; this will
-        // cause the implicit cached-token login to occur on next launch of the application
-        [appDelegate.session closeAndClearTokenInformation];
-        
+    // Facebook SDK * error handling *
+    // Error handling is an important part of providing a good user experience.
+    // Since this sample uses the FBLoginView, this delegate will respond to
+    // login failures, or other failures that have closed the session (such
+    // as a token becoming invalid). Please see the [- postOpenGraphAction:]
+    // and [- requestPermissionAndPost] on `SCViewController` for further
+    // error handling on other operations.
+    
+    if (error.fberrorShouldNotifyUser) {
+        // If the SDK has a message for the user, surface it. This conveniently
+        // handles cases like password change or iOS6 app slider state.
+        alertTitle = @"Something Went Wrong";
+        alertMessage = error.fberrorUserMessage;
+    } else if (error.fberrorCategory == FBErrorCategoryAuthenticationReopenSession) {
+        // It is important to handle session closures as mentioned. You can inspect
+        // the error for more context but this sample generically notifies the user.
+        alertTitle = @"Session Error";
+        alertMessage = @"Your current session is no longer valid. Please log in again.";
+    } else if (error.fberrorCategory == FBErrorCategoryUserCancelled) {
+        // The user has cancelled a login. You can inspect the error
+        // for more context. For this sample, we will simply ignore it.
+        NSLog(@"user cancelled login");
     } else {
-        if (appDelegate.session.state != FBSessionStateCreated) {
-            // Create a new, logged out session.
-            appDelegate.session = [[FBSession alloc] init];
-        }
-        
-        // if the session isn't open, let's open it now and present the login UX to the user
-        [appDelegate.session openWithCompletionHandler:^(FBSession *session,
-                                                         FBSessionState status,
-                                                         NSError *error) {
-            // and here we make sure to update our UX according to the new session state
-            if (session.isOpen && !error) {
-                [self updateView];
-            } else {
-                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error authorizing with Facebook" message:@"Please try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-                NSLog(@"Error: %@", error);
-            }
-        }];
+        // For simplicity, this sample treats other errors blindly, but you should
+        // refer to https://developers.facebook.com/docs/technical-guides/iossdk/errors/ for more information.
+        alertTitle  = @"Unknown Error";
+        alertMessage = @"Error. Please try again later.";
+        NSLog(@"Unexpected error:%@", error);
     }
-     */
-    NSLog(@"ylyl");
-    [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-        switch (status) {
-            case FBSessionStateOpen:
-                NSLog(@"state open");
-                [self updateView:YES];
-                break;
-            case FBSessionStateClosed:
-                NSLog(@"state closed");
-                break;
-            case FBSessionStateClosedLoginFailed:
-                [FBSession.activeSession closeAndClearTokenInformation];
-                NSLog(@"close and clear token");
-                break;
-            default:
-                break;
-        }
-        
-        if (error) {
-            UIAlertView *alertView = [[UIAlertView alloc]
-                                      initWithTitle:@"Error"
-                                      message:error.localizedDescription
-                                      delegate:nil
-                                      cancelButtonTitle:@"OK"
-                                      otherButtonTitles:nil];
-            [alertView show];
-        }
-    }];
+    
+    if (alertMessage) {
+        [[[UIAlertView alloc] initWithTitle:alertTitle
+                                    message:alertMessage
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
 }
 
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    // Upon login, transition to the main UI by pushing it onto the navigation stack.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.view.hidden = YES;
+        ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
+        [self.navigationController pushViewController:vc animated:YES];
+    });
+}
+
+/*
 - (void)updateView:(BOOL)animated {
-    FBSession* session = [FBSession activeSession];
-    if (session.state == FBSessionStateOpen || session.state == FBSessionStateCreatedTokenLoaded) {
+
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    NSLog(@"session token: %@", appDelegate.session.accessTokenData.accessToken);
+
+    if (appDelegate.session.isOpen) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.view.hidden = YES;
             ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"viewController"];
             [self.navigationController pushViewController:vc animated:animated];
         });
@@ -119,8 +144,7 @@ const int LOGIN_HEIGHT = 50;
         NSLog(@"couldnt push to main view");
     }
 }
-
-
+*/
 
 
 @end

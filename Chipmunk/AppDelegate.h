@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "LoginViewController.h"
 
 
 
@@ -18,5 +19,6 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) CLLocationManager* locationManager;
+@property (strong, nonatomic) LoginViewController* loginViewController;
 
 @end

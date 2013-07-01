@@ -40,18 +40,42 @@ typedef enum SliderLocation {
     NSArray *fontArr = [UIFont fontNamesForFamilyName:@"Proxima Nova"];
     NSString *proxReg = [fontArr objectAtIndex:0];
     NSString *proxBold = [fontArr objectAtIndex:1];
-    [self.hourLabel setFont:[UIFont fontWithName:proxReg size:self.hourLabel.font.pointSize]];
-    [self.minLabel setFont:[UIFont fontWithName:proxReg size:self.minLabel.font.pointSize]];
-    [self.minuteSymbol setFont:[UIFont fontWithName:proxReg size:self.minuteSymbol.font.pointSize]];
-    [self.hourSymbol setFont:[UIFont fontWithName:proxReg size:self.hourSymbol.font.pointSize]];
-    [self.insideLabel setFont:[UIFont fontWithName:proxReg size:self.insideLabel.   font.pointSize]];
-    [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:self.outsideLabel.font.pointSize]];
+    [self.hourLabel setFont:[UIFont fontWithName:proxReg size:23]];
+    [self.minLabel setFont:[UIFont fontWithName:proxReg size:23]];
+    [self.minuteSymbol setFont:[UIFont fontWithName:proxReg size:23]];
+    [self.hourSymbol setFont:[UIFont fontWithName:proxReg size:23]];
+    [self.insideLabel setFont:[UIFont fontWithName:proxReg size:23]];
+    [self.outsideLabel setFont:[UIFont fontWithName:proxReg size:23]];
      [self.bothLabel setFont:[UIFont fontWithName:proxBold size:23]];
-    
+    [self.heyLabel setFont:[UIFont fontWithName:proxReg size:25]];
+    [self.heyLabelDetails setFont:[UIFont fontWithName:proxReg size:13]];
+
     self.minLabel.hidden     = NO;
     self.minuteSymbol.hidden = NO;
     self.hourLabel.hidden    = YES;
     self.hourLabel.hidden    = YES;
+    
+    self.profilePictureView = [[FBProfilePictureView alloc] init];
+    // Set the size
+    self.profilePictureView.frame = CGRectMake(15.0, 153.0, 50.0, 50.0);
+    // Show the profile picture for a user
+    
+
+    if (FBSession.activeSession.isOpen) {
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection, NSDictionary<FBGraphUser> *user, NSError *error) {
+             if (!error) {
+                 self.heyLabel.text = [NSString stringWithFormat:@"Hey %@", user.first_name];
+                 self.profilePictureView.profileID = [user objectForKey:@"id"];
+             }
+         }];
+    }
+    
+    self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.width / 2;
+    self.profilePictureView.layer.masksToBounds = YES;
+    // Add the profile picture view to the main view
+    [self.view addSubview:self.profilePictureView];
+    
     
     self.hourIsShowing = 0;
     
