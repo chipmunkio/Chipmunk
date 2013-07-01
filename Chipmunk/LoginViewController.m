@@ -36,32 +36,13 @@ const int LOGIN_HEIGHT = 50;
 {
     [super viewDidLoad];
     
-    FBLoginView *loginview = [[FBLoginView alloc] initWithPermissions:
-                              [NSArray arrayWithObject:@"status_update"]];
-    loginview.frame = CGRectMake(160, 408, 300, 58);
-
-    for (id obj in loginview.subviews)
-    {
-        if ([obj isKindOfClass:[UIButton class]])
-        {
-            UIButton * loginButton =  obj;
-            UIImage *loginImage = [UIImage imageNamed:@"fb_bar.png"];
-            [loginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
-            [loginButton setBackgroundImage:nil forState:UIControlStateSelected];
-            [loginButton setBackgroundImage:nil forState:UIControlStateHighlighted];
-            [loginButton sizeToFit];
-        }
-        if ([obj isKindOfClass:[UILabel class]])
-        {
-            UILabel * loginLabel =  obj;
-            loginLabel.text = @"Log in to facebook";
-            loginLabel.textAlignment = UITextAlignmentCenter;
-            loginLabel.frame = CGRectMake(160, 408, 300, 58);
-        }
-    }
+    FBLoginView *loginview =[[FBLoginView alloc] initWithPermissions:[NSArray arrayWithObject:@"publish_actions"]];
+    
+    
+    loginview.frame = CGRectMake(50, 425, 225, 80);
 
     loginview.delegate = self;
-
+    
     [self.view addSubview:loginview];
 
 	// Do any additional setup after loading the view, typically from a nib.
